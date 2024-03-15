@@ -1,0 +1,4 @@
+
+Need exactly SI8431 - not 8430. The last one is unidirectional. But SI8431 is bidirectional.
+
+

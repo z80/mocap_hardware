@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name lcu03)(type KiCad)(uri C:\projects\pcb.svn\projects\lcu03\libs\lcu03.pretty)(options "")(descr ""))
+)

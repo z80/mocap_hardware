@@ -1,0 +1,33 @@
+EESchema-LIBRARY Version 2.3
+#encoding utf-8
+#
+# drv8801
+#
+DEF drv8801 U 0 40 Y Y 1 F N
+F0 "U" 0 -250 60 H V C CNN
+F1 "drv8801" 0 350 60 H V C CNN
+F2 "" 0 450 60 H I C CNN
+F3 "" 0 450 60 H I C CNN
+DRAW
+S -550 1100 500 -1100 0 1 0 N
+X ~fault~ 1 700 1050 200 L 50 50 1 1 I
+X mode_1 2 -750 150 200 R 50 50 1 1 I
+X phase 3 -750 850 200 R 50 50 1 1 I
+X gnd 4 -200 -1300 200 U 50 50 1 1 P
+X ~sleep~ 5 -750 1050 200 R 50 50 1 1 I
+X enable 6 -750 550 200 R 50 50 1 1 I
+X out+ 7 700 200 200 L 50 50 1 1 P
+X sense 8 700 -950 200 L 50 50 1 1 P
+X vbb 9 0 1300 200 D 50 50 1 1 W
+X out- 10 700 0 200 L 50 50 1 1 P
+X cp1 11 -750 -1050 200 R 50 50 1 1 P
+X cp2 12 -750 -850 200 R 50 50 1 1 P
+X gnd 13 0 -1300 200 U 50 50 1 1 P
+X vcp 14 -750 -450 200 R 50 50 1 1 O
+X vpropi 15 700 850 200 L 50 50 1 1 O
+X mode_2 16 -750 -50 200 R 50 50 1 1 I
+X thermal_pad 17 200 -1300 200 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+#End Library

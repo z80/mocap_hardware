@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name footprints)(type KiCad)(uri /home/sbashkirov/projects/magnetic-tracking.git/schematics/footprints.pretty)(options "")(descr ""))
+)
