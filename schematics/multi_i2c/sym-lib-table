@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 0)
+  (lib (name "multi_i2c-rescue")(type "Legacy")(uri "${KIPRJMOD}/multi_i2c-rescue.lib")(options "")(descr ""))
+)
