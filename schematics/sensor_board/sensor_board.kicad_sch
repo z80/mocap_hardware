@@ -2023,6 +2023,16 @@
 	)
 	(wire
 		(pts
+			(xy 193.04 105.41) (xy 198.12 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "096ca908-0c6a-470b-b297-e36e35123ae9")
+	)
+	(wire
+		(pts
 			(xy 162.56 135.89) (xy 162.56 139.7)
 		)
 		(stroke
@@ -2070,16 +2080,6 @@
 			(type default)
 		)
 		(uuid "1e6a2ae8-92aa-496e-8f11-0fdf101e4ea8")
-	)
-	(wire
-		(pts
-			(xy 176.53 105.41) (xy 198.12 105.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "223471af-e2fc-43b1-992c-60b413bea5c7")
 	)
 	(wire
 		(pts
@@ -2190,6 +2190,16 @@
 			(type default)
 		)
 		(uuid "423d5618-ed49-4fe1-a197-36f1f2f74720")
+	)
+	(wire
+		(pts
+			(xy 176.53 105.41) (xy 185.42 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "459ef451-6ce4-4e04-a41a-db34d735fc10")
 	)
 	(wire
 		(pts
@@ -4266,6 +4276,75 @@
 			(project "sensor_board"
 				(path "/0f022720-add9-458b-9410-e96307841923"
 					(reference "C1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 189.23 105.41 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "673b85fa-bb15-4f8f-9600-d2953fb2c960")
+		(property "Reference" "R10"
+			(at 187.96 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 190.5 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 189.23 107.188 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 189.23 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 189.23 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b8ab4f4d-9a3b-4e67-88c0-ae34043b025f")
+		)
+		(pin "1"
+			(uuid "de1ba4a8-5be2-4942-917b-f6f826d9e4c9")
+		)
+		(instances
+			(project "sensor_board"
+				(path "/0f022720-add9-458b-9410-e96307841923"
+					(reference "R10")
 					(unit 1)
 				)
 			)
