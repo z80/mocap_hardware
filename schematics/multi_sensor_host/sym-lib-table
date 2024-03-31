@@ -2,4 +2,5 @@
   (version 7)
   (lib (name "mcp1603")(type "KiCad")(uri "${KIPRJMOD}/mcp1603.kicad_sym")(options "")(descr ""))
   (lib (name "esp_12s")(type "KiCad")(uri "${KIPRJMOD}/esp_12s.kicad_sym")(options "")(descr ""))
+  (lib (name "stm32f405rgt6")(type "KiCad")(uri "${KIPRJMOD}/stm32f405rgt6.kicad_sym")(options "")(descr ""))
 )
