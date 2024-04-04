@@ -883,6 +883,467 @@
 				)
 			)
 		)
+		(symbol "Connector:USB_B"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at -5.08 11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "USB_B"
+				(at -5.08 8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 3.81 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" " ~"
+				(at 3.81 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "USB Type B connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "connector USB"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "USB*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "USB_B_0_1"
+				(rectangle
+					(start -5.08 -7.62)
+					(end 5.08 7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(circle
+					(center -3.81 2.159)
+					(radius 0.635)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start -3.81 5.588)
+					(end -2.54 4.572)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center -0.635 3.429)
+					(radius 0.381)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start -0.127 -7.62)
+					(end 0.127 -6.858)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.905 2.159) (xy 0.635 2.159)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.175 2.159) (xy -2.54 2.159) (xy -1.27 3.429) (xy -0.635 3.429)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 2.159) (xy -1.905 2.159) (xy -1.27 0.889) (xy 0 0.889)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 2.794) (xy 0.635 1.524) (xy 1.905 2.159) (xy 0.635 2.794)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.064 4.318) (xy -2.286 4.318) (xy -2.286 5.715) (xy -2.667 6.096) (xy -3.683 6.096) (xy -4.064 5.715)
+						(xy -4.064 4.318)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 0.254 1.27)
+					(end -0.508 0.508)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start 5.08 -2.667)
+					(end 4.318 -2.413)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 5.08 -0.127)
+					(end 4.318 0.127)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 5.08 4.953)
+					(end 4.318 5.207)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "USB_B_1_1"
+				(pin power_out line
+					(at 7.62 5.08 180)
+					(length 2.54)
+					(name "VBUS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 7.62 -2.54 180)
+					(length 2.54)
+					(name "D-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "D+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 0 -10.16 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 -10.16 90)
+					(length 2.54)
+					(name "Shield"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Device:C"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Unpolarized capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Device:Crystal"
 			(pin_numbers hide)
 			(pin_names
@@ -1522,537 +1983,7 @@
 				)
 			)
 		)
-		(symbol "bridge-rescue:C"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0.635 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "C"
-				(at 0.635 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0.9652 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "C_0_1"
-				(polyline
-					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 2.794)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.794)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "bridge-rescue:GND"
-			(power)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "GND"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "GND_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0) hide
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "bridge-rescue:MY_USB_B"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at -5.08 11.43 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "MY_USB_B"
-				(at -5.08 8.89 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 3.81 -1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 3.81 -1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "USB*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "MY_USB_B_0_1"
-				(rectangle
-					(start -5.08 -7.62)
-					(end 5.08 7.62)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(circle
-					(center -3.81 2.159)
-					(radius 0.635)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -3.81 5.588)
-					(end -2.54 4.572)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center -0.635 3.429)
-					(radius 0.381)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -0.127 -7.62)
-					(end 0.127 -6.858)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.905 2.159) (xy 0.635 2.159)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -3.175 2.159) (xy -2.54 2.159) (xy -1.27 3.429) (xy -0.635 3.429)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 2.159) (xy -1.905 2.159) (xy -1.27 0.889) (xy 0 0.889)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 2.794) (xy 0.635 1.524) (xy 1.905 2.159) (xy 0.635 2.794)
-					)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -4.064 4.318) (xy -2.286 4.318) (xy -2.286 5.715) (xy -2.667 6.096) (xy -3.683 6.096) (xy -4.064 5.715)
-						(xy -4.064 4.318)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 0.254 1.27)
-					(end -0.508 0.508)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start 5.08 -2.667)
-					(end 4.318 -2.413)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 5.08 -0.127)
-					(end 4.318 0.127)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 5.08 4.953)
-					(end 4.318 5.207)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "MY_USB_B_1_1"
-				(pin passive line
-					(at 7.62 5.08 180)
-					(length 2.54)
-					(name "VBUS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 -2.54 180)
-					(length 2.54)
-					(name "D-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name "D+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -10.16 90)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -2.54 -10.16 90)
-					(length 2.54)
-					(name "Shield"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "bridge-rescue:R"
+		(symbol "Device:R"
 			(pin_numbers hide)
 			(pin_names
 				(offset 0)
@@ -2085,7 +2016,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" ""
+			(property "Datasheet" "~"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2094,7 +2025,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" ""
+			(property "Description" "Resistor"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2103,7 +2034,16 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "R_* R_*"
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2118,7 +2058,7 @@
 					(end 1.016 2.54)
 					(stroke
 						(width 0.254)
-						(type solid)
+						(type default)
 					)
 					(fill
 						(type none)
@@ -2171,7 +2111,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U11"
+			(property "Reference" "U"
 				(at 45.72 -30.48 0)
 				(effects
 					(font
@@ -2179,7 +2119,7 @@
 					)
 				)
 			)
-			(property "Value" "stm32f405rgt6"
+			(property "Value" ""
 				(at 45.72 -33.02 0)
 				(effects
 					(font
@@ -3909,332 +3849,6 @@
 				)
 			)
 		)
-		(symbol "multi_i2c-rescue:C"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "C"
-				(at 0.635 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "C"
-				(at 0.635 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0.9652 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "C_0_1"
-				(polyline
-					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 2.794)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.794)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "multi_i2c-rescue:GND"
-			(power)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "GND"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "GND_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0) hide
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "multi_i2c-rescue:R"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "R"
-				(at 2.032 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "R"
-				(at 0 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at -1.778 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "R_* R_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "R_0_1"
-				(rectangle
-					(start -1.016 -2.54)
-					(end 1.016 2.54)
-					(stroke
-						(width 0.254)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "R_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "power:GND"
 			(power)
 			(pin_numbers hide)
@@ -4554,7 +4168,7 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U11"
+			(property "Reference" "U"
 				(at 45.72 -30.48 0)
 				(effects
 					(font
@@ -4562,7 +4176,7 @@
 					)
 				)
 			)
-			(property "Value" "stm32f405rgt6"
+			(property "Value" ""
 				(at 45.72 -33.02 0)
 				(effects
 					(font
@@ -6659,16 +6273,6 @@
 	)
 	(wire
 		(pts
-			(xy 343.535 556.26) (xy 358.14 556.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2d05934a-4213-4c0d-8d09-2cb60335ce5f")
-	)
-	(wire
-		(pts
 			(xy 257.81 173.99) (xy 279.4 173.99)
 		)
 		(stroke
@@ -7009,6 +6613,16 @@
 	)
 	(wire
 		(pts
+			(xy 485.14 483.87) (xy 495.3 483.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "50e6cb13-b0c7-4405-be80-b6063123e549")
+	)
+	(wire
+		(pts
 			(xy 345.44 515.62) (xy 358.14 515.62)
 		)
 		(stroke
@@ -7229,16 +6843,6 @@
 	)
 	(wire
 		(pts
-			(xy 485.775 488.95) (xy 495.3 488.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "668eb01c-acfc-4a60-94eb-befbe277bd34")
-	)
-	(wire
-		(pts
 			(xy 213.36 81.28) (xy 213.36 83.82)
 		)
 		(stroke
@@ -7336,16 +6940,6 @@
 			(type default)
 		)
 		(uuid "6f286ca2-31e9-4cb9-96de-4a33ddcc25fc")
-	)
-	(wire
-		(pts
-			(xy 485.775 483.87) (xy 495.3 483.87)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "6f41bc43-de3f-4f95-8aee-0330734e47cd")
 	)
 	(wire
 		(pts
@@ -7969,6 +7563,16 @@
 	)
 	(wire
 		(pts
+			(xy 477.52 516.89) (xy 500.38 516.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acba6733-bc78-4745-8844-2f17c5486658")
+	)
+	(wire
+		(pts
 			(xy 194.31 504.19) (xy 194.31 508)
 		)
 		(stroke
@@ -8299,6 +7903,16 @@
 	)
 	(wire
 		(pts
+			(xy 341.63 556.26) (xy 358.14 556.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9071d3d-2d26-4d74-ac78-a537b6bbdc7e")
+	)
+	(wire
+		(pts
 			(xy 90.17 78.74) (xy 102.87 78.74)
 		)
 		(stroke
@@ -8386,16 +8000,6 @@
 			(type default)
 		)
 		(uuid "cf508eae-1246-49eb-b31c-94a95ad0d410")
-	)
-	(wire
-		(pts
-			(xy 500.38 516.89) (xy 481.965 516.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d098ff8d-5235-4846-91c3-961cb491afa7")
 	)
 	(wire
 		(pts
@@ -8546,6 +8150,16 @@
 			(type default)
 		)
 		(uuid "d93e98f1-5f9e-45e4-98e2-bfd7f8e46a9d")
+	)
+	(wire
+		(pts
+			(xy 485.14 488.95) (xy 495.3 488.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d95080e1-1637-426b-9bd8-b226997aa478")
 	)
 	(wire
 		(pts
@@ -10181,7 +9795,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:C")
+		(lib_id "Device:C")
 		(at 179.07 500.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10211,20 +9825,21 @@
 			(at 180.0352 504.19 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 179.07 500.38 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 179.07 500.38 0)
 			(effects
 				(font
@@ -10383,7 +9998,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:MY_USB_B")
+		(lib_id "Connector:USB_B")
 		(at 274.32 499.11 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10418,7 +10033,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" " ~"
 			(at 278.13 500.38 0)
 			(effects
 				(font
@@ -10427,7 +10042,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "USB Type B connector"
 			(at 274.32 499.11 0)
 			(effects
 				(font
@@ -10461,7 +10076,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:R")
+		(lib_id "Device:R")
 		(at 332.74 453.39 0)
 		(mirror y)
 		(unit 1)
@@ -10490,20 +10105,21 @@
 			(at 334.518 453.39 90)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 332.74 453.39 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 332.74 453.39 0)
 			(effects
 				(font
@@ -10873,7 +10489,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 213.36 93.98 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10902,19 +10518,21 @@
 			(at 213.36 93.98 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 213.36 93.98 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 213.36 93.98 0)
 			(effects
 				(font
@@ -10936,7 +10554,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 234.95 68.58 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10965,19 +10583,21 @@
 			(at 234.95 68.58 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 234.95 68.58 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 234.95 68.58 0)
 			(effects
 				(font
@@ -10999,7 +10619,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 283.21 66.04 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11028,19 +10648,21 @@
 			(at 283.21 66.04 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 283.21 66.04 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 283.21 66.04 0)
 			(effects
 				(font
@@ -11062,7 +10684,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 245.11 580.39 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11091,19 +10713,21 @@
 			(at 245.11 580.39 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 245.11 580.39 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 245.11 580.39 0)
 			(effects
 				(font
@@ -11265,7 +10889,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:R")
+		(lib_id "Device:R")
 		(at 500.38 511.81 0)
 		(mirror y)
 		(unit 1)
@@ -11294,20 +10918,21 @@
 			(at 502.158 511.81 90)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 500.38 511.81 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 500.38 511.81 0)
 			(effects
 				(font
@@ -11332,7 +10957,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:C")
+		(lib_id "Device:C")
 		(at 171.45 500.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11362,20 +10987,21 @@
 			(at 172.4152 504.19 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 171.45 500.38 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 171.45 500.38 0)
 			(effects
 				(font
@@ -11536,7 +11162,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 516.89 521.97 0)
 		(mirror y)
 		(unit 1)
@@ -11566,19 +11192,21 @@
 			(at 516.89 521.97 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 516.89 521.97 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 516.89 521.97 0)
 			(effects
 				(font
@@ -11668,7 +11296,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:C")
+		(lib_id "Device:C")
 		(at 500.38 521.97 0)
 		(mirror y)
 		(unit 1)
@@ -11699,20 +11327,21 @@
 			(at 499.4148 525.78 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 500.38 521.97 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 500.38 521.97 0)
 			(effects
 				(font
@@ -11737,7 +11366,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:C")
+		(lib_id "Device:C")
 		(at 194.31 500.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11767,20 +11396,21 @@
 			(at 195.2752 504.19 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 194.31 500.38 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 194.31 500.38 0)
 			(effects
 				(font
@@ -11805,7 +11435,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:C")
+		(lib_id "Device:C")
 		(at 501.65 603.25 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11835,20 +11465,21 @@
 			(at 502.6152 607.06 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 501.65 603.25 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 501.65 603.25 0)
 			(effects
 				(font
@@ -11873,7 +11504,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 281.94 558.8 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11902,19 +11533,21 @@
 			(at 281.94 558.8 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 281.94 558.8 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 281.94 558.8 0)
 			(effects
 				(font
@@ -11936,7 +11569,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:C")
+		(lib_id "Device:C")
 		(at 516.89 623.57 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -11966,20 +11599,21 @@
 			(at 517.8552 627.38 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 516.89 623.57 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 516.89 623.57 0)
 			(effects
 				(font
@@ -12004,7 +11638,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 500.38 528.32 0)
 		(mirror y)
 		(unit 1)
@@ -12034,19 +11668,21 @@
 			(at 500.38 528.32 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 500.38 528.32 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 500.38 528.32 0)
 			(effects
 				(font
@@ -12178,7 +11814,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 302.26 506.73 0)
 		(mirror y)
 		(unit 1)
@@ -12208,19 +11844,21 @@
 			(at 302.26 506.73 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 302.26 506.73 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 302.26 506.73 0)
 			(effects
 				(font
@@ -12242,7 +11880,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:R")
+		(lib_id "Device:R")
 		(at 213.36 77.47 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12275,7 +11913,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 213.36 77.47 0)
 			(effects
 				(font
@@ -12284,11 +11922,11 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "RC0603JR-072K2L"
-			(at 213.36 77.47 90)
+		(property "Description" "Resistor"
+			(at 213.36 77.47 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -12318,7 +11956,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:C")
+		(lib_id "Device:C")
 		(at 247.65 62.23 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12353,7 +11991,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 247.65 62.23 0)
 			(effects
 				(font
@@ -12362,11 +12000,11 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CL10B475KQ8NQNC"
+		(property "Description" "Unpolarized capacitor"
 			(at 247.65 62.23 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -12611,7 +12249,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 194.31 513.08 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -12640,19 +12278,21 @@
 			(at 194.31 513.08 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 194.31 513.08 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 194.31 513.08 0)
 			(effects
 				(font
@@ -13152,7 +12792,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 97.79 91.44 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13195,7 +12835,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 97.79 91.44 0)
 			(effects
 				(font
@@ -13353,7 +12993,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 482.6 491.49 0)
 		(mirror y)
 		(unit 1)
@@ -13383,19 +13023,21 @@
 			(at 482.6 491.49 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 482.6 491.49 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 482.6 491.49 0)
 			(effects
 				(font
@@ -13417,7 +13059,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 274.32 514.35 0)
 		(mirror y)
 		(unit 1)
@@ -13447,19 +13089,21 @@
 			(at 274.32 514.35 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 274.32 514.35 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 274.32 514.35 0)
 			(effects
 				(font
@@ -13613,7 +13257,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:R")
+		(lib_id "Device:R")
 		(at 332.74 463.55 0)
 		(mirror y)
 		(unit 1)
@@ -13642,20 +13286,21 @@
 			(at 334.518 463.55 90)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 332.74 463.55 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 332.74 463.55 0)
 			(effects
 				(font
@@ -13689,7 +13334,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7e07354a-0c92-429c-8da2-07f23dd276b4")
-		(property "Reference" "U11"
+		(property "Reference" "U"
 			(at 403.86 520.7 0)
 			(effects
 				(font
@@ -13697,7 +13342,7 @@
 				)
 			)
 		)
-		(property "Value" "stm32f405rgt6"
+		(property "Value" "~"
 			(at 403.86 523.24 0)
 			(effects
 				(font
@@ -13926,14 +13571,14 @@
 		(instances
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "U11")
+					(reference "U")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 449.58 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -13962,19 +13607,21 @@
 			(at 449.58 44.45 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 449.58 44.45 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 449.58 44.45 0)
 			(effects
 				(font
@@ -13996,7 +13643,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 400.05 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14025,19 +13672,21 @@
 			(at 400.05 41.91 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 400.05 41.91 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 400.05 41.91 0)
 			(effects
 				(font
@@ -14059,7 +13708,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:R")
+		(lib_id "Device:R")
 		(at 269.24 537.21 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14087,20 +13736,21 @@
 			(at 267.462 537.21 90)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 269.24 537.21 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 269.24 537.21 0)
 			(effects
 				(font
@@ -14125,7 +13775,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:C")
+		(lib_id "Device:C")
 		(at 449.58 35.56 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14160,7 +13810,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 449.58 35.56 0)
 			(effects
 				(font
@@ -14169,11 +13819,11 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CL10B475KQ8NQNC"
+		(property "Description" "Unpolarized capacitor"
 			(at 449.58 35.56 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -14211,7 +13861,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "88f8e9c5-2d4f-4b8b-9e4d-6a446e7c7c90")
-		(property "Reference" "U11"
+		(property "Reference" "U"
 			(at 186.69 577.85 0)
 			(effects
 				(font
@@ -14219,7 +13869,7 @@
 				)
 			)
 		)
-		(property "Value" "stm32f405rgt6"
+		(property "Value" "~"
 			(at 186.69 580.39 0)
 			(effects
 				(font
@@ -14448,7 +14098,7 @@
 		(instances
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "U11")
+					(reference "U")
 					(unit 2)
 				)
 			)
@@ -14521,7 +14171,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 279.4 468.63 0)
 		(mirror y)
 		(unit 1)
@@ -14551,19 +14201,21 @@
 			(at 279.4 468.63 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 279.4 468.63 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 279.4 468.63 0)
 			(effects
 				(font
@@ -14585,7 +14237,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 294.64 558.8 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14614,19 +14266,21 @@
 			(at 294.64 558.8 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 294.64 558.8 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 294.64 558.8 0)
 			(effects
 				(font
@@ -14648,7 +14302,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:R")
+		(lib_id "Device:R")
 		(at 294.64 537.21 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14676,20 +14330,21 @@
 			(at 292.862 537.21 90)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 294.64 537.21 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 294.64 537.21 0)
 			(effects
 				(font
@@ -14714,7 +14369,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 33.02 91.44 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14757,7 +14412,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 33.02 91.44 0)
 			(effects
 				(font
@@ -14779,7 +14434,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 27.94 91.44 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -14822,7 +14477,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 27.94 91.44 0)
 			(effects
 				(font
@@ -14976,7 +14631,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 194.31 632.46 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15005,19 +14660,21 @@
 			(at 194.31 632.46 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 194.31 632.46 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 194.31 632.46 0)
 			(effects
 				(font
@@ -15039,7 +14696,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 516.89 632.46 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15068,19 +14725,21 @@
 			(at 516.89 632.46 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 516.89 632.46 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 516.89 632.46 0)
 			(effects
 				(font
@@ -15102,7 +14761,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 322.58 469.9 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15131,19 +14790,21 @@
 			(at 322.58 469.9 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 322.58 469.9 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 322.58 469.9 0)
 			(effects
 				(font
@@ -15165,7 +14826,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:C")
+		(lib_id "Device:C")
 		(at 186.69 500.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15195,20 +14856,21 @@
 			(at 187.6552 504.19 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 186.69 500.38 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 186.69 500.38 0)
 			(effects
 				(font
@@ -15233,7 +14895,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:C")
+		(lib_id "Device:C")
 		(at 302.26 500.38 0)
 		(mirror y)
 		(unit 1)
@@ -15264,20 +14926,21 @@
 			(at 301.2948 504.19 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 302.26 500.38 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 302.26 500.38 0)
 			(effects
 				(font
@@ -15302,7 +14965,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:C")
+		(lib_id "Device:C")
 		(at 236.22 588.01 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15337,7 +15000,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 236.22 588.01 0)
 			(effects
 				(font
@@ -15346,7 +15009,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 236.22 588.01 0)
 			(effects
 				(font
@@ -15371,7 +15034,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:C")
+		(lib_id "Device:C")
 		(at 381 35.56 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15406,7 +15069,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 381 35.56 0)
 			(effects
 				(font
@@ -15415,11 +15078,11 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CL10B475KQ8NQNC"
+		(property "Description" "Unpolarized capacitor"
 			(at 381 35.56 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -15449,7 +15112,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 269.24 558.8 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15478,19 +15141,21 @@
 			(at 269.24 558.8 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 269.24 558.8 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 269.24 558.8 0)
 			(effects
 				(font
@@ -15512,7 +15177,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:R")
+		(lib_id "Device:R")
 		(at 213.36 67.31 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15545,7 +15210,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 213.36 67.31 0)
 			(effects
 				(font
@@ -15554,11 +15219,11 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "RC0603JR-072K2L"
-			(at 213.36 67.31 90)
+		(property "Description" "Resistor"
+			(at 213.36 67.31 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -15588,7 +15253,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 500.38 576.58 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15617,19 +15282,21 @@
 			(at 500.38 576.58 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 500.38 576.58 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 500.38 576.58 0)
 			(effects
 				(font
@@ -15651,7 +15318,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:R")
+		(lib_id "Device:R")
 		(at 213.36 87.63 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15684,7 +15351,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 213.36 87.63 0)
 			(effects
 				(font
@@ -15693,11 +15360,11 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "RC0603JR-072K2L"
-			(at 213.36 87.63 90)
+		(property "Description" "Resistor"
+			(at 213.36 87.63 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -15727,7 +15394,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:R")
+		(lib_id "Device:R")
 		(at 284.48 450.85 0)
 		(mirror y)
 		(unit 1)
@@ -15756,20 +15423,21 @@
 			(at 286.258 450.85 90)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 284.48 450.85 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 284.48 450.85 0)
 			(effects
 				(font
@@ -15928,7 +15596,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 488.95 599.44 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -15957,19 +15625,21 @@
 			(at 488.95 599.44 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 488.95 599.44 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 488.95 599.44 0)
 			(effects
 				(font
@@ -15991,7 +15661,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:C")
+		(lib_id "Device:C")
 		(at 322.58 463.55 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16026,7 +15696,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 322.58 463.55 0)
 			(effects
 				(font
@@ -16035,11 +15705,11 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CL10B475KQ8NQNC"
+		(property "Description" "Unpolarized capacitor"
 			(at 322.58 463.55 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -16136,7 +15806,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 243.84 40.64 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16165,19 +15835,21 @@
 			(at 243.84 40.64 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 243.84 40.64 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 243.84 40.64 0)
 			(effects
 				(font
@@ -16265,7 +15937,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 381 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16294,19 +15966,21 @@
 			(at 381 44.45 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 381 44.45 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 381 44.45 0)
 			(effects
 				(font
@@ -16328,7 +16002,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 247.65 68.58 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16357,19 +16031,21 @@
 			(at 247.65 68.58 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 247.65 68.58 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 247.65 68.58 0)
 			(effects
 				(font
@@ -16391,7 +16067,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:C")
+		(lib_id "Device:C")
 		(at 201.93 500.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16421,20 +16097,21 @@
 			(at 202.8952 504.19 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 201.93 500.38 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 201.93 500.38 0)
 			(effects
 				(font
@@ -16527,7 +16204,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:R")
+		(lib_id "Device:R")
 		(at 500.38 567.69 180)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16555,20 +16232,21 @@
 			(at 502.158 567.69 90)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 500.38 567.69 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 500.38 567.69 0)
 			(effects
 				(font
@@ -16593,7 +16271,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 22.86 91.44 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16636,7 +16314,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 22.86 91.44 0)
 			(effects
 				(font
@@ -16658,7 +16336,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:C")
+		(lib_id "Device:C")
 		(at 243.84 34.29 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16693,7 +16371,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 243.84 34.29 0)
 			(effects
 				(font
@@ -16702,11 +16380,11 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "CL10B475KQ8NQNC"
+		(property "Description" "Unpolarized capacitor"
 			(at 243.84 34.29 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -16736,7 +16414,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:R")
+		(lib_id "Device:R")
 		(at 281.94 537.21 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16764,20 +16442,21 @@
 			(at 280.162 537.21 90)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 281.94 537.21 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 281.94 537.21 0)
 			(effects
 				(font
@@ -16934,7 +16613,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:C")
+		(lib_id "Device:C")
 		(at 236.22 577.85 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -16969,7 +16648,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 236.22 577.85 0)
 			(effects
 				(font
@@ -16978,7 +16657,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 236.22 577.85 0)
 			(effects
 				(font
@@ -17080,7 +16759,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 92.71 91.44 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17123,7 +16802,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 92.71 91.44 0)
 			(effects
 				(font
@@ -17145,7 +16824,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:GND")
+		(lib_id "power:GND")
 		(at 171.45 81.28 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17174,19 +16853,21 @@
 			(at 171.45 81.28 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 171.45 81.28 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 171.45 81.28 0)
 			(effects
 				(font
@@ -17208,7 +16889,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 245.11 590.55 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17237,19 +16918,21 @@
 			(at 245.11 590.55 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 245.11 590.55 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 245.11 590.55 0)
 			(effects
 				(font
@@ -17337,7 +17020,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:R")
+		(lib_id "Device:R")
 		(at 471.17 66.04 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17370,7 +17053,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 471.17 66.04 0)
 			(effects
 				(font
@@ -17379,11 +17062,11 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "RC0603JR-072K2L"
-			(at 471.17 66.04 90)
+		(property "Description" "Resistor"
+			(at 471.17 66.04 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
@@ -17413,7 +17096,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:R")
+		(lib_id "Device:R")
 		(at 527.05 617.22 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17441,20 +17124,21 @@
 			(at 527.05 615.442 90)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 527.05 617.22 0)
 			(effects
 				(font
-					(size 0.762 0.762)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Resistor"
 			(at 527.05 617.22 0)
 			(effects
 				(font
@@ -17479,7 +17163,7 @@
 		)
 	)
 	(symbol
-		(lib_id "bridge-rescue:GND")
+		(lib_id "power:GND")
 		(at 332.74 469.9 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -17508,19 +17192,21 @@
 			(at 332.74 469.9 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Datasheet" ""
 			(at 332.74 469.9 0)
 			(effects
 				(font
-					(size 1.524 1.524)
+					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
 			(at 332.74 469.9 0)
 			(effects
 				(font
