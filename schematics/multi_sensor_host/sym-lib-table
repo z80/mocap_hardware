@@ -4,4 +4,5 @@
   (lib (name "esp_12s")(type "KiCad")(uri "${KIPRJMOD}/esp_12s.kicad_sym")(options "")(descr ""))
   (lib (name "stm32f405rgt6")(type "KiCad")(uri "${KIPRJMOD}/stm32f405rgt6.kicad_sym")(options "")(descr ""))
   (lib (name "my_stm32")(type "KiCad")(uri "${KIPRJMOD}/my_stm32.kicad_sym")(options "")(descr ""))
+  (lib (name "stm32f405rgt6_2")(type "KiCad")(uri "${KIPRJMOD}/stm32f405rgt6_2.kicad_sym")(options "")(descr ""))
 )
