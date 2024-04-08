@@ -5,4 +5,6 @@
   (lib (name "stm32f405rgt6")(type "KiCad")(uri "${KIPRJMOD}/stm32f405rgt6.kicad_sym")(options "")(descr ""))
   (lib (name "my_stm32")(type "KiCad")(uri "${KIPRJMOD}/my_stm32.kicad_sym")(options "")(descr ""))
   (lib (name "stm32f405rgt6_2")(type "KiCad")(uri "${KIPRJMOD}/stm32f405rgt6_2.kicad_sym")(options "")(descr ""))
+  (lib (name "TCA9548A_TSSOP")(type "KiCad")(uri "${KIPRJMOD}/TCA9548A_TSSOP.kicad_sym")(options "")(descr ""))
+  (lib (name "tca9548a_tssop")(type "KiCad")(uri "${KIPRJMOD}/tca9548a_tssop.kicad_sym")(options "")(descr ""))
 )

@@ -262,14 +262,230 @@
 				)
 			)
 		)
-		(symbol "multi_i2c-rescue:TCA9548A_TSSOP"
+		(symbol "power:GND"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "power:VDD"
+			(power)
+			(pin_numbers hide)
+			(pin_names
+				(offset 0) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "VDD"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"VDD\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "VDD_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "VDD_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "tca9548a_tssop:TCA9548A_TSSOP"
 			(pin_names
 				(offset 1.016)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U"
+			(property "Reference" "U1"
 				(at -6.35 20.32 0)
 				(effects
 					(font
@@ -304,11 +520,20 @@
 					)
 				)
 			)
-			(property "Description" ""
+			(property "Description" "TCA9548APWR"
 				(at 0 0 0)
 				(effects
 					(font
-						(size 1.27 1.27)
+						(size 1.524 1.524)
+					)
+					(hide yes)
+				)
+			)
+			(property "url" "https://www.digikey.com/product-detail/en/texas-instruments/TCA9548APWR/296-34905-1-ND/3615448"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.524 1.524)
 					)
 					(hide yes)
 				)
@@ -761,200 +986,6 @@
 						)
 					)
 					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "multi_i2c-rescue:VDD"
-			(power)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "VDD"
-				(at 0 3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "VDD_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 1.27)
-					)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 1.905)
-					(radius 0.635)
-					(stroke
-						(width 0)
-						(type solid)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "VDD_1_1"
-				(pin power_in line
-					(at 0 0 90)
-					(length 0) hide
-					(name "VDD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
-		(symbol "power:GND"
-			(power)
-			(pin_numbers hide)
-			(pin_names
-				(offset 0) hide)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "#PWR"
-				(at 0 -6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Value" "GND"
-				(at 0 -3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "global power"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "GND_0_1"
-				(polyline
-					(pts
-						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "GND_1_1"
-				(pin power_in line
-					(at 0 0 270)
-					(length 0)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2243,17 +2274,6 @@
 		)
 		(uuid "363a9c6c-a8fa-4c45-bc06-37443d47efa0")
 	)
-	(label "scl"
-		(at 144.78 120.65 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.524 1.524)
-			)
-			(justify left bottom)
-		)
-		(uuid "3984576e-6295-4904-8ba6-032440807e77")
-	)
 	(label "sc5"
 		(at 205.74 156.21 0)
 		(fields_autoplaced yes)
@@ -2275,28 +2295,6 @@
 			(justify left bottom)
 		)
 		(uuid "41d72126-a392-4a11-9947-5ce7747cfbed")
-	)
-	(label "a0-a"
-		(at 149.86 151.13 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.524 1.524)
-			)
-			(justify left bottom)
-		)
-		(uuid "431fb4f2-aeeb-4215-a1d4-af186e691eeb")
-	)
-	(label "a1-a"
-		(at 149.86 148.59 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.524 1.524)
-			)
-			(justify left bottom)
-		)
-		(uuid "46c76f2c-ac9e-4db8-8779-6c3ea16d9528")
 	)
 	(label "sc0"
 		(at 205.74 54.61 0)
@@ -2352,17 +2350,6 @@
 			(justify left bottom)
 		)
 		(uuid "6afd9061-a07c-41e2-9155-20b97d7ba1fb")
-	)
-	(label "a2-a"
-		(at 149.86 146.05 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.524 1.524)
-			)
-			(justify left bottom)
-		)
-		(uuid "6b30029c-54b3-45f5-a7d4-ebd6241a7fad")
 	)
 	(label "sc1"
 		(at 267.97 76.2 0)
@@ -2616,17 +2603,6 @@
 			(justify left bottom)
 		)
 		(uuid "ea58293d-d39e-468f-8fad-9f52f1ac2102")
-	)
-	(label "sda"
-		(at 118.11 123.19 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.524 1.524)
-			)
-			(justify left bottom)
-		)
-		(uuid "f48f4174-352e-45e8-9f5a-b5ccb69e1961")
 	)
 	(hierarchical_label "a1"
 		(shape input)
@@ -3179,7 +3155,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:TCA9548A_TSSOP")
+		(lib_id "tca9548a_tssop:TCA9548A_TSSOP")
 		(at 168.91 138.43 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3475,7 +3451,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 213.36 102.87 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3518,7 +3494,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 213.36 102.87 0)
 			(effects
 				(font
@@ -3544,7 +3520,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 224.79 143.51 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3587,7 +3563,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 224.79 143.51 0)
 			(effects
 				(font
@@ -3613,7 +3589,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 213.36 184.15 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3656,7 +3632,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 213.36 184.15 0)
 			(effects
 				(font
@@ -3764,7 +3740,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 95.25 106.68 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3807,7 +3783,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 95.25 106.68 0)
 			(effects
 				(font
@@ -3913,7 +3889,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 224.79 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3956,7 +3932,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 224.79 41.91 0)
 			(effects
 				(font
@@ -3982,7 +3958,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 224.79 102.87 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4025,7 +4001,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 224.79 102.87 0)
 			(effects
 				(font
@@ -4051,7 +4027,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 224.79 163.83 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4094,7 +4070,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 224.79 163.83 0)
 			(effects
 				(font
@@ -4282,7 +4258,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 213.36 82.55 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4325,7 +4301,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 213.36 82.55 0)
 			(effects
 				(font
@@ -4511,7 +4487,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 213.36 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4554,7 +4530,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 213.36 41.91 0)
 			(effects
 				(font
@@ -4740,7 +4716,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 224.79 82.55 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4783,7 +4759,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 224.79 82.55 0)
 			(effects
 				(font
@@ -4969,7 +4945,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 224.79 123.19 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5012,7 +4988,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 224.79 123.19 0)
 			(effects
 				(font
@@ -5118,7 +5094,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 213.36 163.83 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5161,7 +5137,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 213.36 163.83 0)
 			(effects
 				(font
@@ -5187,7 +5163,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 213.36 123.19 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5230,7 +5206,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 213.36 123.19 0)
 			(effects
 				(font
@@ -5496,7 +5472,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 213.36 143.51 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5539,7 +5515,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 213.36 143.51 0)
 			(effects
 				(font
@@ -5565,7 +5541,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 143.51 106.68 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5608,7 +5584,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 143.51 106.68 0)
 			(effects
 				(font
@@ -5634,7 +5610,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 224.79 184.15 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5677,7 +5653,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 224.79 184.15 0)
 			(effects
 				(font
@@ -5945,7 +5921,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 213.36 62.23 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5988,7 +5964,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 213.36 62.23 0)
 			(effects
 				(font
@@ -6014,7 +5990,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 224.79 62.23 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6057,7 +6033,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 224.79 62.23 0)
 			(effects
 				(font
@@ -6083,7 +6059,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 116.84 106.68 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6126,7 +6102,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 116.84 106.68 0)
 			(effects
 				(font
@@ -6152,7 +6128,7 @@
 		)
 	)
 	(symbol
-		(lib_id "multi_i2c-rescue:VDD")
+		(lib_id "power:VDD")
 		(at 168.91 64.77 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -6195,7 +6171,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Power symbol creates a global label with name \"VDD\""
 			(at 168.91 64.77 0)
 			(effects
 				(font
