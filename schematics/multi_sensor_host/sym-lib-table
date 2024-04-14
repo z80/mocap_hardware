@@ -8,5 +8,4 @@
   (lib (name "TCA9548A_TSSOP")(type "KiCad")(uri "${KIPRJMOD}/TCA9548A_TSSOP.kicad_sym")(options "")(descr ""))
   (lib (name "tca9548a_tssop")(type "KiCad")(uri "${KIPRJMOD}/tca9548a_tssop.kicad_sym")(options "")(descr ""))
   (lib (name "mcp111")(type "KiCad")(uri "${KIPRJMOD}/mcp111.kicad_sym")(options "")(descr ""))
-  (lib (name "RJ45x4_adam_tech")(type "KiCad")(uri "${KIPRJMOD}/RJ45x4_adam_tech.kicad_sym")(options "")(descr ""))
 )

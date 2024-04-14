@@ -1,5 +1,4 @@
 (fp_lib_table
   (version 7)
   (lib (name "BM71BLES1FC2_MCH")(type "KiCad")(uri "${KIPRJMOD}/bm71bles1fc2_mch/BM71BLES1FC2_MCH.pretty")(options "")(descr ""))
-  (lib (name "RJ45x4_adam_tech")(type "KiCad")(uri "${KIPRJMOD}/RJ45x4_adam_tech.pretty")(options "")(descr ""))
 )

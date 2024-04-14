@@ -6,15 +6,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(property "Reference" "U9"
-			(at 0 10.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "mcp1603t-330"
+		(property "Reference" "U"
 			(at 0 7.62 0)
 			(effects
 				(font
@@ -22,8 +14,16 @@
 				)
 			)
 		)
+		(property "Value" ""
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5_HandSoldering"
-			(at -0.762 15.24 0)
+			(at 0 0 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -49,15 +49,6 @@
 				(hide yes)
 			)
 		)
-		(property "URL" "https://www.digikey.com/en/products/detail/microchip-technology/MCP1603T-330I-OS/1098431"
-			(at -0.254 -12.192 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(symbol "MCP1603T-330I/OS_0_1"
 			(rectangle
 				(start -8.89 6.35)
@@ -72,6 +63,24 @@
 			)
 		)
 		(symbol "MCP1603T-330I/OS_1_1"
+			(pin input inverted
+				(at 11.43 -5.08 180)
+				(length 2.54)
+				(name "~SHDN~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
 			(pin power_in line
 				(at -11.43 5.08 0)
 				(length 2.54)
@@ -101,24 +110,6 @@
 					)
 				)
 				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin input inverted
-				(at 11.43 -5.08 180)
-				(length 2.54)
-				(name "~SHDN~"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "3"
 					(effects
 						(font
 							(size 1.27 1.27)
