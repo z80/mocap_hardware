@@ -53,7 +53,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/texas-instruments/TCA9548APWR/296-34905-1-ND/3615448"
+		(property "URL" "https://www.digikey.com/product-detail/en/texas-instruments/TCA9548APWR/296-34905-1-ND/3615448"
 			(at 0 0 0)
 			(effects
 				(font

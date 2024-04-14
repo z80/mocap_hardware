@@ -12190,8 +12190,8 @@
 				)
 			)
 		)
-		(property "Value" "10k"
-			(at 590.55 172.72 90)
+		(property "Value" "10k 5%"
+			(at 588.01 172.72 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12225,7 +12225,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
 			(at 590.55 172.72 90)
 			(effects
 				(font
@@ -12370,7 +12370,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
+		(property "URL" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
 			(at 511.81 128.27 0)
 			(effects
 				(font
@@ -14243,6 +14243,15 @@
 				(hide yes)
 			)
 		)
+		(property "URL" "https://www.digikey.com/en/products/detail/stmicroelectronics/1N5819/1037326"
+			(at 180.34 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "2330b0f1-3f5b-4ce4-a94b-7e0fb1ea75c8")
 		)
@@ -15106,6 +15115,15 @@
 		)
 		(property "Description" "Resistor"
 			(at 424.18 317.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/RC0603JR-1010KL/13694233"
+			(at 424.18 317.5 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16569,7 +16587,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
 			(at 387.35 130.81 90)
 			(effects
 				(font
@@ -17136,7 +17154,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
+		(property "URL" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
 			(at 519.43 128.27 0)
 			(effects
 				(font
@@ -17344,7 +17362,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 213.36 77.47 90)
 			(effects
 				(font
@@ -17510,7 +17528,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
+		(property "URL" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
 			(at 247.65 62.23 0)
 			(effects
 				(font
@@ -19110,7 +19128,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
+		(property "URL" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
 			(at 527.05 128.27 0)
 			(effects
 				(font
@@ -20279,7 +20297,7 @@
 			)
 		)
 		(property "Value" "1k 5%"
-			(at 163.83 391.16 90)
+			(at 162.052 391.16 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20306,6 +20324,15 @@
 		)
 		(property "Description" "Resistor"
 			(at 163.83 391.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/RC0603JR-131KL/13694162"
+			(at 163.83 391.16 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20382,7 +20409,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
+		(property "URL" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
 			(at 449.58 35.56 0)
 			(effects
 				(font
@@ -21377,7 +21404,7 @@
 			)
 		)
 		(property "Value" "1k 5%"
-			(at 189.23 391.16 90)
+			(at 187.198 391.16 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21404,6 +21431,15 @@
 		)
 		(property "Description" "Resistor"
 			(at 189.23 391.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/RC0603JR-131KL/13694162"
+			(at 189.23 391.16 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21610,7 +21646,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
+		(property "URL" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
 			(at 590.55 189.23 0)
 			(effects
 				(font
@@ -22491,7 +22527,7 @@
 			)
 		)
 		(property "Value" "1k 5%"
-			(at 516.89 165.1 90)
+			(at 514.858 165.1 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22518,6 +22554,15 @@
 		)
 		(property "Description" "Resistor"
 			(at 516.89 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/RC0603JR-131KL/13694162"
+			(at 516.89 165.1 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22861,7 +22906,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
+		(property "URL" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
 			(at 553.72 140.97 0)
 			(effects
 				(font
@@ -23078,7 +23123,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
+		(property "URL" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
 			(at 381 35.56 0)
 			(effects
 				(font
@@ -23418,7 +23463,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 213.36 67.31 90)
 			(effects
 				(font
@@ -23647,7 +23692,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 213.36 87.63 90)
 			(effects
 				(font
@@ -23938,6 +23983,15 @@
 		)
 		(property "Description" "Resistor"
 			(at 179.07 304.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/RC0603JR-1010KL/13694233"
+			(at 179.07 304.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -24569,7 +24623,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
+		(property "URL" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
 			(at 217.17 317.5 0)
 			(effects
 				(font
@@ -25583,7 +25637,7 @@
 			)
 		)
 		(property "Value" "10k 5%"
-			(at 424.18 373.38 90)
+			(at 426.974 373.634 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25610,6 +25664,15 @@
 		)
 		(property "Description" "Resistor"
 			(at 424.18 373.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/RC0603JR-1010KL/13694233"
+			(at 424.18 373.38 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25817,7 +25880,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
+		(property "URL" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
 			(at 243.84 34.29 0)
 			(effects
 				(font
@@ -25925,7 +25988,7 @@
 			)
 		)
 		(property "Value" "1k 5%"
-			(at 176.53 391.16 90)
+			(at 174.752 391.16 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25952,6 +26015,15 @@
 		)
 		(property "Description" "Resistor"
 			(at 176.53 391.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/RC0603JR-131KL/13694162"
+			(at 176.53 391.16 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26591,8 +26663,8 @@
 				)
 			)
 		)
-		(property "Value" "10k"
-			(at 553.72 124.46 90)
+		(property "Value" "10k 5%"
+			(at 551.434 124.46 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26626,7 +26698,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
 			(at 553.72 124.46 90)
 			(effects
 				(font
@@ -26777,6 +26849,15 @@
 		)
 		(property "Description" "Resistor"
 			(at 450.85 422.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-07100RL/5896356"
+			(at 450.85 422.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)

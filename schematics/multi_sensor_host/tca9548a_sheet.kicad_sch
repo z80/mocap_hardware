@@ -529,7 +529,7 @@
 					(hide yes)
 				)
 			)
-			(property "url" "https://www.digikey.com/product-detail/en/texas-instruments/TCA9548APWR/296-34905-1-ND/3615448"
+			(property "URL" "https://www.digikey.com/product-detail/en/texas-instruments/TCA9548APWR/296-34905-1-ND/3615448"
 				(at 0 0 0)
 				(effects
 					(font
@@ -2908,7 +2908,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 213.36 68.58 90)
 			(effects
 				(font
@@ -3126,7 +3126,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 213.36 48.26 90)
 			(effects
 				(font
@@ -3353,7 +3353,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 213.36 129.54 90)
 			(effects
 				(font
@@ -3711,7 +3711,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/CC0603KRX7R7BB104/311-1088-1-ND/302998"
+		(property "URL" "https://www.digikey.com/product-detail/en/yageo/CC0603KRX7R7BB104/311-1088-1-ND/302998"
 			(at 95.25 139.7 0)
 			(effects
 				(font
@@ -3860,7 +3860,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 224.79 48.26 90)
 			(effects
 				(font
@@ -4096,86 +4096,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 95.25 127 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "52a0c802-da80-4a2b-965b-69bc56929a81")
-		(property "Reference" "R1"
-			(at 97.282 127 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "2k"
-			(at 95.25 127 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 93.472 127 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 95.25 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 95.25 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
-			(at 95.25 127 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "bac2db34-da55-4252-9887-73c766140780")
-		)
-		(pin "1"
-			(uuid "c5ada8f7-84af-4b1c-b718-6acb4164ad80")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/46e9a6e6-b007-46d9-9be8-93a48bc459dd"
-					(reference "R1")
-					(unit 1)
-				)
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/4b2528f7-9d95-4490-9078-a08d5cbf26f8"
-					(reference "R4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 177.8 91.44 0)
 		(unit 1)
@@ -4229,7 +4149,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/CC0603KRX7R7BB104/311-1088-1-ND/302998"
+		(property "URL" "https://www.digikey.com/product-detail/en/yageo/CC0603KRX7R7BB104/311-1088-1-ND/302998"
 			(at 177.8 91.44 0)
 			(effects
 				(font
@@ -4378,7 +4298,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 224.79 109.22 90)
 			(effects
 				(font
@@ -4458,7 +4378,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 224.79 88.9 90)
 			(effects
 				(font
@@ -4607,7 +4527,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 143.51 114.3 90)
 			(effects
 				(font
@@ -4687,7 +4607,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 116.84 116.84 90)
 			(effects
 				(font
@@ -4836,7 +4756,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 213.36 109.22 90)
 			(effects
 				(font
@@ -4916,7 +4836,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 213.36 149.86 90)
 			(effects
 				(font
@@ -5065,7 +4985,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 213.36 190.5 90)
 			(effects
 				(font
@@ -5283,7 +5203,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 224.79 129.54 90)
 			(effects
 				(font
@@ -5363,7 +5283,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 224.79 68.58 90)
 			(effects
 				(font
@@ -5443,7 +5363,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 213.36 170.18 90)
 			(effects
 				(font
@@ -5730,7 +5650,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 213.36 88.9 90)
 			(effects
 				(font
@@ -5753,6 +5673,86 @@
 				)
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/4b2528f7-9d95-4490-9078-a08d5cbf26f8"
 					(reference "R9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 95.25 127 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e056beea-82cd-4b59-b432-8a643aa22b9b")
+		(property "Reference" "R1"
+			(at 97.282 127 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k 5%"
+			(at 92.964 127 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 93.472 127 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 95.25 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 95.25 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+			(at 95.25 127 90)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5118a907-af49-4315-9381-668c897d052f")
+		)
+		(pin "1"
+			(uuid "30c71458-a5c1-4b22-818c-341692fd4a0f")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/46e9a6e6-b007-46d9-9be8-93a48bc459dd"
+					(reference "R1")
+					(unit 1)
+				)
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/4b2528f7-9d95-4490-9078-a08d5cbf26f8"
+					(reference "R4")
 					(unit 1)
 				)
 			)
@@ -5812,7 +5812,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
+		(property "URL" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
 			(at 190.5 91.44 0)
 			(effects
 				(font
@@ -5892,7 +5892,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 224.79 149.86 90)
 			(effects
 				(font
@@ -6248,7 +6248,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 224.79 170.18 90)
 			(effects
 				(font
@@ -6328,7 +6328,7 @@
 				(hide yes)
 			)
 		)
-		(property "url" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
+		(property "URL" "https://www.digikey.com/en/products/detail/yageo/AC0603JR-072K2L/5896418"
 			(at 224.79 190.5 90)
 			(effects
 				(font
