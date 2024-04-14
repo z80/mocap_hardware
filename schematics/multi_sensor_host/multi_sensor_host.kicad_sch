@@ -13122,6 +13122,15 @@
 				(hide yes)
 			)
 		)
+		(property "URL" "https://www.digikey.com/en/products/detail/on-shore-technology-inc/USB-B1HSB6/2677744"
+			(at 168.91 353.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "a354949b-4823-4367-ad5d-bce019afb459")
 		)
@@ -13664,6 +13673,15 @@
 				(hide yes)
 			)
 		)
+		(property "URL" "https://www.digikey.com/en/products/detail/microchip-technology/MCP1603T-330I-OS/1098431"
+			(at 414.02 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "5"
 			(uuid "8f071e27-9b41-4425-a7d2-d14ded23b49c")
 		)
@@ -13887,6 +13905,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 323.85 367.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/stmicroelectronics/stm32f405rgt6/2754208"
 			(at 323.85 367.03 0)
 			(effects
 				(font
@@ -15626,6 +15653,15 @@
 				(hide yes)
 			)
 		)
+		(property "URL" "https://www.digikey.com/en/products/detail/stmicroelectronics/1N5819/1037326"
+			(at 269.24 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "d55b6051-a604-4508-868f-8fc3eb006704")
 		)
@@ -16174,6 +16210,15 @@
 			)
 		)
 		(property "Description" "Two pin crystal"
+			(at 434.34 419.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/yic/8M20P2-49US/15648614"
 			(at 434.34 419.1 0)
 			(effects
 				(font
@@ -17630,6 +17675,15 @@
 				(hide yes)
 			)
 		)
+		(property "URL" "https://www.digikey.com/en/products/detail/stmicroelectronics/stm32f405rgt6/2754208"
+			(at 73.66 384.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "11"
 			(uuid "a5219b59-2002-49de-9b9b-763f87d9bc0c")
 		)
@@ -18019,6 +18073,15 @@
 				(hide yes)
 			)
 		)
+		(property "URL" "https://www.digikey.com/en/products/detail/microchip-technology/MCP73812T-420I-OT/1626618?s=N4IgTCBcDaILYGMAOB2AzADgIxgC4gF0BfIA"
+			(at 234.95 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "4"
 			(uuid "03c029fe-e953-44ff-8914-b35d3881afec")
 		)
@@ -18337,7 +18400,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_1008_2520Metric"
 			(at 431.8 29.21 0)
 			(effects
 				(font
@@ -18355,8 +18418,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Inductor"
+		(property "Description" "LQM2HPN4R7MG0L"
 			(at 431.8 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/murata-electronics/LQM2HPN4R7MG0L/1893673"
+			(at 431.8 29.21 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19851,6 +19923,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 421.64 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/microchip-technology/BM71BLES1FC2-0B02AA/7164757?s=N4IgTCBcDaIEIFkDsBGOAZAogZRQMQGEwBaABjlLAEEqQBdAXyA"
 			(at 421.64 123.19 0)
 			(effects
 				(font
@@ -26616,6 +26697,15 @@
 			)
 		)
 		(property "Description" ""
+			(at 560.07 212.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/microchip-technology/MCP111T-315E-TT/716028"
 			(at 560.07 212.09 0)
 			(effects
 				(font

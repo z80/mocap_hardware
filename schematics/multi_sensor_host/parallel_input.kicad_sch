@@ -2131,6 +2131,15 @@
 				(hide yes)
 			)
 		)
+		(property "URL" "https://www.digikey.com/en/products/detail/nexperia-usa-inc/74LV165D-118/1231120"
+			(at 149.86 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "12"
 			(uuid "ad4cb18e-99ab-403b-bae8-8015060e2b72")
 		)
