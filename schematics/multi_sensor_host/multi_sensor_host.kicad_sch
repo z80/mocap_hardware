@@ -2982,7 +2982,15 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "U"
+			(property "Reference" "U9"
+				(at 0 10.16 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "mcp1603t-330"
 				(at 0 7.62 0)
 				(effects
 					(font
@@ -2990,16 +2998,8 @@
 					)
 				)
 			)
-			(property "Value" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
 			(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5_HandSoldering"
-				(at 0 0 0)
+				(at 0 13.716 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -3025,6 +3025,15 @@
 					(hide yes)
 				)
 			)
+			(property "URL" "https://www.digikey.com/en/products/detail/microchip-technology/MCP1603T-330I-OS/1098431"
+				(at -0.508 -10.668 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
 			(symbol "MCP1603T-330I/OS_0_1"
 				(rectangle
 					(start -8.89 6.35)
@@ -3039,24 +3048,6 @@
 				)
 			)
 			(symbol "MCP1603T-330I/OS_1_1"
-				(pin input inverted
-					(at 11.43 -5.08 180)
-					(length 2.54)
-					(name "~SHDN~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin power_in line
 					(at -11.43 5.08 0)
 					(length 2.54)
@@ -3086,6 +3077,24 @@
 						)
 					)
 					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input inverted
+					(at 11.43 -5.08 180)
+					(length 2.54)
+					(name "~SHDN~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -13069,6 +13078,103 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:RJ45")
+		(at 730.25 312.42 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "147ce0d5-0e7c-4257-9869-fa65e995264c")
+		(property "Reference" "J26"
+			(at 739.14 312.4199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 739.14 314.9599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 730.25 313.055 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 730.25 313.055 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 730.25 312.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 730.25 312.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "6347db14-8f63-4524-8bee-784be50a3ffb")
+		)
+		(pin "8"
+			(uuid "b8e6c6a9-df6d-48f4-ae01-ee72923a8cb3")
+		)
+		(pin "6"
+			(uuid "8587c918-2d0e-4813-ac4a-c5e692ba588e")
+		)
+		(pin "2"
+			(uuid "8cefa715-4800-4b3c-9deb-8f55d2404a11")
+		)
+		(pin "1"
+			(uuid "a4de7344-6ab4-41a5-8737-8ccddeaa9dcd")
+		)
+		(pin "3"
+			(uuid "06573cce-657f-4dac-84e3-31571d925715")
+		)
+		(pin "5"
+			(uuid "8542eb0b-93fe-4ad8-b541-5e328eddb90a")
+		)
+		(pin "4"
+			(uuid "3dda5bcf-e8f1-462a-92c0-2196f04c48c2")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Connector:USB_B")
 		(at 168.91 353.06 0)
 		(unit 1)
@@ -13156,94 +13262,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:RJ45")
-		(at 730.25 236.22 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "15081f2a-1ed7-4d64-af8e-27d84cd48541")
-		(property "Reference" "J27"
-			(at 739.14 236.2199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 739.14 238.7599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 730.25 236.855 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 730.25 236.855 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 730.25 236.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "94c1525e-e322-4d4b-bf98-8c43a75cc940")
-		)
-		(pin "8"
-			(uuid "308b2a06-80a1-4d20-bcaf-747e83170d9b")
-		)
-		(pin "6"
-			(uuid "e4033989-12fc-40f9-975c-840f0ac52778")
-		)
-		(pin "2"
-			(uuid "e2fc09c6-09a0-4eef-beb4-c2c09a90b762")
-		)
-		(pin "1"
-			(uuid "d3bcf10e-952a-4943-aa3e-af6f07eeb92e")
-		)
-		(pin "3"
-			(uuid "4e4501b1-9a23-48d8-b418-26708d64de53")
-		)
-		(pin "5"
-			(uuid "05fdc89c-b529-4231-a66b-594461b31533")
-		)
-		(pin "4"
-			(uuid "c9048886-12a2-446c-8dad-a15bbc42add6")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J27")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:VDD")
 		(at 675.64 113.03 90)
 		(unit 1)
@@ -13305,94 +13323,6 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "#PWR0216")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:RJ45")
-		(at 730.25 261.62 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "168e8fd3-642c-4a08-8e0c-5d97992a04ce")
-		(property "Reference" "J28"
-			(at 739.14 261.6199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 739.14 264.1599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 730.25 262.255 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 730.25 262.255 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 730.25 261.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "9c93cb4a-5a0f-44ba-9cfb-74a4bce88b49")
-		)
-		(pin "8"
-			(uuid "cb0f9109-8016-4739-abb1-36361cd491e6")
-		)
-		(pin "6"
-			(uuid "c6c5cf2c-4711-4b84-91ca-b6e77e8486a4")
-		)
-		(pin "2"
-			(uuid "24b2ff46-12d8-43b7-9f8b-796d1495e06a")
-		)
-		(pin "1"
-			(uuid "99350535-b454-4911-9c43-3609273b8bf8")
-		)
-		(pin "3"
-			(uuid "259313cf-f16c-4598-a389-ac13be04a933")
-		)
-		(pin "5"
-			(uuid "7afaddaf-0bc1-4324-a30a-bcfd1daa2ca9")
-		)
-		(pin "4"
-			(uuid "aaed7776-ca24-402d-86da-c1baff6b7445")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J28")
 					(unit 1)
 				)
 			)
@@ -13533,94 +13463,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:RJ45")
-		(at 703.58 85.09 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1fac51ab-8ec7-4049-bf2d-15d790e9c72f")
-		(property "Reference" "J4"
-			(at 712.47 85.0899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 712.47 87.6299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 703.58 85.725 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 703.58 85.725 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 703.58 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "13d9f3fa-b585-453e-9757-218830a4fe38")
-		)
-		(pin "8"
-			(uuid "6cd91b8a-367b-4a98-8a5c-42e4a4e3926f")
-		)
-		(pin "6"
-			(uuid "d71ed329-7969-498a-a920-aeb9f3be8512")
-		)
-		(pin "2"
-			(uuid "b5f241a0-c45d-4d94-87e7-0bd43d9d6bf8")
-		)
-		(pin "1"
-			(uuid "cc553114-268e-4a1e-98dd-8f9fc3663ad7")
-		)
-		(pin "3"
-			(uuid "7f594d10-9aa1-4ac9-acf3-c640f87ad31e")
-		)
-		(pin "5"
-			(uuid "582b55c1-eaf5-44c8-af6c-917c6b2d19b7")
-		)
-		(pin "4"
-			(uuid "596a63b6-4b2e-4e59-9e21-eb33f4679902")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "mcp1603:MCP1603T-330I/OS")
 		(at 414.02 34.29 0)
 		(unit 1)
@@ -13647,7 +13489,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5_HandSoldering"
-			(at 414.02 34.29 0)
+			(at 414.02 20.574 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13674,7 +13516,7 @@
 			)
 		)
 		(property "URL" "https://www.digikey.com/en/products/detail/microchip-technology/MCP1603T-330I-OS/1098431"
-			(at 414.02 34.29 0)
+			(at 413.512 44.958 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13691,7 +13533,7 @@
 		(pin "2"
 			(uuid "5ed93daf-397d-4c9c-b317-7b15de7e8ffa")
 		)
-		(pin ""
+		(pin "3"
 			(uuid "0629e537-7d7f-40e9-862a-33bb9b2dbc45")
 		)
 		(pin "1"
@@ -13767,94 +13609,6 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "#PWR072")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:RJ45")
-		(at 774.7 34.29 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "22c68361-01ff-4b44-9d19-91f38b813a47")
-		(property "Reference" "J19"
-			(at 783.59 34.2899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 783.59 36.8299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 774.7 34.925 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 774.7 34.925 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 774.7 34.29 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "78681dc8-34eb-4862-96b4-db0ee65a176c")
-		)
-		(pin "8"
-			(uuid "031ef01e-d348-4c03-b0ba-43d3c5eb71f4")
-		)
-		(pin "6"
-			(uuid "16d29d1e-fe69-4831-9e00-8c0bbfe180d7")
-		)
-		(pin "2"
-			(uuid "46d4507f-6808-4ff5-bdb7-3359aeb9f1c6")
-		)
-		(pin "1"
-			(uuid "ae26b240-bf35-42c3-bbc9-ac2eed1c28c6")
-		)
-		(pin "3"
-			(uuid "4f8e04c2-c47b-4117-91f8-4c069e598736")
-		)
-		(pin "5"
-			(uuid "67a8f65b-11a9-427c-9286-f64822751506")
-		)
-		(pin "4"
-			(uuid "81bf3f78-2fa0-46cc-87f7-35d75f613d3f")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J19")
 					(unit 1)
 				)
 			)
@@ -14463,6 +14217,103 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "J12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:RJ45")
+		(at 730.25 261.62 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2d3c8f94-a65a-475a-8d52-42b63ba4f25d")
+		(property "Reference" "J24"
+			(at 739.14 261.6199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 739.14 264.1599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 730.25 262.255 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 730.25 262.255 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 730.25 261.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 730.25 261.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "9ad1f907-03ec-4e0c-92c8-f5d1bae3c47d")
+		)
+		(pin "8"
+			(uuid "470e7a77-0dc9-4e8b-ab65-94b7d6dcdad1")
+		)
+		(pin "6"
+			(uuid "d90bbb11-4924-49fa-8494-addc5e41ab13")
+		)
+		(pin "2"
+			(uuid "d95544ae-3cd9-4af2-9318-753f5f5305e6")
+		)
+		(pin "1"
+			(uuid "0fd30fa6-e167-4db5-a36f-e52b6dbddaf3")
+		)
+		(pin "3"
+			(uuid "8da0c7be-00c5-4d73-97b9-8ad57652bfe6")
+		)
+		(pin "5"
+			(uuid "1224eed2-8236-486a-ab23-929810b82279")
+		)
+		(pin "4"
+			(uuid "6f00c05f-3563-4daa-bba0-81ef4f1906d2")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J24")
 					(unit 1)
 				)
 			)
@@ -15349,6 +15200,103 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:RJ45")
+		(at 730.25 236.22 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3ada8038-dcfd-4ca3-bf96-c8c2b3a06e63")
+		(property "Reference" "J23"
+			(at 739.14 236.2199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 739.14 238.7599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 730.25 236.855 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 730.25 236.855 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 730.25 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 730.25 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "6ac14e16-9087-4e80-81bc-16f5f132b144")
+		)
+		(pin "8"
+			(uuid "5204b9ab-37cd-4ce3-88c2-abe7c6a71fea")
+		)
+		(pin "6"
+			(uuid "aebbd77a-d044-4b17-a233-61793373defe")
+		)
+		(pin "2"
+			(uuid "abcff0a0-f034-43cd-84db-61adc61d57f6")
+		)
+		(pin "1"
+			(uuid "ffc899a0-9819-49d3-9b9d-d4b072bf32a0")
+		)
+		(pin "3"
+			(uuid "2085997c-c3fe-48ff-b76b-7c66f7757f41")
+		)
+		(pin "5"
+			(uuid "3dff02bb-1157-4a5d-96d5-c242eccc2e39")
+		)
+		(pin "4"
+			(uuid "cda59619-2522-4d94-9b36-23a178257b74")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:VDD")
 		(at 702.31 264.16 90)
 		(unit 1)
@@ -15697,16 +15645,16 @@
 	)
 	(symbol
 		(lib_id "Connector:RJ45")
-		(at 774.7 59.69 180)
+		(at 774.7 181.61 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "4145d7ae-3d72-466f-9156-a9850c70847d")
-		(property "Reference" "J20"
-			(at 783.59 59.6899 0)
+		(uuid "418c1495-7e0e-40bc-94cc-c47c6cc7445c")
+		(property "Reference" "J22"
+			(at 783.59 181.6099 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15715,7 +15663,7 @@
 			)
 		)
 		(property "Value" "RJ45"
-			(at 783.59 62.2299 0)
+			(at 783.59 184.1499 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15724,7 +15672,7 @@
 			)
 		)
 		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 774.7 60.325 90)
+			(at 774.7 182.245 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15733,7 +15681,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 774.7 60.325 90)
+			(at 774.7 182.245 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15742,7 +15690,16 @@
 			)
 		)
 		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 774.7 59.69 0)
+			(at 774.7 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 774.7 181.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15751,33 +15708,33 @@
 			)
 		)
 		(pin "7"
-			(uuid "eb9b9937-071a-486b-a8cb-4310df99830a")
+			(uuid "ab17c50b-1502-426d-8a3e-8c65fb0696e2")
 		)
 		(pin "8"
-			(uuid "1257eb69-e176-4296-84f0-c7426066b805")
+			(uuid "fe7f7459-c98d-4a2c-94de-b8630ebd8938")
 		)
 		(pin "6"
-			(uuid "2782bfe3-6e81-4841-b48c-5902d515e77b")
+			(uuid "62fd9293-5f86-49fe-8d77-8eafa147a1fb")
 		)
 		(pin "2"
-			(uuid "667230bc-52c7-4f2c-89ca-b0a39d50d2aa")
+			(uuid "93583000-f331-46a8-9a54-2119cddb4dc0")
 		)
 		(pin "1"
-			(uuid "25b41f41-321b-47b8-b6b2-ebbd91e37352")
+			(uuid "a74be432-a395-411b-891e-174e7f9f8a64")
 		)
 		(pin "3"
-			(uuid "4c884303-f5c9-4920-800c-02a6638ac348")
+			(uuid "411b888d-fdb0-4ca4-8851-ef0be0748fa2")
 		)
 		(pin "5"
-			(uuid "8f58bb1f-25f6-4ea4-9ae5-dccf7a883f73")
+			(uuid "ed124aae-f05f-4e3c-9af6-5020fbc436e6")
 		)
 		(pin "4"
-			(uuid "b53dbde9-1e87-4123-bdb8-737f4000a9db")
+			(uuid "d8adb448-29c8-4e53-8300-c6cd6cb69098")
 		)
 		(instances
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J20")
+					(reference "J22")
 					(unit 1)
 				)
 			)
@@ -16044,6 +16001,103 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "#PWR097")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:RJ45")
+		(at 774.7 59.69 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "48e9e0de-2b70-49c4-b402-bbd6116f54d8")
+		(property "Reference" "J14"
+			(at 783.59 59.6899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 783.59 62.2299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 774.7 60.325 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 774.7 60.325 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 774.7 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 774.7 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "7cd91f36-e453-40cc-b99c-5f854917c336")
+		)
+		(pin "8"
+			(uuid "cff7f3ec-c167-4031-8928-0c55960ebc10")
+		)
+		(pin "6"
+			(uuid "c8e11576-f3a5-4c83-aa4a-f79a1ddf45a4")
+		)
+		(pin "2"
+			(uuid "1f496e4e-6286-478a-9668-bbc1e3ebb5ea")
+		)
+		(pin "1"
+			(uuid "5250cc73-dc74-4764-9a7a-2adeb36c212f")
+		)
+		(pin "3"
+			(uuid "9fb29996-96b1-4e63-9ff2-a257e65fbd2f")
+		)
+		(pin "5"
+			(uuid "9ff37c61-e1a8-496e-ac01-aeed69a44e2c")
+		)
+		(pin "4"
+			(uuid "ac980e6a-88f9-4dc8-9f4e-481a90efa63d")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J14")
 					(unit 1)
 				)
 			)
@@ -16733,6 +16787,15 @@
 				(hide yes)
 			)
 		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 703.58 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "7"
 			(uuid "e482a515-fdb7-4648-874f-2947a1e8525e")
 		)
@@ -17387,94 +17450,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:RJ45")
-		(at 774.7 85.09 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "592248e7-8e12-4e49-83ac-c2179f0c270b")
-		(property "Reference" "J21"
-			(at 783.59 85.0899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 783.59 87.6299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 774.7 85.725 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 774.7 85.725 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 774.7 85.09 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "ed352795-8526-4b6c-90c3-6965f0ad593c")
-		)
-		(pin "8"
-			(uuid "575e77aa-4ace-42a9-9277-7d4ed4a9c87c")
-		)
-		(pin "6"
-			(uuid "1ba483a4-0f23-4b37-ab80-6dbe3db0d449")
-		)
-		(pin "2"
-			(uuid "0b0fd51b-440d-4f42-96ad-4012858ce36b")
-		)
-		(pin "1"
-			(uuid "d56ba498-fded-4c57-928d-681cf3b33f85")
-		)
-		(pin "3"
-			(uuid "8e280073-1614-4f0f-9ac3-e0806c1f1030")
-		)
-		(pin "5"
-			(uuid "46f3d082-e38c-4fd0-b67b-d8c1e01af5c2")
-		)
-		(pin "4"
-			(uuid "de27d4fc-0bf3-4ae3-a1e3-aef96ddf849a")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J21")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
 		(at 247.65 62.23 0)
 		(unit 1)
@@ -17547,94 +17522,6 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "C8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:RJ45")
-		(at 774.7 110.49 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5ae508cc-ee85-43aa-88dc-a4037a2a8d3a")
-		(property "Reference" "J22"
-			(at 783.59 110.4899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 783.59 113.0299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 774.7 111.125 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 774.7 111.125 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 774.7 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "f9dfc167-e2ee-4eb5-8830-0954a931ed18")
-		)
-		(pin "8"
-			(uuid "4a0a6c73-c5d8-4405-89f3-c18bdf3ed70f")
-		)
-		(pin "6"
-			(uuid "6a9b3610-ae2d-4e89-97f3-fcfee28e156e")
-		)
-		(pin "2"
-			(uuid "c71e4e6e-1e0f-41dc-9876-6cebcf931977")
-		)
-		(pin "1"
-			(uuid "eb92fcb5-ec4a-45c7-9c6c-161ae3d70f07")
-		)
-		(pin "3"
-			(uuid "76164718-40d6-4017-85b9-aa992f910ab2")
-		)
-		(pin "5"
-			(uuid "b0b6b004-753e-4864-90cd-92bab0dac522")
-		)
-		(pin "4"
-			(uuid "16ec6224-6a7a-4dd4-a4ae-0d412f9d7c0e")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J22")
 					(unit 1)
 				)
 			)
@@ -17965,6 +17852,103 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:RJ45")
+		(at 774.7 85.09 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5c482af5-33bf-4483-a193-bd6b35f7c2c6")
+		(property "Reference" "J15"
+			(at 783.59 85.0899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 783.59 87.6299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 774.7 85.725 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 774.7 85.725 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 774.7 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 774.7 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "a7d41483-60f8-4d07-ad03-a41d73f37b5d")
+		)
+		(pin "8"
+			(uuid "df1ae83e-437c-43bb-8afa-cffa9c497421")
+		)
+		(pin "6"
+			(uuid "63c2bc72-04d1-45a6-bf96-a9c999b5b717")
+		)
+		(pin "2"
+			(uuid "bf5da47d-3302-492c-a7d1-6d5a24d6d024")
+		)
+		(pin "1"
+			(uuid "183d53aa-432c-4102-a959-0d8ee9f52ccb")
+		)
+		(pin "3"
+			(uuid "ae241930-c074-43c4-ae7b-0455041d622a")
+		)
+		(pin "5"
+			(uuid "b52e202d-45d9-4a0a-bb08-cc144adc9d05")
+		)
+		(pin "4"
+			(uuid "37e219b9-a249-493a-970c-00e8f29101cf")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J15")
 					(unit 1)
 				)
 			)
@@ -18470,6 +18454,103 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:RJ45")
+		(at 774.7 110.49 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6074daa8-0ff5-493f-9df9-9bd937bf397a")
+		(property "Reference" "J16"
+			(at 783.59 110.4899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 783.59 113.0299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 774.7 111.125 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 774.7 111.125 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 774.7 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 774.7 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "6691d3d1-d940-4050-ba9c-f82d8ea65322")
+		)
+		(pin "8"
+			(uuid "e136bcd3-45ab-4767-b511-f39f3c8ca054")
+		)
+		(pin "6"
+			(uuid "b8a8c78a-28bc-4f0c-b026-b648b53efc63")
+		)
+		(pin "2"
+			(uuid "a0a66ce8-f567-490e-970c-d3deb409670a")
+		)
+		(pin "1"
+			(uuid "473ac58b-6d15-45ab-a49c-cf5eeaf44a5e")
+		)
+		(pin "3"
+			(uuid "141772b5-59e0-426a-a51e-08628acdcc17")
+		)
+		(pin "5"
+			(uuid "20ff3fcf-4b1c-47d3-8e45-558543ccc0ac")
+		)
+		(pin "4"
+			(uuid "d4872084-1282-4db2-9695-5241e55e898e")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 702.31 292.1 270)
 		(unit 1)
@@ -18935,6 +19016,103 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "#PWR0265")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:RJ45")
+		(at 703.58 85.09 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "688e21ca-c36e-46b8-9ca3-e06afc17de65")
+		(property "Reference" "J4"
+			(at 712.47 85.0899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 712.47 87.6299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 703.58 85.725 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 703.58 85.725 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 703.58 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 703.58 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "180caf8b-eb7f-4fb3-8d67-32423db92da8")
+		)
+		(pin "8"
+			(uuid "3e7ca5c2-c482-4c62-a1a0-4ac86ac205d7")
+		)
+		(pin "6"
+			(uuid "8653354e-4825-497a-a233-273763d29e93")
+		)
+		(pin "2"
+			(uuid "081577aa-b533-403e-a605-e772f3e21fa5")
+		)
+		(pin "1"
+			(uuid "75dac5e8-09f2-445c-9d46-56483bb9ce1f")
+		)
+		(pin "3"
+			(uuid "7d4c4381-a367-4337-aa3c-35efd6acbd63")
+		)
+		(pin "5"
+			(uuid "c101b69c-3ed7-4f5f-9d0d-9936b5c6fe03")
+		)
+		(pin "4"
+			(uuid "e46ad876-e3e4-4c4c-a275-8e3d857690f5")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J4")
 					(unit 1)
 				)
 			)
@@ -19426,6 +19604,103 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:RJ45")
+		(at 774.7 156.21 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "73b75954-f551-440c-87bd-9253ef9374f7")
+		(property "Reference" "J21"
+			(at 783.59 156.2099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 783.59 158.7499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 774.7 156.845 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 774.7 156.845 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 774.7 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 774.7 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "123ef3bd-b491-4238-a1ec-b88979e07748")
+		)
+		(pin "8"
+			(uuid "773fae22-9d23-4166-8737-45df63fd6959")
+		)
+		(pin "6"
+			(uuid "f2190c7b-97ac-4906-81e6-0976c89404ba")
+		)
+		(pin "2"
+			(uuid "2be7eef0-1762-4dac-a3de-205aa21a32ef")
+		)
+		(pin "1"
+			(uuid "4595c5e6-4430-40ca-b4ad-6ee4a3da036c")
+		)
+		(pin "3"
+			(uuid "c88cfe25-d08d-4ae0-8b4c-b7b30b40debc")
+		)
+		(pin "5"
+			(uuid "458c3a23-a498-40c6-baa7-8f5f66ac913a")
+		)
+		(pin "4"
+			(uuid "926320f3-745f-4100-91b5-1d44b858cdf9")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:LED")
 		(at 189.23 403.86 270)
 		(unit 1)
@@ -19556,6 +19831,103 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "#PWR0121")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:RJ45")
+		(at 730.25 287.02 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "754470e2-ba4f-40da-8e34-6d9934375e3f")
+		(property "Reference" "J25"
+			(at 739.14 287.0199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 739.14 289.5599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 730.25 287.655 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 730.25 287.655 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 730.25 287.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 730.25 287.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "1b3040a1-c0e2-4bca-8b94-8898b14fb4bd")
+		)
+		(pin "8"
+			(uuid "a187ee33-c7bb-40d3-925e-729746704e58")
+		)
+		(pin "6"
+			(uuid "0a277f27-8f24-487f-b6d2-1f1b42d1fc48")
+		)
+		(pin "2"
+			(uuid "a2464ef0-281c-47df-8d77-b1cb76af98ab")
+		)
+		(pin "1"
+			(uuid "3a770ac0-4cf1-49c3-a6f9-43260b3119ad")
+		)
+		(pin "3"
+			(uuid "df307b72-11af-45e0-8bbf-86490fc5c131")
+		)
+		(pin "5"
+			(uuid "bbfc6ef7-05da-420a-8d8a-2045504d0da5")
+		)
+		(pin "4"
+			(uuid "1e422063-1173-4189-ba09-0d43825f304a")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J25")
 					(unit 1)
 				)
 			)
@@ -20635,94 +21007,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:RJ45")
-		(at 703.58 59.69 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "889d5616-22a4-422a-a019-1c03c029f1a1")
-		(property "Reference" "J2"
-			(at 712.47 59.6899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 712.47 62.2299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 703.58 60.325 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 703.58 60.325 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 703.58 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "187c9043-8912-4cad-9bf4-ce1787d8fade")
-		)
-		(pin "8"
-			(uuid "c9975493-053a-42e0-914c-2c2907acf8d9")
-		)
-		(pin "6"
-			(uuid "162fb39f-7704-4eb3-bd28-dd68c074686a")
-		)
-		(pin "2"
-			(uuid "30bda0cd-e04a-400e-9920-c5988308626a")
-		)
-		(pin "1"
-			(uuid "45aad737-6692-4140-af1c-eea786f4f804")
-		)
-		(pin "3"
-			(uuid "bb659be1-e32b-48d2-ba9a-2a0598cb688b")
-		)
-		(pin "5"
-			(uuid "b17f6139-e801-4b35-81ed-91e47cf2b383")
-		)
-		(pin "4"
-			(uuid "c7d31783-d937-48a1-bfac-15b8d6518fbb")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 746.76 80.01 270)
 		(unit 1)
@@ -21672,16 +21956,16 @@
 	)
 	(symbol
 		(lib_id "Connector:RJ45")
-		(at 774.7 156.21 180)
+		(at 703.58 110.49 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "9d36821f-36cc-4081-8769-e92f366d3041")
-		(property "Reference" "J25"
-			(at 783.59 156.2099 0)
+		(uuid "9d5c099d-ef41-44ae-a4e7-b2ed9387db66")
+		(property "Reference" "J18"
+			(at 712.47 110.4899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21690,7 +21974,7 @@
 			)
 		)
 		(property "Value" "RJ45"
-			(at 783.59 158.7499 0)
+			(at 712.47 113.0299 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21699,7 +21983,7 @@
 			)
 		)
 		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 774.7 156.845 90)
+			(at 703.58 111.125 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21708,7 +21992,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 774.7 156.845 90)
+			(at 703.58 111.125 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21717,7 +22001,16 @@
 			)
 		)
 		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 774.7 156.21 0)
+			(at 703.58 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 703.58 110.49 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21726,33 +22019,33 @@
 			)
 		)
 		(pin "7"
-			(uuid "85e199eb-4fe7-4aa8-8377-0bd1a46cae63")
+			(uuid "85aeda13-38a9-4d4f-9aed-7dda58f6acce")
 		)
 		(pin "8"
-			(uuid "9e2e8ccd-dc79-40f9-9402-1c1e25e5dbee")
+			(uuid "4e43a10d-a3bc-4a13-b1ec-69ee38ce6534")
 		)
 		(pin "6"
-			(uuid "97fb0e7f-8680-4c6d-a169-eb67309a2bff")
+			(uuid "9300dce4-55e2-4e8e-8e71-2ee74f2ef88f")
 		)
 		(pin "2"
-			(uuid "296e3017-81bb-47f2-9c4e-c9fc1b247f82")
+			(uuid "cc07ef88-f658-440b-af58-ebb222735148")
 		)
 		(pin "1"
-			(uuid "18d92cae-f52b-431a-a85a-b6b6f185f141")
+			(uuid "22c5ded3-ad6d-4403-942e-bbe91d876722")
 		)
 		(pin "3"
-			(uuid "41925a30-8fad-45e3-8357-0ed46141f56b")
+			(uuid "cf7e7255-3dd1-4078-ba9a-d080bbf6439e")
 		)
 		(pin "5"
-			(uuid "90480af6-f9fc-493d-b31a-1a96831926cd")
+			(uuid "ab8d1419-7080-4959-a391-647d2ea6a8d0")
 		)
 		(pin "4"
-			(uuid "772a113c-10c3-40b9-9708-45cfc318a917")
+			(uuid "555353e3-07ea-4746-9275-b466af4f0e54")
 		)
 		(instances
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J25")
+					(reference "J18")
 					(unit 1)
 				)
 			)
@@ -22284,94 +22577,6 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "#PWR0201")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:RJ45")
-		(at 730.25 312.42 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "a7ae088f-a400-42c7-87cb-4bf6eeeb99e0")
-		(property "Reference" "J30"
-			(at 739.14 312.4199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 739.14 314.9599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 730.25 313.055 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 730.25 313.055 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 730.25 312.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "942c8806-b8cd-40da-814b-58c03f31f806")
-		)
-		(pin "8"
-			(uuid "07cd7788-a317-4cdf-8694-e3d1c1e6b86f")
-		)
-		(pin "6"
-			(uuid "f85e216f-77bb-423c-80f2-ec8eb21366a6")
-		)
-		(pin "2"
-			(uuid "8934698e-6f9e-46cf-aa9d-9a3c637afc53")
-		)
-		(pin "1"
-			(uuid "eb895186-4dd7-4447-8b56-a24a2121ba12")
-		)
-		(pin "3"
-			(uuid "26250226-70ab-4fb0-8e62-b99a93a87427")
-		)
-		(pin "5"
-			(uuid "6eb29dcd-2f76-4b2b-b5d5-d1a1aa7dc8e3")
-		)
-		(pin "4"
-			(uuid "4f6f5cef-8ec9-4ca5-91cf-1c8b6956cdb5")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J30")
 					(unit 1)
 				)
 			)
@@ -23001,6 +23206,103 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:RJ45")
+		(at 703.58 59.69 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b29bdebf-d58c-4fe4-abe3-8bbd2605acaf")
+		(property "Reference" "J2"
+			(at 712.47 59.6899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 712.47 62.2299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 703.58 60.325 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 703.58 60.325 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 703.58 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 703.58 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "2b9b3f45-b626-43b3-a08d-bd7d14ab1eeb")
+		)
+		(pin "8"
+			(uuid "2a1334e5-6e87-4ec5-a113-cafefbe34824")
+		)
+		(pin "6"
+			(uuid "47f4ba09-91ff-4774-83c1-13063eeecaa0")
+		)
+		(pin "2"
+			(uuid "673e6945-f262-42f5-b287-1b3c827d8fcd")
+		)
+		(pin "1"
+			(uuid "bfd85b88-986b-4cb2-bda9-d3d05dfe8692")
+		)
+		(pin "3"
+			(uuid "843aeb53-6366-42c0-8768-fa9640870869")
+		)
+		(pin "5"
+			(uuid "f6a50b4e-4090-4011-9c26-faad07e0116d")
+		)
+		(pin "4"
+			(uuid "0172261b-2c90-4675-9f9d-1e53425a15ea")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 125.73 392.43 270)
 		(unit 1)
@@ -23412,6 +23714,103 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:RJ45")
+		(at 703.58 156.21 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bcc77094-fa99-4121-8893-3a21455a6f77")
+		(property "Reference" "J19"
+			(at 712.47 156.2099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 712.47 158.7499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 703.58 156.845 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 703.58 156.845 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 703.58 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 703.58 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "d33fcd48-ffe3-42d0-affb-c9c2ae05b74e")
+		)
+		(pin "8"
+			(uuid "8d777791-e9fb-42da-9dde-5419cdbea760")
+		)
+		(pin "6"
+			(uuid "2994be76-9334-40fa-a686-7c957a95fc94")
+		)
+		(pin "2"
+			(uuid "2880bcf9-d42e-40c3-9300-72617c9969e1")
+		)
+		(pin "1"
+			(uuid "0a3d99e6-4930-4ad7-807f-31522df58035")
+		)
+		(pin "3"
+			(uuid "a97c383d-5ab5-44d3-8a1b-709e3e94524b")
+		)
+		(pin "5"
+			(uuid "0bfb4bb1-b4cd-475a-8df9-fa2c7b6d96c8")
+		)
+		(pin "4"
+			(uuid "274b09be-f551-4b9f-84d0-27036d7c68bd")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 213.36 67.31 180)
 		(unit 1)
@@ -23553,94 +23952,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:RJ45")
-		(at 703.58 156.21 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c04e196c-5589-49a3-a476-894b9f4aa426")
-		(property "Reference" "J23"
-			(at 712.47 156.2099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 712.47 158.7499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 703.58 156.845 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 703.58 156.845 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 703.58 156.21 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "cd196457-3e87-4c65-8734-7e0ad4be48ab")
-		)
-		(pin "8"
-			(uuid "592cf2d0-d953-4614-bd62-38b7f43e72cb")
-		)
-		(pin "6"
-			(uuid "9fe40cce-a290-4534-9486-8ef2a3e40f13")
-		)
-		(pin "2"
-			(uuid "c09ea1db-e26d-49d3-a526-53e2cd40d0a0")
-		)
-		(pin "1"
-			(uuid "f357f633-c4d1-4de4-a520-dfccf33e8c0c")
-		)
-		(pin "3"
-			(uuid "67e19c13-90c5-4b12-bbb8-dfa8db22f0b5")
-		)
-		(pin "5"
-			(uuid "e39f210c-b6ba-4677-b591-3071fcae8929")
-		)
-		(pin "4"
-			(uuid "b7e96b9c-e37b-43db-8e36-d6abf408bb7c")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J23")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 213.36 87.63 180)
 		(unit 1)
@@ -23711,6 +24022,103 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "R85")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:RJ45")
+		(at 774.7 34.29 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c11480b6-4638-438d-9aab-f5c1ee84c106")
+		(property "Reference" "J13"
+			(at 783.59 34.2899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 783.59 36.8299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 774.7 34.925 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 774.7 34.925 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 774.7 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 774.7 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "70ef3d2d-5b4a-47be-a4cd-574a5c232ebf")
+		)
+		(pin "8"
+			(uuid "a353a198-3140-4ab7-854b-1dc1f1115149")
+		)
+		(pin "6"
+			(uuid "998b127e-213f-4631-bfe1-32a9a1d94147")
+		)
+		(pin "2"
+			(uuid "348ab689-e25e-4bbf-a7c5-3b51cea4abd3")
+		)
+		(pin "1"
+			(uuid "705f8f92-6677-412c-8e82-14cb925cf98d")
+		)
+		(pin "3"
+			(uuid "eee71899-0d61-4f51-994e-595e721e58d1")
+		)
+		(pin "5"
+			(uuid "53fe20a0-7474-44dc-b6e3-d91e117ced04")
+		)
+		(pin "4"
+			(uuid "d6616a3e-41cc-419d-a62c-01fb6a74e586")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J13")
 					(unit 1)
 				)
 			)
@@ -23844,94 +24252,6 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "#PWR0196")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:RJ45")
-		(at 703.58 110.49 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "c6baca7a-519c-4bfb-905b-b3287090574f")
-		(property "Reference" "J18"
-			(at 712.47 110.4899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 712.47 113.0299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 703.58 111.125 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 703.58 111.125 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 703.58 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "1fcc3c82-41f2-4457-a64d-4b1a0b0cd9ce")
-		)
-		(pin "8"
-			(uuid "dbdccfd1-316b-4388-8b77-86e80401dcf6")
-		)
-		(pin "6"
-			(uuid "2abbc638-48c0-4dbe-9577-f73f02077e73")
-		)
-		(pin "2"
-			(uuid "0e57be30-eba7-4a81-926f-2abd8bfebe85")
-		)
-		(pin "1"
-			(uuid "15f684b4-9ffe-4d40-951f-642213e3a464")
-		)
-		(pin "3"
-			(uuid "4dcae2c3-ab01-4450-bf0f-a6bea1608b16")
-		)
-		(pin "5"
-			(uuid "9ec0c98f-f751-4278-8de7-39ca447291af")
-		)
-		(pin "4"
-			(uuid "49c4b6b8-3300-4c8e-b0f5-baa7fcfd83ac")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J18")
 					(unit 1)
 				)
 			)
@@ -24143,94 +24463,6 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "#PWR0252")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:RJ45")
-		(at 730.25 287.02 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ca4311f5-70fe-4b4a-ae15-4c02a7f7a89e")
-		(property "Reference" "J29"
-			(at 739.14 287.0199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 739.14 289.5599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 730.25 287.655 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 730.25 287.655 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 730.25 287.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "7ff9afae-7f11-4219-9574-b1d99bfaafd2")
-		)
-		(pin "8"
-			(uuid "f0286a63-3676-4360-ae9b-cc976dced301")
-		)
-		(pin "6"
-			(uuid "279d98fe-3884-4bc7-b509-71d2b36f07fc")
-		)
-		(pin "2"
-			(uuid "3b3e1b05-2aa5-41c6-a010-f63a1d26541e")
-		)
-		(pin "1"
-			(uuid "d5a8ec03-5c13-4835-b1af-6a35312f0964")
-		)
-		(pin "3"
-			(uuid "43d6cf8d-1037-4a55-afaf-d05c020ec7c9")
-		)
-		(pin "5"
-			(uuid "82e1ec28-7657-493c-b97a-82468693186c")
-		)
-		(pin "4"
-			(uuid "bbb8de19-be44-4625-b788-cbe589010149")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J29")
 					(unit 1)
 				)
 			)
@@ -24980,94 +25212,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:RJ45")
-		(at 774.7 181.61 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ddd9624a-be47-42f6-b1ef-defac7cd7936")
-		(property "Reference" "J26"
-			(at 783.59 181.6099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 783.59 184.1499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 774.7 182.245 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 774.7 182.245 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 774.7 181.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "e45780fa-8e97-4ab5-a5fa-68f7cbc2e9a0")
-		)
-		(pin "8"
-			(uuid "05a42f9d-51d2-4e0f-9c7f-6e42ac6fb773")
-		)
-		(pin "6"
-			(uuid "53bfe693-7e7a-47e8-adab-75ede46eafcd")
-		)
-		(pin "2"
-			(uuid "4b25ace0-fa10-40da-84cd-c5c865295da8")
-		)
-		(pin "1"
-			(uuid "40a8b048-4976-4b2e-87eb-87528ee5d332")
-		)
-		(pin "3"
-			(uuid "9c89b971-7f26-47a1-abf3-92ca785dd792")
-		)
-		(pin "5"
-			(uuid "ea3db2ef-591e-4e2b-a5b7-50b24c889b4e")
-		)
-		(pin "4"
-			(uuid "57e15316-f1bd-47ab-be53-8e0e563d1388")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J26")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 381 44.45 0)
 		(unit 1)
@@ -25258,94 +25402,6 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "#PWR0195")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:RJ45")
-		(at 703.58 181.61 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "df3e95af-6591-4b87-b76f-8afa55a3f441")
-		(property "Reference" "J24"
-			(at 712.47 181.6099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "RJ45"
-			(at 712.47 184.1499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
-			(at 703.58 182.245 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 703.58 182.245 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
-			(at 703.58 181.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "7"
-			(uuid "faae71b6-a6ec-4ce4-8c7a-a56a647c1503")
-		)
-		(pin "8"
-			(uuid "5524cd4a-ebe7-43ae-94a0-9ca2735d2b05")
-		)
-		(pin "6"
-			(uuid "f81fa83b-3156-4c97-8209-8feb0a224ec2")
-		)
-		(pin "2"
-			(uuid "d0e62282-7946-492e-ac1b-09ac8f97ae0b")
-		)
-		(pin "1"
-			(uuid "cd449fdf-403c-4753-907e-4ee5ff213689")
-		)
-		(pin "3"
-			(uuid "2baea3d7-2d1c-45f8-b4d2-735b858ffe52")
-		)
-		(pin "5"
-			(uuid "14b52321-5143-40ad-82d6-114f05f07235")
-		)
-		(pin "4"
-			(uuid "41308067-bb21-4a41-95e4-9dd066ef6cb8")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
-					(reference "J24")
 					(unit 1)
 				)
 			)
@@ -26041,6 +26097,103 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "R90")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:RJ45")
+		(at 703.58 181.61 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e686a55a-f7cf-40b3-8f5f-9b8d72f2c9f6")
+		(property "Reference" "J20"
+			(at 712.47 181.6099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "RJ45"
+			(at 712.47 184.1499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
+			(at 703.58 182.245 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 703.58 182.245 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "RJ connector, 8P8C (8 positions 8 connected)"
+			(at 703.58 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/en/products/detail/assmann-wsw-components/A-MJH-8-EA-GTP-W4/20522480"
+			(at 703.58 181.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "7"
+			(uuid "22f9f7a4-7260-40e5-b35b-ba8019ef9cb7")
+		)
+		(pin "8"
+			(uuid "2250bd3e-24ec-41d0-9b7d-cf3dae4fcba1")
+		)
+		(pin "6"
+			(uuid "d73e8f16-84fe-4e7c-b62a-c90766e8e99a")
+		)
+		(pin "2"
+			(uuid "8bea5ded-602c-44c1-af37-41a32d46ae3e")
+		)
+		(pin "1"
+			(uuid "93515fbe-cbf9-46cc-a585-07f520e957db")
+		)
+		(pin "3"
+			(uuid "187c64c3-a1c8-4c94-9965-089c29e9d939")
+		)
+		(pin "5"
+			(uuid "071228ac-c1cb-4352-99ac-9c3b1e120d49")
+		)
+		(pin "4"
+			(uuid "4e64f6e4-7be8-4e38-ab7a-54205ab5da48")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "J20")
 					(unit 1)
 				)
 			)
