@@ -12131,7 +12131,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 414.02 351.79 0)
 			(effects
 				(font
@@ -12198,7 +12198,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistors_SMD:R_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 588.772 172.72 90)
 			(effects
 				(font
@@ -12343,7 +12343,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitors_SMD:C_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 512.7752 132.08 0)
 			(effects
 				(font
@@ -12420,7 +12420,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 608.33 181.61 0)
 			(effects
 				(font
@@ -12893,7 +12893,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 603.25 118.11 0)
 			(effects
 				(font
@@ -13095,7 +13095,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_USB:USB_B_Horizontal"
+		(property "Footprint" "Connector_USB:USB_B_Lumberg_2411_02_Horizontal"
 			(at 172.72 354.33 0)
 			(effects
 				(font
@@ -13174,7 +13174,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 730.25 236.855 90)
 			(effects
 				(font
@@ -13329,7 +13329,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 730.25 262.255 90)
 			(effects
 				(font
@@ -13551,7 +13551,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 703.58 85.725 90)
 			(effects
 				(font
@@ -13629,7 +13629,7 @@
 				)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "mcp1603t-330"
 			(at 414.02 26.67 0)
 			(effects
 				(font
@@ -13782,7 +13782,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 774.7 34.925 90)
 			(effects
 				(font
@@ -13868,7 +13868,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_QFP:LQFP-64_10x10mm_P0.5mm"
 			(at 323.85 367.03 0)
 			(effects
 				(font
@@ -14181,7 +14181,7 @@
 				)
 			)
 		)
-		(property "Value" "D_Schottky"
+		(property "Value" "1N5819"
 			(at 180.6575 57.15 0)
 			(effects
 				(font
@@ -14189,7 +14189,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal"
 			(at 180.34 60.96 0)
 			(effects
 				(font
@@ -14390,7 +14390,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 566.42 181.61 0)
 			(effects
 				(font
@@ -14459,7 +14459,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
 			(at 448.31 173.99 0)
 			(effects
 				(font
@@ -14524,7 +14524,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 571.5 133.35 0)
 			(effects
 				(font
@@ -14985,7 +14985,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical"
 			(at 166.37 314.96 0)
 			(effects
 				(font
@@ -15590,7 +15590,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "D_Schottky"
+		(property "Value" "1N5819"
 			(at 271.78 50.4824 90)
 			(effects
 				(font
@@ -15599,7 +15599,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Diode_THT:D_DO-41_SOD81_P7.62mm_Horizontal"
 			(at 269.24 49.53 0)
 			(effects
 				(font
@@ -15669,7 +15669,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 774.7 60.325 90)
 			(effects
 				(font
@@ -15823,7 +15823,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
 			(at 448.31 168.91 0)
 			(effects
 				(font
@@ -16155,7 +16155,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Crystal:Crystal_HC52-8mm_Vertical"
 			(at 434.34 419.1 0)
 			(effects
 				(font
@@ -16497,7 +16497,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistors_SMD:R_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 385.572 130.81 90)
 			(effects
 				(font
@@ -16643,7 +16643,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 703.58 34.925 90)
 			(effects
 				(font
@@ -17064,7 +17064,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitors_SMD:C_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 520.3952 132.08 0)
 			(effects
 				(font
@@ -17272,7 +17272,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistors_SMD:R_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 215.138 77.47 90)
 			(effects
 				(font
@@ -17351,7 +17351,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 774.7 85.725 90)
 			(effects
 				(font
@@ -17438,7 +17438,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitors_SMD:C_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 248.6152 66.04 0)
 			(effects
 				(font
@@ -17517,7 +17517,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 774.7 111.125 90)
 			(effects
 				(font
@@ -17603,7 +17603,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_QFP:LQFP-64_10x10mm_P0.5mm"
 			(at 73.66 384.81 0)
 			(effects
 				(font
@@ -17859,7 +17859,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D4.0mm"
 			(at 285.75 68.58 0)
 			(effects
 				(font
@@ -18607,7 +18607,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 448.31 322.58 0)
 			(effects
 				(font
@@ -18945,7 +18945,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D4.0mm"
 			(at 285.75 60.96 0)
 			(effects
 				(font
@@ -19011,7 +19011,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitors_SMD:C_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 528.0152 132.08 0)
 			(effects
 				(font
@@ -19158,7 +19158,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 			(at 424.18 292.1 0)
 			(effects
 				(font
@@ -19830,7 +19830,7 @@
 				)
 			)
 		)
-		(property "Footprint" "BM71BLES1FC2_MCH"
+		(property "Footprint" "BM71BLES1FC2_MCH:BM71BLES1FC2_MCH"
 			(at 421.64 123.19 0)
 			(effects
 				(font
@@ -20274,7 +20274,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitors_SMD:C_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 450.5452 39.37 0)
 			(effects
 				(font
@@ -20554,7 +20554,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 703.58 60.325 90)
 			(effects
 				(font
@@ -21502,7 +21502,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitors_SMD:C_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 591.5152 193.04 0)
 			(effects
 				(font
@@ -21581,7 +21581,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 774.7 156.845 90)
 			(effects
 				(font
@@ -22200,7 +22200,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 730.25 313.055 90)
 			(effects
 				(font
@@ -22417,7 +22417,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 515.112 165.1 90)
 			(effects
 				(font
@@ -22753,7 +22753,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitors_SMD:C_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 554.6852 144.78 0)
 			(effects
 				(font
@@ -22970,7 +22970,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitors_SMD:C_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 381.9652 39.37 0)
 			(effects
 				(font
@@ -23246,7 +23246,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
 			(at 448.31 176.53 0)
 			(effects
 				(font
@@ -23310,7 +23310,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistors_SMD:R_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 215.138 67.31 90)
 			(effects
 				(font
@@ -23454,7 +23454,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 703.58 156.845 90)
 			(effects
 				(font
@@ -23539,7 +23539,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistors_SMD:R_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 215.138 87.63 90)
 			(effects
 				(font
@@ -23751,7 +23751,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 703.58 111.125 90)
 			(effects
 				(font
@@ -24041,7 +24041,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 730.25 287.655 90)
 			(effects
 				(font
@@ -24461,7 +24461,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitors_SMD:C_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 218.1352 321.31 0)
 			(effects
 				(font
@@ -24604,7 +24604,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
 			(at 603.25 129.54 0)
 			(effects
 				(font
@@ -24872,7 +24872,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 774.7 182.245 90)
 			(effects
 				(font
@@ -25156,7 +25156,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_RJ:RJ45_OST_PJ012-8P8CX_Vertical"
 			(at 703.58 182.245 90)
 			(effects
 				(font
@@ -25445,7 +25445,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
 			(at 448.31 179.07 0)
 			(effects
 				(font
@@ -25709,7 +25709,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitors_SMD:C_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 244.8052 38.1 0)
 			(effects
 				(font
@@ -25787,7 +25787,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
 			(at 448.31 171.45 0)
 			(effects
 				(font
@@ -25986,7 +25986,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "TestPoint:TestPoint_Pad_D2.0mm"
 			(at 448.31 181.61 0)
 			(effects
 				(font
@@ -26518,7 +26518,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistors_SMD:R_0603"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 551.942 124.46 90)
 			(effects
 				(font
@@ -26588,7 +26588,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "MCP111"
 			(at 553.72 213.36 0)
 			(effects
 				(font
