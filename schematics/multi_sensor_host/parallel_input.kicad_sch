@@ -1204,138 +1204,6 @@
 		)
 		(uuid "fb097ad0-eb22-4d59-83e6-9035dfe4e9a2")
 	)
-	(label "data_3"
-		(at 99.06 92.71 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "158f8e64-43fe-4afd-8c60-397989387ce1")
-	)
-	(label "serial_output"
-		(at 200.66 82.55 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "174b1943-65c3-41eb-adfa-128312276146")
-	)
-	(label "parallel_load"
-		(at 99.06 107.95 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "19dfbbec-b062-466b-9e49-b182b4a28d8c")
-	)
-	(label "data_1"
-		(at 99.06 87.63 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "230a329d-b84d-4a7e-ae96-83b7ae9b7082")
-	)
-	(label "data_serial"
-		(at 123.19 82.55 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "592cbefb-749b-4613-b958-f10d8d994090")
-	)
-	(label "data_0"
-		(at 99.06 85.09 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "65fa1e29-d4ad-432e-91a3-7d7907c74f06")
-	)
-	(label "data_4"
-		(at 99.06 95.25 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6a1e1262-5871-4c5f-9c13-0821159af522")
-	)
-	(label "data_2"
-		(at 99.06 90.17 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "6c5622a1-75a8-4775-8772-3c783d1c4316")
-	)
-	(label "data_7"
-		(at 99.06 102.87 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "728d96c9-c261-49cc-a3a8-c4ee14cdcd7b")
-	)
-	(label "data_5"
-		(at 99.06 97.79 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a9482ea6-7d1c-44b9-ac6d-bfdef213a1c0")
-	)
-	(label "shifter_clock"
-		(at 99.06 113.03 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "b45de9d0-ac83-42b3-a091-fb0e3e349937")
-	)
-	(label "data_6"
-		(at 99.06 100.33 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f7ee0ab9-8c2d-4553-b4ed-e3ee47938823")
-	)
 	(hierarchical_label "serial_output"
 		(shape input)
 		(at 214.63 82.55 0)
@@ -1505,7 +1373,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 118.11 91.948 90)
 			(effects
 				(font
@@ -1593,7 +1461,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 118.11 99.568 90)
 			(effects
 				(font
@@ -1681,7 +1549,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 118.11 104.648 90)
 			(effects
 				(font
@@ -2013,7 +1881,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 118.11 114.808 90)
 			(effects
 				(font
@@ -2234,7 +2102,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 193.04 84.328 90)
 			(effects
 				(font
@@ -2322,7 +2190,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 118.11 97.028 90)
 			(effects
 				(font
@@ -2410,7 +2278,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 118.11 86.868 90)
 			(effects
 				(font
@@ -2575,7 +2443,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 118.11 102.108 90)
 			(effects
 				(font
@@ -2663,7 +2531,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 118.11 94.488 90)
 			(effects
 				(font
@@ -2995,7 +2863,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 118.11 109.728 90)
 			(effects
 				(font
@@ -3083,7 +2951,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 118.11 89.408 90)
 			(effects
 				(font
