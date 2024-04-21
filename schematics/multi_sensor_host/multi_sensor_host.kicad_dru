@@ -1,0 +1,8 @@
+(version 1)
+(rule "USB_diff_pair_rule"
+	(layer F.Cu)
+	(constraint diff_pair_gap (min 0.2mm) (opt 0.34mm))
+	(constraint track_width (min 0.34mm))
+	(constraint clearance (min "0.05mm"))
+	(condition "A.NetClass == 'USB_diff_pair'")
+)

@@ -1009,12 +1009,6 @@
 		(uuid "619d7fe9-d980-40a8-9ba2-2274cedb9fe5")
 	)
 	(junction
-		(at 95.25 133.35)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7cc50882-fc46-446f-8dd6-e46364c95dd8")
-	)
-	(junction
 		(at 143.51 120.65)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -1328,16 +1322,6 @@
 	)
 	(wire
 		(pts
-			(xy 95.25 133.35) (xy 95.25 135.89)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "413a5ba2-8f79-4591-935e-29d9cdd8b79e")
-	)
-	(wire
-		(pts
 			(xy 213.36 54.61) (xy 205.74 54.61)
 		)
 		(stroke
@@ -1385,16 +1369,6 @@
 			(type default)
 		)
 		(uuid "5385e234-3dde-48be-a9fe-08b3d91267ab")
-	)
-	(wire
-		(pts
-			(xy 95.25 143.51) (xy 95.25 148.59)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5455f350-f755-426a-ba20-a0addd26644b")
 	)
 	(wire
 		(pts
@@ -1555,16 +1529,6 @@
 			(type default)
 		)
 		(uuid "6ebaa342-2930-461a-a493-007604436c70")
-	)
-	(wire
-		(pts
-			(xy 95.25 133.35) (xy 95.25 130.81)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "703837a0-1b71-42a6-8a96-69f5f12272dd")
 	)
 	(wire
 		(pts
@@ -1965,16 +1929,6 @@
 			(type default)
 		)
 		(uuid "edc5f250-4f06-43f6-ba9c-eb36d6c50f6d")
-	)
-	(wire
-		(pts
-			(xy 95.25 123.19) (xy 95.25 106.68)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eefbfc35-f2a0-47e5-b793-c5af0289ed47")
 	)
 	(wire
 		(pts
@@ -2760,6 +2714,18 @@
 		)
 		(uuid "9e51c0c6-244c-449d-90ba-338b54bba776")
 	)
+	(hierarchical_label "rst"
+		(shape input)
+		(at 95.25 133.35 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9ec7983c-55cc-45c5-a949-308f873be8e6")
+	)
 	(hierarchical_label "sd4"
 		(shape input)
 		(at 275.59 148.59 0)
@@ -2931,75 +2897,6 @@
 				)
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/4b2528f7-9d95-4490-9078-a08d5cbf26f8"
 					(reference "R8")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 95.25 148.59 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "052273ea-6810-4ea9-97a2-ae247c1a1c10")
-		(property "Reference" "#PWR046"
-			(at 95.25 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 95.25 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 95.25 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 95.25 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 95.25 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ed55c5cb-ec9d-405d-8ab0-9707b755753c")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/46e9a6e6-b007-46d9-9be8-93a48bc459dd"
-					(reference "#PWR046")
-					(unit 1)
-				)
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/4b2528f7-9d95-4490-9078-a08d5cbf26f8"
-					(reference "#PWR044")
 					(unit 1)
 				)
 			)
@@ -3652,157 +3549,6 @@
 				)
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/4b2528f7-9d95-4490-9078-a08d5cbf26f8"
 					(reference "#PWR063")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 95.25 139.7 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "45023b7b-4b8d-45b0-981c-969e17a39b29")
-		(property "Reference" "C11"
-			(at 95.885 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100n"
-			(at 95.885 142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 96.2152 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 95.25 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 95.25 139.7 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "URL" "https://www.digikey.com/product-detail/en/yageo/CC0603KRX7R7BB104/311-1088-1-ND/302998"
-			(at 95.25 139.7 0)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9cf4351d-385b-4128-844f-20dd2eb221ef")
-		)
-		(pin "2"
-			(uuid "976d8fcd-1830-48c0-8d3f-812796b416ea")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/46e9a6e6-b007-46d9-9be8-93a48bc459dd"
-					(reference "C11")
-					(unit 1)
-				)
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/4b2528f7-9d95-4490-9078-a08d5cbf26f8"
-					(reference "C12")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:VDD")
-		(at 95.25 106.68 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "457cd936-aebf-4fd3-a6f9-7605db7c2726")
-		(property "Reference" "#PWR01"
-			(at 95.25 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "VDD"
-			(at 95.25 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 95.25 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 95.25 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"VDD\""
-			(at 95.25 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "9785637e-7b79-40f2-bbe4-ea9d814b59c0")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/46e9a6e6-b007-46d9-9be8-93a48bc459dd"
-					(reference "#PWR01")
-					(unit 1)
-				)
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/4b2528f7-9d95-4490-9078-a08d5cbf26f8"
-					(reference "#PWR043")
 					(unit 1)
 				)
 			)
@@ -5673,86 +5419,6 @@
 				)
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/4b2528f7-9d95-4490-9078-a08d5cbf26f8"
 					(reference "R9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 95.25 127 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e056beea-82cd-4b59-b432-8a643aa22b9b")
-		(property "Reference" "R1"
-			(at 97.282 127 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "10k 5%"
-			(at 92.964 127 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
-			(at 93.472 127 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 95.25 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 95.25 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "URL" "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072K2L/311-2.2KGRCT-ND/729676"
-			(at 95.25 127 90)
-			(effects
-				(font
-					(size 1.524 1.524)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "5118a907-af49-4315-9381-668c897d052f")
-		)
-		(pin "1"
-			(uuid "30c71458-a5c1-4b22-818c-341692fd4a0f")
-		)
-		(instances
-			(project "multi_sensor_host"
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/46e9a6e6-b007-46d9-9be8-93a48bc459dd"
-					(reference "R1")
-					(unit 1)
-				)
-				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15/4b2528f7-9d95-4490-9078-a08d5cbf26f8"
-					(reference "R4")
 					(unit 1)
 				)
 			)
