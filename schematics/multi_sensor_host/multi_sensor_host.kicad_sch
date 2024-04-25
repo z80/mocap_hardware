@@ -9873,7 +9873,7 @@
 		(uuid "105763e7-e39c-4771-868c-140a1e4bfd17")
 	)
 	(label "lh_sda_1"
-		(at 78.74 62.23 0)
+		(at 78.74 54.61 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -10093,7 +10093,7 @@
 		(uuid "23addd1f-7c56-4919-8526-0cf88ccbba15")
 	)
 	(label "lh_scl_3"
-		(at 78.74 44.45 0)
+		(at 78.74 67.31 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -10170,7 +10170,7 @@
 		(uuid "3015db4c-58af-4afb-a6c3-bc73cc21b86f")
 	)
 	(label "lh_scl_2"
-		(at 78.74 52.07 0)
+		(at 78.74 59.69 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11457,7 +11457,7 @@
 		(uuid "cf351a81-d90f-4679-97de-cdf3e54f05f5")
 	)
 	(label "lh_scl_0"
-		(at 78.74 67.31 0)
+		(at 78.74 44.45 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11512,7 +11512,7 @@
 		(uuid "d90c0aaa-9f2b-40a2-be6c-59a95d28c0d6")
 	)
 	(label "lh_scl_1"
-		(at 78.74 59.69 0)
+		(at 78.74 52.07 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11600,7 +11600,7 @@
 		(uuid "dfbacd10-179f-48cb-8e10-9ddc2217a32c")
 	)
 	(label "lh_sda_3"
-		(at 78.74 46.99 0)
+		(at 78.74 69.85 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11732,7 +11732,7 @@
 		(uuid "eaf6f7c4-4ce8-4954-9660-1d29e67d371a")
 	)
 	(label "lh_sda_0"
-		(at 78.74 69.85 0)
+		(at 78.74 46.99 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -11853,7 +11853,7 @@
 		(uuid "f639188d-b84f-47dd-bb66-fb1502e8d719")
 	)
 	(label "lh_sda_2"
-		(at 78.74 54.61 0)
+		(at 78.74 62.23 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
