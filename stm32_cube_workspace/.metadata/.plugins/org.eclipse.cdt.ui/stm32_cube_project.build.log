@@ -1,0 +1,17 @@
+09:35:12 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  42280	    320	  21192	  63792	   f930	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+
+09:35:13 Build Finished. 0 errors, 0 warnings. (took 651ms)
+
