@@ -63,12 +63,12 @@ void Error_Handler(void);
 #define LED_1_GPIO_Port GPIOA
 #define LED_2_Pin GPIO_PIN_7
 #define LED_2_GPIO_Port GPIOA
-#define SHIFTER_CLK_Pin GPIO_PIN_14
-#define SHIFTER_CLK_GPIO_Port GPIOA
 #define PARALLEL_LOAD_Pin GPIO_PIN_15
 #define PARALLEL_LOAD_GPIO_Port GPIOA
 #define DATA_SERIAL_Pin GPIO_PIN_10
 #define DATA_SERIAL_GPIO_Port GPIOC
+#define SHIFTER_CLOCK_Pin GPIO_PIN_11
+#define SHIFTER_CLOCK_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
 
