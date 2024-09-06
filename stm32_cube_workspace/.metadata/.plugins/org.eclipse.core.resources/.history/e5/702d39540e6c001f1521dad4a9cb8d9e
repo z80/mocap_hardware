@@ -23,8 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "task_led.h"
-#include "task_imu.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -452,8 +451,6 @@ void StartDefaultTask(void const * argument)
   for(;;)
   {
 	  HAL_GPIO_TogglePin( LED_0_GPIO_Port, LED_0_Pin );
-	  HAL_GPIO_TogglePin( LED_1_GPIO_Port, LED_1_Pin );
-	  HAL_GPIO_TogglePin( LED_2_GPIO_Port, LED_2_Pin );
 	  osDelay(500);
   }
   /* USER CODE END 5 */
