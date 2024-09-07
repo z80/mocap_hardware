@@ -1,0 +1,14 @@
+
+
+#include "task_led.h"
+#include "main.h"
+
+static void func_task_led( void * p );
+
+uint8_t led_value = 0x01;
+static osMutexDef_t mutex;
+static osMutexId    mutexId;
+//osThreadDef(imuTask, vTaskImu, osPriorityAboveNormal, 0, 512);
+osThreadDef(task_led, func_task_led, osPriorityNormal, 0, 128);
+
+

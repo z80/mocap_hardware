@@ -1,0 +1,7 @@
+../Src/bno055_io.c:15:6:BNO055_delay	1
+../Src/bno055_io.c:20:8:BNO055_switch_1	1
+../Src/bno055_io.c:29:8:BNO055_switch_2	1
+../Src/bno055_io.c:41:8:BNO055_bus_read_i2c_1	1
+../Src/bno055_io.c:48:8:BNO055_bus_write_i2c_1	1
+../Src/bno055_io.c:59:8:BNO055_bus_read_i2c_2	1
+../Src/bno055_io.c:67:8:BNO055_bus_write_i2c_2	1
