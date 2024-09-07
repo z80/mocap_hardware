@@ -1,0 +1,49 @@
+
+#include "task_imu.h"
+#include "bno055_io.h"
+
+static struct bno055_t bno055_inst_a;
+static struct bno055_t bno055_inst_b;
+
+
+static void func_task_imu_a( void * p );
+static void func_task_imu_b( void * p );
+
+static osMutexDef_t mutex;
+static osMutexId    mutexId;
+osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+
+
+
+
+
+void task_imu_init()
+{
+	bno055_inst_a.bus_write  = bno055_bus_write_i2c_a;
+	bno055_inst_a.bus_read   = bno055_bus_read_i2c_a;
+	bno055_inst_a.delay_msec = bno055_delay;
+	bno055_inst_a.dev_addr   = BNO055_I2C_ADDR1 << 1;
+
+	bno055_inst_b.bus_write  = bno055_bus_write_i2c_b;
+	bno055_inst_b.bus_read   = bno055_bus_read_i2c_b;
+	bno055_inst_b.delay_msec = bno055_delay;
+	bno055_inst_b.dev_addr   = BNO055_I2C_ADDR1 << 1;
+
+}
+
+
+void func_task_imu_a( void * p )
+{
+
+}
+
+void func_task_imu_b( void * p )
+{
+
+}
+
+
+
+
+

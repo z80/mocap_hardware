@@ -136,6 +136,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
+  task_imu_init();
   task_led_init();
   /* USER CODE END RTOS_THREADS */
 

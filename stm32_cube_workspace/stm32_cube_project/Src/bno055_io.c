@@ -5,31 +5,32 @@
 #define	UART_BUFFER_LEN 16
 #define UART_ATTEMPTS   128
 #define IO_DELAY        50
-#define MUL_ADDR        0x70
+#define MUL_ADDR_1      (0x70<<1)
+#define MUL_ADDR_2      (0x71<<1)
 #define I2C_TIMEOUT     168000000
 
 extern I2C_HandleTypeDef hi2c1;
 extern I2C_HandleTypeDef hi2c2;
 
 
-void BNO055_delay( uint32_t msec )
+void bno055_delay( uint32_t msec )
 {
 	osDelay( msec );
 }
 
-int8_t BNO055_switch_1( uint8_t channel )
+int8_t bno055_switch_1( uint8_t channel )
 {
     unsigned char data = (1 << channel);
-	HAL_StatusTypeDef res = HAL_I2C_Master_Transmit( &hi2c1, MUL_ADDR,&data, 1, I2C_TIMEOUT );
+	HAL_StatusTypeDef res = HAL_I2C_Master_Transmit( &hi2c1, MUL_ADDR_1, &data, 1, I2C_TIMEOUT );
 	int8_t result = ( res == HAL_OK ) ? 0 : 1;
     
     return result;
 }
 
-int8_t BNO055_switch_2( uint8_t channel )
+int8_t bno055_switch_2( uint8_t channel )
 {
     unsigned char data = (1 << channel);
-	HAL_StatusTypeDef res = HAL_I2C_Master_Transmit( &hi2c2, MUL_ADDR,&data, 1, I2C_TIMEOUT );
+	HAL_StatusTypeDef res = HAL_I2C_Master_Transmit( &hi2c2, MUL_ADDR_2, &data, 1, I2C_TIMEOUT );
 	int8_t result = ( res == HAL_OK ) ? 0 : 1;
     
     return result;
@@ -38,14 +39,14 @@ int8_t BNO055_switch_2( uint8_t channel )
 
 
 
-int8_t BNO055_bus_read_i2c_1( uint8_t  dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t qty )
+int8_t bno055_bus_read_i2c_1( uint8_t  dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t qty )
 {
 	HAL_StatusTypeDef res = HAL_I2C_Mem_Read( &hi2c1, dev_addr, reg_addr, I2C_MEMADD_SIZE_8BIT, reg_data, qty, I2C_TIMEOUT );
 	int8_t result = ( res == HAL_OK ) ? 0 : 1;
 	return result;
 }
 
-int8_t BNO055_bus_write_i2c_1( uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t qty )
+int8_t bno055_bus_write_i2c_1( uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t qty )
 {
 	HAL_StatusTypeDef res = HAL_I2C_Mem_Write( &hi2c1, dev_addr, reg_addr, I2C_MEMADD_SIZE_8BIT, reg_data, qty, I2C_TIMEOUT );
 	int8_t result = ( res == HAL_OK ) ? 0 : 1;
@@ -56,7 +57,7 @@ int8_t BNO055_bus_write_i2c_1( uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_
 
 
 
-int8_t BNO055_bus_read_i2c_2( uint8_t  dev_addr, uint8_t reg_addr, uint8_t * reg_data, uint8_t qty )
+int8_t bno055_bus_read_i2c_2( uint8_t  dev_addr, uint8_t reg_addr, uint8_t * reg_data, uint8_t qty )
 {
 	HAL_StatusTypeDef res = HAL_I2C_Mem_Read( &hi2c2, dev_addr, reg_addr, I2C_MEMADD_SIZE_8BIT, reg_data, qty, I2C_TIMEOUT );
 	int8_t result = ( res == HAL_OK ) ? 0 : 1;
@@ -64,7 +65,7 @@ int8_t BNO055_bus_read_i2c_2( uint8_t  dev_addr, uint8_t reg_addr, uint8_t * reg
 
 }
 
-int8_t BNO055_bus_write_i2c_2( uint8_t dev_addr, uint8_t reg_addr, uint8_t * reg_data, uint8_t qty )
+int8_t bno055_bus_write_i2c_2( uint8_t dev_addr, uint8_t reg_addr, uint8_t * reg_data, uint8_t qty )
 {
 	HAL_StatusTypeDef res = HAL_I2C_Mem_Write( &hi2c2, dev_addr, reg_addr, I2C_MEMADD_SIZE_8BIT, reg_data, qty, I2C_TIMEOUT );
 	int8_t result = ( res == HAL_OK ) ? 0 : 1;

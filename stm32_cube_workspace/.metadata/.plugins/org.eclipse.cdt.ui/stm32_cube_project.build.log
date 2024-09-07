@@ -1,30 +1,10 @@
-14:42:37 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+16:10:06 **** Incremental Build of configuration Debug for project stm32_cube_project ****
 make -j24 all 
-arm-none-eabi-gcc "../Src/task_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_led.d" -MT"Src/task_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_led.o"
-In file included from ../Src/task_led.c:5:
-../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
-  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
-      |          ^
-../Src/task_led.c:14:1: note: in expansion of macro 'osThreadDef'
-   14 | osThreadDef(task_led, func_task_led, osPriorityNormal, 0, 128);
-      | ^~~~~~~~~~~
-../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_led.pthread')
-  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
-      |          ^
-../Src/task_led.c:14:1: note: in expansion of macro 'osThreadDef'
-   14 | osThreadDef(task_led, func_task_led, osPriorityNormal, 0, 128);
-      | ^~~~~~~~~~~
-arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: stm32_cube_project.elf
- 
 arm-none-eabi-size  stm32_cube_project.elf 
-arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
    text	   data	    bss	    dec	    hex	filename
-  47340	    324	  21196	  68860	  10cfc	stm32_cube_project.elf
+  54428	    324	  21284	  76036	  12904	stm32_cube_project.elf
 Finished building: default.size.stdout
  
-Finished building: stm32_cube_project.list
- 
 
-14:42:38 Build Finished. 0 errors, 1 warnings. (took 650ms)
+16:10:06 Build Finished. 0 errors, 0 warnings. (took 189ms)
 

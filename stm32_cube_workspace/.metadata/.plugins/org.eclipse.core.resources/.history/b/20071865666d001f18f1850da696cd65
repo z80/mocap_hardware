@@ -1,0 +1,22 @@
+
+#include "task_imu.h"
+#include "bno055_io.h"
+
+static void func_task_imu_a( void * p );
+static void func_task_imu_b( void * p );
+
+static osMutexDef_t mutex;
+static osMutexId    mutexId;
+osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+
+
+
+
+
+void task_imu_init();
+
+
+
+
+

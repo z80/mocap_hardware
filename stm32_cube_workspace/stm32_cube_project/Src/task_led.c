@@ -11,7 +11,7 @@ uint8_t led_value = 0x01;
 static osMutexDef_t mutex;
 static osMutexId    mutexId;
 //osThreadDef(imuTask, vTaskImu, osPriorityAboveNormal, 0, 512);
-osThreadDef(task_led, func_task_led, osPriorityNormal, 0, 128);
+osThreadDef(task_led, func_task_led, osPriorityNormal, 0, 512);
 
 
 void task_led_init()

@@ -2526,3 +2526,1009 @@ Finished building: default.size.stdout
  
 Finished building: stm32_cube_project.list
  
+15:06:19 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  47340	    324	  21196	  68860	  10cfc	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+15:22:24 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+../Src/task_imu.c:15:8: error: unknown type name 'osMutexDef_t'
+   15 | static osMutexDef_t mutex;
+      |        ^~~~~~~~~~~~
+../Src/task_imu.c:16:8: error: unknown type name 'osMutexId'
+   16 | static osMutexId    mutexId;
+      |        ^~~~~~~~~
+../Src/task_imu.c:17:62: error: expected ')' before numeric constant
+   17 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      |                                                              ^~
+      |                                                              )
+../Src/task_imu.c:18:62: error: expected ')' before numeric constant
+   18 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      |                                                              ^~
+      |                                                              )
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:26:36: error: 'bno055_bus_write_i2c_1' undeclared (first use in this function); did you mean 'BNO055_bus_write_i2c_1'?
+   26 |         bno055_inst_1.bus_write  = bno055_bus_write_i2c_1;
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~
+      |                                    BNO055_bus_write_i2c_1
+../Src/task_imu.c:26:36: note: each undeclared identifier is reported only once for each function it appears in
+../Src/task_imu.c:27:36: error: 'bno055_bus_read_i2c_1' undeclared (first use in this function); did you mean 'BNO055_bus_read_i2c_1'?
+   27 |         bno055_inst_1.bus_read   = bno055_bus_read_i2c_1;
+      |                                    ^~~~~~~~~~~~~~~~~~~~~
+      |                                    BNO055_bus_read_i2c_1
+../Src/task_imu.c:28:36: error: 'bno055_delay' undeclared (first use in this function); did you mean 'BNO055_delay'?
+   28 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                    ^~~~~~~~~~~~
+      |                                    BNO055_delay
+../Src/task_imu.c:31:36: error: 'bno055_bus_write_i2c_2' undeclared (first use in this function); did you mean 'BNO055_bus_write_i2c_2'?
+   31 |         bno055_inst_2.bus_write  = bno055_bus_write_i2c_2;
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~
+      |                                    BNO055_bus_write_i2c_2
+../Src/task_imu.c:32:36: error: 'bno055_bus_read_i2c_2' undeclared (first use in this function); did you mean 'BNO055_bus_read_i2c_2'?
+   32 |         bno055_inst_2.bus_read   = bno055_bus_read_i2c_2;
+      |                                    ^~~~~~~~~~~~~~~~~~~~~
+      |                                    BNO055_bus_read_i2c_2
+../Src/task_imu.c: At top level:
+../Src/task_imu.c:78:1: error: expected identifier or '(' before '}' token
+   78 | }
+      | ^
+../Src/task_imu.c:46:6: warning: 'func_task_imu_b' defined but not used [-Wunused-function]
+   46 | void func_task_imu_b( void * p )
+      |      ^~~~~~~~~~~~~~~
+../Src/task_imu.c:41:6: warning: 'func_task_imu_a' defined but not used [-Wunused-function]
+   41 | void func_task_imu_a( void * p )
+      |      ^~~~~~~~~~~~~~~
+../Src/task_imu.c:16:21: warning: 'mutexId' defined but not used [-Wunused-variable]
+   16 | static osMutexId    mutexId;
+      |                     ^~~~~~~
+../Src/task_imu.c:15:21: warning: 'mutex' defined but not used [-Wunused-variable]
+   15 | static osMutexDef_t mutex;
+      |                     ^~~~~
+make: *** [Src/subdir.mk:28: Src/task_imu.o] Error 1
+"make -j24 all" terminated with exit code 2. Build might be incomplete.
+15:23:52 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/bno055_io.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/bno055_io.d" -MT"Src/bno055_io.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/bno055_io.o"
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+../Src/task_imu.c:15:8: error: unknown type name 'osMutexDef_t'
+   15 | static osMutexDef_t mutex;
+      |        ^~~~~~~~~~~~
+../Src/task_imu.c:16:8: error: unknown type name 'osMutexId'
+   16 | static osMutexId    mutexId;
+      |        ^~~~~~~~~
+../Src/task_imu.c:17:62: error: expected ')' before numeric constant
+   17 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      |                                                              ^~
+      |                                                              )
+../Src/task_imu.c:18:62: error: expected ')' before numeric constant
+   18 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      |                                                              ^~
+      |                                                              )
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:28:36: error: 'bno055_delay' undeclared (first use in this function); did you mean 'BNO055_delay'?
+   28 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                    ^~~~~~~~~~~~
+      |                                    BNO055_delay
+../Src/task_imu.c:28:36: note: each undeclared identifier is reported only once for each function it appears in
+../Src/task_imu.c: In function 'enumerate_all':
+../Src/task_imu.c:55:22: warning: implicit declaration of function 'BNO055_switch_1'; did you mean 'bno055_switch_1'? [-Wimplicit-function-declaration]
+   55 |                 if ( BNO055_switch_1( i ) == 0 )
+      |                      ^~~~~~~~~~~~~~~
+      |                      bno055_switch_1
+../Src/task_imu.c:66:22: warning: implicit declaration of function 'BNO055_switch_2'; did you mean 'bno055_switch_2'? [-Wimplicit-function-declaration]
+   66 |                 if ( BNO055_switch_2( i ) == 0 )
+      |                      ^~~~~~~~~~~~~~~
+      |                      bno055_switch_2
+../Src/task_imu.c: At top level:
+../Src/task_imu.c:78:1: error: expected identifier or '(' before '}' token
+   78 | }
+      | ^
+../Src/task_imu.c:46:6: warning: 'func_task_imu_b' defined but not used [-Wunused-function]
+   46 | void func_task_imu_b( void * p )
+      |      ^~~~~~~~~~~~~~~
+../Src/task_imu.c:41:6: warning: 'func_task_imu_a' defined but not used [-Wunused-function]
+   41 | void func_task_imu_a( void * p )
+      |      ^~~~~~~~~~~~~~~
+../Src/task_imu.c:16:21: warning: 'mutexId' defined but not used [-Wunused-variable]
+   16 | static osMutexId    mutexId;
+      |                     ^~~~~~~
+../Src/task_imu.c:15:21: warning: 'mutex' defined but not used [-Wunused-variable]
+   15 | static osMutexDef_t mutex;
+      |                     ^~~~~
+make: *** [Src/subdir.mk:28: Src/task_imu.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j24 all" terminated with exit code 2. Build might be incomplete.
+15:24:13 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+In file included from ../Src/task_imu.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_a.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_b.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:30:36: error: 'bno055_delay' undeclared (first use in this function); did you mean 'BNO055_delay'?
+   30 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                    ^~~~~~~~~~~~
+      |                                    BNO055_delay
+../Src/task_imu.c:30:36: note: each undeclared identifier is reported only once for each function it appears in
+../Src/task_imu.c: In function 'enumerate_all':
+../Src/task_imu.c:57:22: warning: implicit declaration of function 'BNO055_switch_1'; did you mean 'bno055_switch_1'? [-Wimplicit-function-declaration]
+   57 |                 if ( BNO055_switch_1( i ) == 0 )
+      |                      ^~~~~~~~~~~~~~~
+      |                      bno055_switch_1
+../Src/task_imu.c:68:22: warning: implicit declaration of function 'BNO055_switch_2'; did you mean 'bno055_switch_2'? [-Wimplicit-function-declaration]
+   68 |                 if ( BNO055_switch_2( i ) == 0 )
+      |                      ^~~~~~~~~~~~~~~
+      |                      bno055_switch_2
+../Src/task_imu.c: At top level:
+../Src/task_imu.c:80:1: error: expected identifier or '(' before '}' token
+   80 | }
+      | ^
+../Src/task_imu.c:18:21: warning: 'mutexId' defined but not used [-Wunused-variable]
+   18 | static osMutexId    mutexId;
+      |                     ^~~~~~~
+../Src/task_imu.c:17:21: warning: 'mutex' defined but not used [-Wunused-variable]
+   17 | static osMutexDef_t mutex;
+      |                     ^~~~~
+make: *** [Src/subdir.mk:28: Src/task_imu.o] Error 1
+"make -j24 all" terminated with exit code 2. Build might be incomplete.
+15:24:36 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/bno055_io.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/bno055_io.d" -MT"Src/bno055_io.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/bno055_io.o"
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+In file included from ../Src/task_imu.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_a.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_b.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:30:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   30 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c:35:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   35 |         bno055_inst_2.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c: In function 'enumerate_all':
+../Src/task_imu.c:57:22: warning: implicit declaration of function 'BNO055_switch_1'; did you mean 'bno055_switch_1'? [-Wimplicit-function-declaration]
+   57 |                 if ( BNO055_switch_1( i ) == 0 )
+      |                      ^~~~~~~~~~~~~~~
+      |                      bno055_switch_1
+../Src/task_imu.c:68:22: warning: implicit declaration of function 'BNO055_switch_2'; did you mean 'bno055_switch_2'? [-Wimplicit-function-declaration]
+   68 |                 if ( BNO055_switch_2( i ) == 0 )
+      |                      ^~~~~~~~~~~~~~~
+      |                      bno055_switch_2
+../Src/task_imu.c: At top level:
+../Src/task_imu.c:80:1: error: expected identifier or '(' before '}' token
+   80 | }
+      | ^
+../Src/task_imu.c:18:21: warning: 'mutexId' defined but not used [-Wunused-variable]
+   18 | static osMutexId    mutexId;
+      |                     ^~~~~~~
+../Src/task_imu.c:17:21: warning: 'mutex' defined but not used [-Wunused-variable]
+   17 | static osMutexDef_t mutex;
+      |                     ^~~~~
+make: *** [Src/subdir.mk:28: Src/task_imu.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j24 all" terminated with exit code 2. Build might be incomplete.
+15:24:59 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+In file included from ../Src/task_imu.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_a.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_b.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:30:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   30 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c:35:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   35 |         bno055_inst_2.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c: In function 'enumerate_all':
+../Src/task_imu.c:57:22: warning: implicit declaration of function 'BNO055_switch_1'; did you mean 'bno055_switch_1'? [-Wimplicit-function-declaration]
+   57 |                 if ( BNO055_switch_1( i ) == 0 )
+      |                      ^~~~~~~~~~~~~~~
+      |                      bno055_switch_1
+../Src/task_imu.c:68:22: warning: implicit declaration of function 'BNO055_switch_2'; did you mean 'bno055_switch_2'? [-Wimplicit-function-declaration]
+   68 |                 if ( BNO055_switch_2( i ) == 0 )
+      |                      ^~~~~~~~~~~~~~~
+      |                      bno055_switch_2
+../Src/task_imu.c: At top level:
+../Src/task_imu.c:18:21: warning: 'mutexId' defined but not used [-Wunused-variable]
+   18 | static osMutexId    mutexId;
+      |                     ^~~~~~~
+../Src/task_imu.c:17:21: warning: 'mutex' defined but not used [-Wunused-variable]
+   17 | static osMutexDef_t mutex;
+      |                     ^~~~~
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  47340	    324	  21196	  68860	  10cfc	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+15:33:01 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+In file included from ../Src/task_imu.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_a.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_b.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:30:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   30 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c:35:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   35 |         bno055_inst_2.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c: In function 'func_task_imu_a':
+../Src/task_imu.c:57:30: warning: implicit declaration of function 'BNO055_switch_1'; did you mean 'bno055_switch_1'? [-Wimplicit-function-declaration]
+   57 |                         if ( BNO055_switch_1( i ) == 0 )
+      |                              ^~~~~~~~~~~~~~~
+      |                              bno055_switch_1
+../Src/task_imu.c:60:53: error: initializer element is not constant
+   60 |                                 static int comres = bno055_read_quaternion_wxyz( &bno055_inst_1, &qq );
+      |                                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/task_imu.c:60:44: warning: unused variable 'comres' [-Wunused-variable]
+   60 |                                 static int comres = bno055_read_quaternion_wxyz( &bno055_inst_1, &qq );
+      |                                            ^~~~~~
+../Src/task_imu.c: In function 'func_task_imu_b':
+../Src/task_imu.c:75:30: warning: implicit declaration of function 'BNO055_switch_2'; did you mean 'bno055_switch_2'? [-Wimplicit-function-declaration]
+   75 |                         if ( BNO055_switch_2( i ) == 0 )
+      |                              ^~~~~~~~~~~~~~~
+      |                              bno055_switch_2
+../Src/task_imu.c:78:53: error: initializer element is not constant
+   78 |                                 static int comres = bno055_read_quaternion_wxyz( &bno055_inst_2, &qq );
+      |                                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/task_imu.c:78:44: warning: unused variable 'comres' [-Wunused-variable]
+   78 |                                 static int comres = bno055_read_quaternion_wxyz( &bno055_inst_2, &qq );
+      |                                            ^~~~~~
+make: *** [Src/subdir.mk:28: Src/task_imu.o] Error 1
+"make -j24 all" terminated with exit code 2. Build might be incomplete.
+15:33:29 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+In file included from ../Src/task_imu.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_a.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_b.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:30:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   30 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c:35:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   35 |         bno055_inst_2.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c: In function 'func_task_imu_a':
+../Src/task_imu.c:57:30: warning: implicit declaration of function 'BNO055_switch_1'; did you mean 'bno055_switch_1'? [-Wimplicit-function-declaration]
+   57 |                         if ( BNO055_switch_1( i ) == 0 )
+      |                              ^~~~~~~~~~~~~~~
+      |                              bno055_switch_1
+../Src/task_imu.c:60:53: error: initializer element is not constant
+   60 |                                 static int comres = bno055_read_quaternion_wxyz( &bno055_inst_1, &qq );
+      |                                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/task_imu.c:60:44: warning: unused variable 'comres' [-Wunused-variable]
+   60 |                                 static int comres = bno055_read_quaternion_wxyz( &bno055_inst_1, &qq );
+      |                                            ^~~~~~
+../Src/task_imu.c: In function 'func_task_imu_b':
+../Src/task_imu.c:69:44: error: initializer element is not constant
+   69 |         static uint32_t PreviousWakeTime = osKernelSysTick();
+      |                                            ^~~~~~~~~~~~~~~
+../Src/task_imu.c:77:30: warning: implicit declaration of function 'BNO055_switch_2'; did you mean 'bno055_switch_2'? [-Wimplicit-function-declaration]
+   77 |                         if ( BNO055_switch_2( i ) == 0 )
+      |                              ^~~~~~~~~~~~~~~
+      |                              bno055_switch_2
+../Src/task_imu.c:71:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   71 |         static int comres;
+      |                    ^~~~~~
+make: *** [Src/subdir.mk:28: Src/task_imu.o] Error 1
+"make -j24 all" terminated with exit code 2. Build might be incomplete.
+15:33:52 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+In file included from ../Src/task_imu.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_a.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_b.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:30:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   30 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c:35:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   35 |         bno055_inst_2.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c: In function 'func_task_imu_a':
+../Src/task_imu.c:51:44: error: initializer element is not constant
+   51 |         static uint32_t PreviousWakeTime = osKernelSysTick();
+      |                                            ^~~~~~~~~~~~~~~
+../Src/task_imu.c:59:30: warning: implicit declaration of function 'BNO055_switch_1'; did you mean 'bno055_switch_1'? [-Wimplicit-function-declaration]
+   59 |                         if ( BNO055_switch_1( i ) == 0 )
+      |                              ^~~~~~~~~~~~~~~
+      |                              bno055_switch_1
+../Src/task_imu.c:53:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   53 |         static int comres;
+      |                    ^~~~~~
+../Src/task_imu.c: In function 'func_task_imu_b':
+../Src/task_imu.c:70:44: error: initializer element is not constant
+   70 |         static uint32_t PreviousWakeTime = osKernelSysTick();
+      |                                            ^~~~~~~~~~~~~~~
+../Src/task_imu.c:78:30: warning: implicit declaration of function 'BNO055_switch_2'; did you mean 'bno055_switch_2'? [-Wimplicit-function-declaration]
+   78 |                         if ( BNO055_switch_2( i ) == 0 )
+      |                              ^~~~~~~~~~~~~~~
+      |                              bno055_switch_2
+../Src/task_imu.c:72:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   72 |         static int comres;
+      |                    ^~~~~~
+make: *** [Src/subdir.mk:28: Src/task_imu.o] Error 1
+"make -j24 all" terminated with exit code 2. Build might be incomplete.
+15:34:25 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+In file included from ../Src/task_imu.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_a.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_b.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:30:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   30 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c:35:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   35 |         bno055_inst_2.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c: In function 'func_task_imu_a':
+../Src/task_imu.c:60:30: warning: implicit declaration of function 'BNO055_switch_1'; did you mean 'bno055_switch_1'? [-Wimplicit-function-declaration]
+   60 |                         if ( BNO055_switch_1( i ) == 0 )
+      |                              ^~~~~~~~~~~~~~~
+      |                              bno055_switch_1
+../Src/task_imu.c:52:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   52 |         static int comres;
+      |                    ^~~~~~
+../Src/task_imu.c: In function 'func_task_imu_b':
+../Src/task_imu.c:80:30: warning: implicit declaration of function 'BNO055_switch_2'; did you mean 'bno055_switch_2'? [-Wimplicit-function-declaration]
+   80 |                         if ( BNO055_switch_2( i ) == 0 )
+      |                              ^~~~~~~~~~~~~~~
+      |                              bno055_switch_2
+../Src/task_imu.c:72:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   72 |         static int comres;
+      |                    ^~~~~~
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  47340	    324	  21196	  68860	  10cfc	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+15:34:59 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+In file included from ../Src/task_imu.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_a.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_b.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:30:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   30 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c:35:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   35 |         bno055_inst_2.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c: In function 'func_task_imu_a':
+../Src/task_imu.c:52:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   52 |         static int comres;
+      |                    ^~~~~~
+../Src/task_imu.c: In function 'func_task_imu_b':
+../Src/task_imu.c:72:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   72 |         static int comres;
+      |                    ^~~~~~
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  47340	    324	  21196	  68860	  10cfc	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+15:36:01 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  54416	    324	  21284	  76024	  128f8	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+15:36:11 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54416	    324	  21284	  76024	  128f8	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+15:38:51 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/bno055_io.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/bno055_io.d" -MT"Src/bno055_io.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/bno055_io.o"
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  54416	    324	  21284	  76024	  128f8	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+15:38:56 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54416	    324	  21284	  76024	  128f8	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+15:45:12 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54416	    324	  21284	  76024	  128f8	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+15:52:54 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/bno055_io.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/bno055_io.d" -MT"Src/bno055_io.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/bno055_io.o"
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  54416	    324	  21284	  76024	  128f8	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+15:52:58 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54416	    324	  21284	  76024	  128f8	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+15:55:23 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54416	    324	  21284	  76024	  128f8	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+15:55:35 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54416	    324	  21284	  76024	  128f8	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+15:56:07 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54416	    324	  21284	  76024	  128f8	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+16:03:57 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+In file included from ../Src/task_imu.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_a.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_b.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:30:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   30 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c:35:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   35 |         bno055_inst_2.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c: In function 'func_task_imu_a':
+../Src/task_imu.c:52:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   52 |         static int comres;
+      |                    ^~~~~~
+../Src/task_imu.c: In function 'func_task_imu_b':
+../Src/task_imu.c:72:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   72 |         static int comres;
+      |                    ^~~~~~
+../Src/task_imu.c: In function 'enumerate_all':
+../Src/task_imu.c:110:37: warning: unused variable 'iii' [-Wunused-variable]
+  110 |                                 int iii=0;
+      |                                     ^~~
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  54424	    324	  21284	  76032	  12900	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+16:04:23 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+In file included from ../Src/task_imu.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_a.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_b.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 512 );
+      | ^~~~~~~~~~~
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:30:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   30 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c:35:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   35 |         bno055_inst_2.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c: In function 'func_task_imu_a':
+../Src/task_imu.c:52:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   52 |         static int comres;
+      |                    ^~~~~~
+../Src/task_imu.c: In function 'func_task_imu_b':
+../Src/task_imu.c:72:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   72 |         static int comres;
+      |                    ^~~~~~
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  54428	    324	  21284	  76036	  12904	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+16:04:40 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54428	    324	  21284	  76036	  12904	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+16:06:46 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  47340	    324	  21196	  68860	  10cfc	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+16:06:56 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  47340	    324	  21196	  68860	  10cfc	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+16:07:32 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_led.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_led.d" -MT"Src/task_led.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_led.o"
+In file included from ../Src/task_led.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_led.c:14:1: note: in expansion of macro 'osThreadDef'
+   14 | osThreadDef(task_led, func_task_led, osPriorityNormal, 0, 512);
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_led.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_led.c:14:1: note: in expansion of macro 'osThreadDef'
+   14 | osThreadDef(task_led, func_task_led, osPriorityNormal, 0, 512);
+      | ^~~~~~~~~~~
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  47340	    324	  21196	  68860	  10cfc	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+16:07:37 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  47340	    324	  21196	  68860	  10cfc	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+16:07:51 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+In file included from ../Src/task_imu.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 1024 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_a.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityRealtime, 0, 1024 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 1024 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_b.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityRealtime, 0, 1024 );
+      | ^~~~~~~~~~~
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:30:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   30 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c:35:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   35 |         bno055_inst_2.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c: In function 'func_task_imu_a':
+../Src/task_imu.c:52:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   52 |         static int comres;
+      |                    ^~~~~~
+../Src/task_imu.c: In function 'func_task_imu_b':
+../Src/task_imu.c:72:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   72 |         static int comres;
+      |                    ^~~~~~
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  47340	    324	  21196	  68860	  10cfc	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+16:07:58 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  54428	    324	  21284	  76036	  12904	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+16:08:02 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54428	    324	  21284	  76036	  12904	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+16:09:10 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Src/task_imu.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_imu.d" -MT"Src/task_imu.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_imu.o"
+In file included from ../Src/task_imu.c:5:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityNormal, 0, 1024 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_a.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:19:1: note: in expansion of macro 'osThreadDef'
+   19 | osThreadDef( task_imu_a, func_task_imu_a, osPriorityNormal, 0, 1024 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityNormal, 0, 1024 );
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_imu_b.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_imu.c:20:1: note: in expansion of macro 'osThreadDef'
+   20 | osThreadDef( task_imu_b, func_task_imu_b, osPriorityNormal, 0, 1024 );
+      | ^~~~~~~~~~~
+../Src/task_imu.c: In function 'task_imu_init':
+../Src/task_imu.c:30:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   30 |         bno055_inst_1.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c:35:34: warning: assignment to 'void (*)(u32)' {aka 'void (*)(unsigned int)'} from incompatible pointer type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} [-Wincompatible-pointer-types]
+   35 |         bno055_inst_2.delay_msec = bno055_delay;
+      |                                  ^
+../Src/task_imu.c: In function 'func_task_imu_a':
+../Src/task_imu.c:52:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   52 |         static int comres;
+      |                    ^~~~~~
+../Src/task_imu.c: In function 'func_task_imu_b':
+../Src/task_imu.c:72:20: warning: variable 'comres' set but not used [-Wunused-but-set-variable]
+   72 |         static int comres;
+      |                    ^~~~~~
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  54428	    324	  21284	  76036	  12904	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+16:09:16 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54428	    324	  21284	  76036	  12904	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+16:09:57 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
+arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
+   text	   data	    bss	    dec	    hex	filename
+  54428	    324	  21284	  76036	  12904	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
+Finished building: stm32_cube_project.list
+ 
+16:10:06 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+make -j24 all 
+arm-none-eabi-size  stm32_cube_project.elf 
+   text	   data	    bss	    dec	    hex	filename
+  54428	    324	  21284	  76036	  12904	stm32_cube_project.elf
+Finished building: default.size.stdout
+ 
