@@ -4,6 +4,8 @@
 
 void task_imu_init();
 
+void imu_set_magnetic_mode();
+void imu_set_inertial_mode();
 
 
 
