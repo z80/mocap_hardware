@@ -14,17 +14,41 @@ static void func_task_imu_b( void * p );
 
 static void enumerate_all();
 
+static void switch_to_magnetic_1();
+static void switch_to_magnetic_2();
+
+static void switch_to_inertial_1();
+static void switch_to_inertial_2();
+
+static void read_all_1();
+static void read_all_2();
+
+
 static osMutexDef_t mutex;
 static osMutexId    mutexId;
 osThreadDef( task_imu_a, func_task_imu_a, osPriorityNormal, 0, 1024 );
 osThreadDef( task_imu_b, func_task_imu_b, osPriorityNormal, 0, 1024 );
 
 
+#define CMD_MAGNETIC_MODE 1
+#define CMD_INERTIAL_MODE 2
+#define CMD_SEND_IMU_DATA 3
+#define CMD_STOP_IMU_DATA 4
 
 
+// Message queue for giving the IMU task commands out of other tasks.
+osMessageQDef(command_queue_1, 2, uint8_t); // Message queue with 2 slots for uint8_t messages
+osMessageQId command_queue_1_id;
+
+osMessageQDef(command_queue_2, 2, uint8_t); // Message queue with 2 slots for uint8_t messages
+osMessageQId command_queue_2_id;
 
 void task_imu_init()
 {
+	// Create the message queue
+	command_queue_1_id = osMessageCreate( osMessageQ(command_queue_1), NULL );
+	command_queue_2_id = osMessageCreate( osMessageQ(command_queue_2), NULL );
+
 	bno055_inst_1.bus_write  = bno055_bus_write_i2c_1;
 	bno055_inst_1.bus_read   = bno055_bus_read_i2c_1;
 	bno055_inst_1.delay_msec = bno055_delay;
@@ -117,6 +141,104 @@ static void enumerate_all()
 		}
 	}
 }
+
+void switch_to_magnetic_1()
+{
+	for ( int i=0; i<8; i++ )
+	{
+		if ( bno055_switch_1( i ) == 0 )
+		{
+			bno055_set_operation_mode( &bno055_inst_1, BNO055_OPERATION_MODE_NDOF );
+		}
+	}
+}
+
+void switch_to_magnetic_2()
+{
+	for ( int i=0; i<8; i++ )
+	{
+		if ( bno055_switch_2( i ) == 0 )
+		{
+			bno055_set_operation_mode( &bno055_inst_2, BNO055_OPERATION_MODE_NDOF );
+		}
+	}
+}
+
+void switch_to_inertial_1()
+{
+	for ( int i=0; i<8; i++ )
+	{
+		if ( bno055_switch_1( i ) == 0 )
+		{
+			bno055_set_operation_mode( &bno055_inst_1, BNO055_OPERATION_MODE_IMUPLUS );
+		}
+	}
+}
+
+void switch_to_inertial_2()
+{
+	for ( int i=0; i<8; i++ )
+	{
+		if ( bno055_switch_2( i ) == 0 )
+		{
+			bno055_set_operation_mode( &bno055_inst_2, BNO055_OPERATION_MODE_IMUPLUS );
+		}
+	}
+}
+
+void read_all_1()
+{
+	static struct bno055_quaternion_t qq;
+	for ( int i=0; i<8; i++ )
+	{
+		if ( bno055_switch_1( i ) == 0 )
+		{
+			int32_t comres = bno055_read_quaternion_wxyz( &bno055_inst_1, &qq );
+		}
+	}
+}
+
+void read_all_2()
+{
+	static struct bno055_quaternion_t qq;
+	for ( int i=0; i<8; i++ )
+	{
+		if ( bno055_switch_2( i ) == 0 )
+		{
+			int32_t comres = bno055_read_quaternion_wxyz( &bno055_inst_2, &qq );
+		}
+	}
+}
+
+
+
+
+void imu_set_magnetic_mode()
+{
+	osMessagePut( command_queue_1_id, CMD_MAGNETIC_MODE, 0 );
+	osMessagePut( command_queue_2_id, CMD_MAGNETIC_MODE, 0 );
+}
+
+void imu_set_inertial_mode()
+{
+	osMessagePut( command_queue_1_id, CMD_INERTIAL_MODE, 0 );
+	osMessagePut( command_queue_2_id, CMD_INERTIAL_MODE, 0 );
+}
+
+void send_imu_data()
+{
+	osMessagePut( command_queue_1_id, CMD_SEND_IMU_DATA, 0 );
+	osMessagePut( command_queue_2_id, CMD_SEND_IMU_DATA, 0 );
+}
+
+void stop_imu_data()
+{
+	osMessagePut( command_queue_1_id, CMD_STOP_IMU_DATA, 0 );
+	osMessagePut( command_queue_2_id, CMD_STOP_IMU_DATA, 0 );
+}
+
+
+
 
 
 

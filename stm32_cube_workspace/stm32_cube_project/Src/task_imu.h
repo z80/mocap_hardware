@@ -2,11 +2,14 @@
 #ifndef __TASK_IMU_H_
 #define __TASK_IMU_H_
 
+#include "main.h"
+
 void task_imu_init();
 
 void imu_set_magnetic_mode();
 void imu_set_inertial_mode();
-
+void send_imu_data();
+void stop_imu_data();
 
 
 #endif
