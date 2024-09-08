@@ -25,6 +25,7 @@
 /* USER CODE BEGIN Includes */
 #include "task_led.h"
 #include "task_imu.h"
+#include "task_uart_output.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -138,6 +139,7 @@ int main(void)
   /* add threads, ... */
   task_imu_init();
   task_led_init();
+  task_uart_output_init();
   /* USER CODE END RTOS_THREADS */
 
   /* Start scheduler */

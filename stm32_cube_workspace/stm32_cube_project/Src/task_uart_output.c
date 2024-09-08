@@ -109,6 +109,7 @@ char * read_cmd( int * cmd_len )
 				return buffer;
 			}
 		}
+		// Debugging line.
 		set_led( char_index );
 	}
 
