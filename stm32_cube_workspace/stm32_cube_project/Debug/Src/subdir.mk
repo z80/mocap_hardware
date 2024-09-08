@@ -8,19 +8,22 @@ C_SRCS += \
 ../Src/bno055.c \
 ../Src/bno055_io.c \
 ../Src/task_imu.c \
-../Src/task_led.c 
+../Src/task_led.c \
+../Src/task_uart_output.c 
 
 OBJS += \
 ./Src/bno055.o \
 ./Src/bno055_io.o \
 ./Src/task_imu.o \
-./Src/task_led.o 
+./Src/task_led.o \
+./Src/task_uart_output.o 
 
 C_DEPS += \
 ./Src/bno055.d \
 ./Src/bno055_io.d \
 ./Src/task_imu.d \
-./Src/task_led.d 
+./Src/task_led.d \
+./Src/task_uart_output.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -30,7 +33,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/bno055.cyclo ./Src/bno055.d ./Src/bno055.o ./Src/bno055.su ./Src/bno055_io.cyclo ./Src/bno055_io.d ./Src/bno055_io.o ./Src/bno055_io.su ./Src/task_imu.cyclo ./Src/task_imu.d ./Src/task_imu.o ./Src/task_imu.su ./Src/task_led.cyclo ./Src/task_led.d ./Src/task_led.o ./Src/task_led.su
+	-$(RM) ./Src/bno055.cyclo ./Src/bno055.d ./Src/bno055.o ./Src/bno055.su ./Src/bno055_io.cyclo ./Src/bno055_io.d ./Src/bno055_io.o ./Src/bno055_io.su ./Src/task_imu.cyclo ./Src/task_imu.d ./Src/task_imu.o ./Src/task_imu.su ./Src/task_led.cyclo ./Src/task_led.d ./Src/task_led.o ./Src/task_led.su ./Src/task_uart_output.cyclo ./Src/task_uart_output.d ./Src/task_uart_output.o ./Src/task_uart_output.su
 
 .PHONY: clean-Src
 

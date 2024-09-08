@@ -49,6 +49,7 @@
 "./Src/bno055_io.o"
 "./Src/task_imu.o"
 "./Src/task_led.o"
+"./Src/task_uart_output.o"
 "./USB_DEVICE/App/usb_device.o"
 "./USB_DEVICE/App/usbd_custom_hid_if.o"
 "./USB_DEVICE/App/usbd_desc.o"

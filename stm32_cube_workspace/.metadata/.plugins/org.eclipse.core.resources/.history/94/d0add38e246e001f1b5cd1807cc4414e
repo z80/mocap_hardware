@@ -1,0 +1,13 @@
+
+#include "task_uart_output.h"
+#include "main.h"
+
+static void func_task_uart( void * p );
+
+osThreadDef(task_led, func_task_uart, osPriorityNormal, 0, 512);
+
+
+
+
+
+

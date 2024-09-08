@@ -1,0 +1,32 @@
+
+#ifndef __TASK_IMU_H_
+#define __TASK_IMU_H_
+
+#include "main.h"
+#include "bno055.h"
+
+// Data structure to hold all up to date IMU readings.
+struct ImuData
+{
+	// There are up to 32 sensors.
+	// bit=1 means it has been detected during enumeration.
+	uint32_t imus_detected;
+	// New data has arrived since the last time it has been read.
+	uint32_t imus_updated;
+	// Quaternion data.
+	struct bno055_quaternion_t quats[32];
+};
+
+void task_imu_init();
+
+void imu_set_magnetic_mode();
+void imu_set_inertial_mode();
+void send_imu_data();
+void stop_imu_data();
+
+
+#endif
+
+
+
+

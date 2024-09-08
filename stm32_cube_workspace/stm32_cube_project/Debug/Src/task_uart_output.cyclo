@@ -1,0 +1,9 @@
+../Src/task_uart_output.c:28:6:task_uart_output_init	1
+../Src/task_uart_output.c:43:6:func_task_uart_rx	1
+../Src/task_uart_output.c:53:6:func_task_uart_tx	5
+../Src/task_uart_output.c:84:8:read_cmd	8
+../Src/task_uart_output.c:124:6:parse_cmd	3
+../Src/task_uart_output.c:144:13:process_cmd	10
+../Src/task_uart_output.c:183:6:stream_data_func	3
+../Src/task_uart_output.c:225:6:short_to_hex	2
+../Src/task_uart_output.c:237:6:ulong_to_hex	2

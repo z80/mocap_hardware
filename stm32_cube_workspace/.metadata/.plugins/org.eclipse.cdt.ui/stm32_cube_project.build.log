@@ -1,10 +1,75 @@
-16:10:06 **** Incremental Build of configuration Debug for project stm32_cube_project ****
+15:47:51 **** Incremental Build of configuration Debug for project stm32_cube_project ****
 make -j24 all 
+arm-none-eabi-gcc "../Src/task_uart_output.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F405xx -c -I../Core/Inc -I../USB_DEVICE/App -I../USB_DEVICE/Target -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Middlewares/ST/STM32_USB_Device_Library/Core/Inc -I../Middlewares/ST/STM32_USB_Device_Library/Class/CustomHID/Inc -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/task_uart_output.d" -MT"Src/task_uart_output.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/task_uart_output.o"
+In file included from ../Src/task_uart_output.c:8:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_uart_output.c:17:1: note: in expansion of macro 'osThreadDef'
+   17 | osThreadDef(task_uart_rx, func_task_uart_rx, osPriorityNormal, 0, 512);
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_uart_rx.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_uart_output.c:17:1: note: in expansion of macro 'osThreadDef'
+   17 | osThreadDef(task_uart_rx, func_task_uart_rx, osPriorityNormal, 0, 512);
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: warning: initialization of 'void (*)(const void *)' from incompatible pointer type 'void (*)(void *)' [-Wincompatible-pointer-types]
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_uart_output.c:18:1: note: in expansion of macro 'osThreadDef'
+   18 | osThreadDef(task_uart_tx, func_task_uart_tx, osPriorityNormal, 0, 512);
+      | ^~~~~~~~~~~
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:416:10: note: (near initialization for 'os_thread_def_task_uart_tx.pthread')
+  416 | { #name, (thread), (priority), (instances), (stacksz), NULL, NULL }
+      |          ^
+../Src/task_uart_output.c:18:1: note: in expansion of macro 'osThreadDef'
+   18 | osThreadDef(task_uart_tx, func_task_uart_tx, osPriorityNormal, 0, 512);
+      | ^~~~~~~~~~~
+../Src/task_uart_output.c: In function 'read_cmd':
+../Src/task_uart_output.c:92:54: warning: pointer targets in passing argument 2 of 'HAL_UART_Receive' differ in signedness [-Wpointer-sign]
+   92 |                 int ret = HAL_UART_Receive( &huart2, &c, 1, 10 );
+      |                                                      ^~
+      |                                                      |
+      |                                                      char *
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:411,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Src/task_uart_output.c:3:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:746:72: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'char *'
+  746 | HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                               ~~~~~~~~~^~~~~
+../Src/task_uart_output.c:95:31: warning: comparison between pointer and integer
+   95 |                         if (c == "\r")
+      |                               ^~
+../Src/task_uart_output.c:95:31: warning: comparison with string literal results in unspecified behavior [-Waddress]
+../Src/task_uart_output.c: In function 'stream_data_func':
+../Src/task_uart_output.c:221:47: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  221 |         int ret = HAL_UART_Transmit( &huart2, buffer, byte_index, 165000000 );
+      |                                               ^~~~~~
+      |                                               |
+      |                                               char *
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:745:79: note: expected 'const uint8_t *' {aka 'const unsigned char *'} but argument is of type 'char *'
+  745 | HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, const uint8_t *pData, uint16_t Size, uint32_t Timeout);
+      |                                                                ~~~~~~~~~~~~~~~^~~~~
+../Src/task_uart_output.c:221:13: warning: unused variable 'ret' [-Wunused-variable]
+  221 |         int ret = HAL_UART_Transmit( &huart2, buffer, byte_index, 165000000 );
+      |             ^~~
+../Src/task_uart_output.c: At top level:
+../Src/task_uart_output.c:12:23: warning: 'imu_data' defined but not used [-Wunused-variable]
+   12 | static struct ImuData imu_data;
+      |                       ^~~~~~~~
+arm-none-eabi-gcc -o "stm32_cube_project.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\projects\mocap_project\stm32_cube_workspace\stm32_cube_project\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_cube_project.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: stm32_cube_project.elf
+ 
 arm-none-eabi-size  stm32_cube_project.elf 
+arm-none-eabi-objdump -h -S stm32_cube_project.elf  > "stm32_cube_project.list"
    text	   data	    bss	    dec	    hex	filename
-  54428	    324	  21284	  76036	  12904	stm32_cube_project.elf
+  55908	    324	  21548	  77780	  12fd4	stm32_cube_project.elf
 Finished building: default.size.stdout
  
+Finished building: stm32_cube_project.list
+ 
 
-16:10:06 Build Finished. 0 errors, 0 warnings. (took 189ms)
+15:47:52 Build Finished. 0 errors, 8 warnings. (took 702ms)
 

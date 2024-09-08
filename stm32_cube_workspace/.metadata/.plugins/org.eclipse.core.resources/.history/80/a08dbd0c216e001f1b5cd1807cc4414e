@@ -1,0 +1,265 @@
+
+#include "task_imu.h"
+#include "bno055_io.h"
+#include "bno055.h"
+#include "cmsis_os.h"
+#include "usb_device.h"
+
+static struct bno055_t bno055_inst_1;
+static struct bno055_t bno055_inst_2;
+
+
+static void func_task_imu_a( void * p );
+static void func_task_imu_b( void * p );
+
+static void enumerate_all();
+
+static void switch_to_magnetic_1();
+static void switch_to_magnetic_2();
+
+static void switch_to_inertial_1();
+static void switch_to_inertial_2();
+
+static void read_all_1();
+static void read_all_2();
+
+
+static osMutexDef_t mutex;
+static osMutexId    mutexId;
+
+
+
+static struct ImuData imu_data;
+
+
+
+osThreadDef( task_imu_a, func_task_imu_a, osPriorityNormal, 0, 1024 );
+osThreadDef( task_imu_b, func_task_imu_b, osPriorityNormal, 0, 1024 );
+
+
+#define CMD_MAGNETIC_MODE 1
+#define CMD_INERTIAL_MODE 2
+
+
+// Message queue for giving the IMU task commands out of other tasks.
+osMessageQDef(command_queue_1, 2, uint8_t); // Message queue with 2 slots for uint8_t messages
+osMessageQId command_queue_1_id;
+
+osMessageQDef(command_queue_2, 2, uint8_t); // Message queue with 2 slots for uint8_t messages
+osMessageQId command_queue_2_id;
+
+
+
+
+
+
+
+void task_imu_init()
+{
+	// Create the message queue
+	command_queue_1_id = osMessageCreate( osMessageQ(command_queue_1), NULL );
+	command_queue_2_id = osMessageCreate( osMessageQ(command_queue_2), NULL );
+
+	bno055_inst_1.bus_write  = bno055_bus_write_i2c_1;
+	bno055_inst_1.bus_read   = bno055_bus_read_i2c_1;
+	bno055_inst_1.delay_msec = bno055_delay;
+	bno055_inst_1.dev_addr   = BNO055_I2C_ADDR1 << 1;
+
+	bno055_inst_2.bus_write  = bno055_bus_write_i2c_2;
+	bno055_inst_2.bus_read   = bno055_bus_read_i2c_2;
+	bno055_inst_2.delay_msec = bno055_delay;
+	bno055_inst_2.dev_addr   = BNO055_I2C_ADDR1 << 1;
+
+	mutexId = osMutexCreate( &mutex );
+
+	// Initially enumerate all and switch to magnetic tracking.
+	enumerate_all();
+
+	// Start two tasks on two separate I2C buses.
+	osThreadCreate( osThread(task_imu_a), NULL );
+	osThreadCreate( osThread(task_imu_b), NULL );
+}
+
+
+void func_task_imu_a( void * p )
+{
+	uint32_t PreviousWakeTime = osKernelSysTick();
+
+	for (;;)
+	{
+		read_all_1();
+		osDelayUntil( &PreviousWakeTime, 10 );
+	}
+}
+
+void func_task_imu_b( void * p )
+{
+	uint32_t PreviousWakeTime = osKernelSysTick();
+
+	for (;;)
+	{
+		read_all_2();
+		osDelayUntil( &PreviousWakeTime, 10 );
+	}
+}
+
+static void enumerate_all()
+{
+	imu_data.imus_detected = 0;
+
+	for ( int i=0; i<8; i++ )
+	{
+		if ( bno055_switch_1( i ) == 0 )
+		{
+			int32_t comres = BNO055_ERROR;
+			comres = bno055_init(&bno055_inst_1);
+			if (comres == 0)
+			{
+				uint8_t power_mode = BNO055_POWER_MODE_NORMAL;
+				// set the power mode as NORMAL
+				comres += bno055_set_power_mode( &bno055_inst_1, power_mode );
+				comres += bno055_set_operation_mode( &bno055_inst_1, BNO055_OPERATION_MODE_NDOF );
+				if (comres == 0)
+				{
+					imu_data.imus_detected |= (1 << (i*2));
+				}
+			}
+		}
+
+		if ( bno055_switch_2( i ) == 0 )
+		{
+			int32_t comres = BNO055_ERROR;
+			comres = bno055_init(&bno055_inst_2);
+			if (comres == 0)
+			{
+				uint8_t power_mode = BNO055_POWER_MODE_NORMAL;
+				// set the power mode as NORMAL
+				comres += bno055_set_power_mode( &bno055_inst_2, power_mode );
+				comres += bno055_set_operation_mode( &bno055_inst_2, BNO055_OPERATION_MODE_NDOF );
+				if (comres == 0)
+				{
+					imu_data.imus_detected |= (1 << (16 + i*2));
+				}
+			}
+		}
+	}
+}
+
+void switch_to_magnetic_1()
+{
+	for ( int i=0; i<8; i++ )
+	{
+		if ( bno055_switch_1( i ) == 0 )
+		{
+			bno055_set_operation_mode( &bno055_inst_1, BNO055_OPERATION_MODE_NDOF );
+		}
+	}
+}
+
+void switch_to_magnetic_2()
+{
+	for ( int i=0; i<8; i++ )
+	{
+		if ( bno055_switch_2( i ) == 0 )
+		{
+			bno055_set_operation_mode( &bno055_inst_2, BNO055_OPERATION_MODE_NDOF );
+		}
+	}
+}
+
+void switch_to_inertial_1()
+{
+	for ( int i=0; i<8; i++ )
+	{
+		if ( bno055_switch_1( i ) == 0 )
+		{
+			bno055_set_operation_mode( &bno055_inst_1, BNO055_OPERATION_MODE_IMUPLUS );
+		}
+	}
+}
+
+void switch_to_inertial_2()
+{
+	for ( int i=0; i<8; i++ )
+	{
+		if ( bno055_switch_2( i ) == 0 )
+		{
+			bno055_set_operation_mode( &bno055_inst_2, BNO055_OPERATION_MODE_IMUPLUS );
+		}
+	}
+}
+
+void read_all_1()
+{
+	static struct bno055_quaternion_t qq;
+	for ( int i=0; i<8; i++ )
+	{
+		const int imu_ind = 2*i;
+		const uint32_t imu_bit = (1 << imu_ind);
+		if (imu_data.imus_detected & imu_bit)
+		{
+			if ( bno055_switch_1( i ) == 0 )
+			{
+				const int32_t comres = bno055_read_quaternion_wxyz( &bno055_inst_1, &qq );
+				if (comres == 0)
+				{
+					osMutexWait( mutexId, osWaitForever );
+						imu_data.imus_updated |= imu_bit;
+						imu_data.quats[imu_ind] = qq;
+					osMutexRelease( mutexId );
+				}
+			}
+		}
+	}
+}
+
+void read_all_2()
+{
+	static struct bno055_quaternion_t qq;
+	for ( int i=0; i<8; i++ )
+	{
+		const int imu_ind = 16 + 2*i;
+		const uint32_t imu_bit = (1 << imu_ind);
+		if ( bno055_switch_2( i ) == 0 )
+		{
+			const int32_t comres = bno055_read_quaternion_wxyz( &bno055_inst_2, &qq );
+			if (comres == 0)
+			{
+				osMutexWait( mutexId, osWaitForever );
+					imu_data.imus_updated |= imu_bit;
+					imu_data.quats[imu_ind] = qq;
+				osMutexRelease( mutexId );
+			}
+		}
+	}
+}
+
+
+
+
+void imu_set_magnetic_mode()
+{
+	osMessagePut( command_queue_1_id, CMD_MAGNETIC_MODE, 0 );
+	osMessagePut( command_queue_2_id, CMD_MAGNETIC_MODE, 0 );
+}
+
+void imu_set_inertial_mode()
+{
+	osMessagePut( command_queue_1_id, CMD_INERTIAL_MODE, 0 );
+	osMessagePut( command_queue_2_id, CMD_INERTIAL_MODE, 0 );
+}
+
+void get_imu_data( struct ImuData * data )
+{
+	osMutexWait( mutexId, osWaitForever );
+		*data = imu_data;
+	osMutexRelease( mutexId );
+}
+
+
+
+
+
+
+
+
