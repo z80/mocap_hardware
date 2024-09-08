@@ -26,14 +26,19 @@ static void read_all_2();
 
 static osMutexDef_t mutex;
 static osMutexId    mutexId;
+
+
+
+static struct ImuData imu_data;
+
+
+
 osThreadDef( task_imu_a, func_task_imu_a, osPriorityNormal, 0, 1024 );
 osThreadDef( task_imu_b, func_task_imu_b, osPriorityNormal, 0, 1024 );
 
 
 #define CMD_MAGNETIC_MODE 1
 #define CMD_INERTIAL_MODE 2
-#define CMD_SEND_IMU_DATA 3
-#define CMD_STOP_IMU_DATA 4
 
 
 // Message queue for giving the IMU task commands out of other tasks.
@@ -42,6 +47,12 @@ osMessageQId command_queue_1_id;
 
 osMessageQDef(command_queue_2, 2, uint8_t); // Message queue with 2 slots for uint8_t messages
 osMessageQId command_queue_2_id;
+
+
+
+
+
+
 
 void task_imu_init()
 {
@@ -72,46 +83,30 @@ void task_imu_init()
 
 void func_task_imu_a( void * p )
 {
-	static struct bno055_quaternion_t qq;
-	static int comres;
-
 	uint32_t PreviousWakeTime = osKernelSysTick();
 
 	for (;;)
 	{
-		for ( int i=0; i<8; i++ )
-		{
-			if ( bno055_switch_1( i ) == 0 )
-			{
-				comres = bno055_read_quaternion_wxyz( &bno055_inst_1, &qq );
-			}
-		}
+
 		osDelayUntil( &PreviousWakeTime, 10 );
 	}
 }
 
 void func_task_imu_b( void * p )
 {
-	static struct bno055_quaternion_t qq;
-	static int comres;
-
 	uint32_t PreviousWakeTime = osKernelSysTick();
 
 	for (;;)
 	{
-		for ( int i=0; i<8; i++ )
-		{
-			if ( bno055_switch_2( i ) == 0 )
-			{
-				comres = bno055_read_quaternion_wxyz( &bno055_inst_2, &qq );
-			}
-		}
+
 		osDelayUntil( &PreviousWakeTime, 10 );
 	}
 }
 
 static void enumerate_all()
 {
+	imu_data.imus_detected = 0;
+
 	for ( int i=0; i<8; i++ )
 	{
 		if ( bno055_switch_1( i ) == 0 )
@@ -124,6 +119,10 @@ static void enumerate_all()
 				// set the power mode as NORMAL
 				comres += bno055_set_power_mode( &bno055_inst_1, power_mode );
 				comres += bno055_set_operation_mode( &bno055_inst_1, BNO055_OPERATION_MODE_NDOF );
+				if (comres == 0)
+				{
+					imu_data.imus_detected |= (1 << (i*2));
+				}
 			}
 		}
 
@@ -137,6 +136,10 @@ static void enumerate_all()
 				// set the power mode as NORMAL
 				comres += bno055_set_power_mode( &bno055_inst_2, power_mode );
 				comres += bno055_set_operation_mode( &bno055_inst_2, BNO055_OPERATION_MODE_NDOF );
+				if (comres == 0)
+				{
+					imu_data.imus_detected |= (1 << (16 + i*2));
+				}
 			}
 		}
 	}
@@ -191,9 +194,21 @@ void read_all_1()
 	static struct bno055_quaternion_t qq;
 	for ( int i=0; i<8; i++ )
 	{
-		if ( bno055_switch_1( i ) == 0 )
+		const int imu_ind = 2*i;
+		const uint32_t imu_bit = (1 << imu_ind);
+		if (imu_data.imus_detected & imu_bit)
 		{
-			int32_t comres = bno055_read_quaternion_wxyz( &bno055_inst_1, &qq );
+			if ( bno055_switch_1( i ) == 0 )
+			{
+				const int32_t comres = bno055_read_quaternion_wxyz( &bno055_inst_1, &qq );
+				if (comres == 0)
+				{
+					osMutexWait( mutexId, osWaitForever );
+						imu_data.imus_updated |= imu_bit;
+						imu_data.quats[imu_ind] = qq;
+					osMutexRelease( mutexId );
+				}
+			}
 		}
 	}
 }
@@ -203,9 +218,18 @@ void read_all_2()
 	static struct bno055_quaternion_t qq;
 	for ( int i=0; i<8; i++ )
 	{
+		const int imu_ind = 16 + 2*i;
+		const uint32_t imu_bit = (1 << imu_ind);
 		if ( bno055_switch_2( i ) == 0 )
 		{
-			int32_t comres = bno055_read_quaternion_wxyz( &bno055_inst_2, &qq );
+			const int32_t comres = bno055_read_quaternion_wxyz( &bno055_inst_2, &qq );
+			if (comres == 0)
+			{
+				osMutexWait( mutexId, osWaitForever );
+					imu_data.imus_updated |= imu_bit;
+					imu_data.quats[imu_ind] = qq;
+				osMutexRelease( mutexId );
+			}
 		}
 	}
 }
@@ -225,17 +249,14 @@ void imu_set_inertial_mode()
 	osMessagePut( command_queue_2_id, CMD_INERTIAL_MODE, 0 );
 }
 
-void send_imu_data()
+void get_imu_data( struct ImuData * data )
 {
-	osMessagePut( command_queue_1_id, CMD_SEND_IMU_DATA, 0 );
-	osMessagePut( command_queue_2_id, CMD_SEND_IMU_DATA, 0 );
+	osMutexWait( mutexId, osWaitForever );
+		*data = imu_data;
+	osMutexRelease( mutexId );
 }
 
-void stop_imu_data()
-{
-	osMessagePut( command_queue_1_id, CMD_STOP_IMU_DATA, 0 );
-	osMessagePut( command_queue_2_id, CMD_STOP_IMU_DATA, 0 );
-}
+
 
 
 
