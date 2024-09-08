@@ -87,7 +87,20 @@ void func_task_imu_a( void * p )
 
 	for (;;)
 	{
-
+		read_all_1();
+		const osEvent event = osMessageGet(command_queue_1_id, 0);
+		if (event.status == osEventMessage)
+		{
+		    switch (event.value.v)
+		    {
+		    case CMD_MAGNETIC_MODE:
+		    	switch_to_magnetic_1();
+		    	break;
+		    case CMD_INERTIAL_MODE:
+		    	switch_to_inertial_1();
+		    	break;
+		    }
+		}
 		osDelayUntil( &PreviousWakeTime, 10 );
 	}
 }
@@ -98,7 +111,20 @@ void func_task_imu_b( void * p )
 
 	for (;;)
 	{
-
+		read_all_2();
+		const osEvent event = osMessageGet(command_queue_2_id, 0);
+		if (event.status == osEventMessage)
+		{
+		    switch (event.value.v)
+		    {
+		    case CMD_MAGNETIC_MODE:
+		    	switch_to_magnetic_2();
+		    	break;
+		    case CMD_INERTIAL_MODE:
+		    	switch_to_inertial_2();
+		    	break;
+		    }
+		}
 		osDelayUntil( &PreviousWakeTime, 10 );
 	}
 }
