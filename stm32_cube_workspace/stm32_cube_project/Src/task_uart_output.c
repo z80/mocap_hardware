@@ -9,7 +9,7 @@
 
 #include <string.h>
 
-static struct ImuData imu_data;
+
 
 static void func_task_uart_rx( void * p );
 static void func_task_uart_tx( void * p );
@@ -77,7 +77,7 @@ void func_task_uart_tx( void * p )
 		    }
 		}
 
-		osDelayUntil( &PreviousWakeTime, 10 );
+		osDelayUntil( &PreviousWakeTime, 5000 );
 	}
 }
 
@@ -88,29 +88,34 @@ char * read_cmd( int * cmd_len )
 	int char_index = 0;
 	for (int i=0; i<buffer_size; i++)
 	{
-		char c;
-		int ret = HAL_UART_Receive( &huart2, &c, 1, 10 );
-		if ( ret == HAL_OK )
+		char cc[32];
+		HAL_StatusTypeDef ret = HAL_UART_Receive( &huart2, cc, sizeof(cc), 100 );
+		if ( ( ret == HAL_OK ) || ( ret == HAL_TIMEOUT ) )
 		{
-			if (c == "\r")
-				continue;
-			if (c == '\t')
-				c = ' ';
-			buffer[char_index] = c;
-			char_index += 1;
-			if ( c == '\n' )
+			int received_bytes = sizeof(cc) - huart2.RxXferCount;
+			for ( int j=0; j<received_bytes; j++ )
 			{
-				buffer[char_index] = '\0';
-				if (cmd_len != 0)
+				char c = cc[j];
+				if (c == "\r")
+					continue;
+				if (c == '\t')
+					c = ' ';
+				buffer[char_index] = c;
+				char_index += 1;
+				if ( c == '\n' )
 				{
-					*cmd_len = char_index;
+					buffer[char_index] = '\0';
+					if (cmd_len != 0)
+					{
+						*cmd_len = char_index;
+					}
+					char_index = 0;
+					return buffer;
 				}
-				char_index = 0;
-				return buffer;
 			}
+			// Debugging line.
+			set_led( char_index+2 );
 		}
-		// Debugging line.
-		set_led( char_index );
 	}
 
 	if (cmd_len != 0)
