@@ -1,1 +1,39 @@
 _temp
+
+# STM32CubeIDE specific files
+.metadata/
+.settings/
+*.launch
+*.mxproject
+
+# Build directories
+Debug/
+Release/
+
+# Object files
+*.o
+*.obj
+#*.elf
+
+# Linker output
+*.map
+*.exp
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+
+# Executables
+*.exe
+*.out
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
