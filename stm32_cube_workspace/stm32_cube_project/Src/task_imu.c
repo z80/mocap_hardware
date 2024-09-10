@@ -72,17 +72,18 @@ void task_imu_init()
 
 	mutexId = osMutexCreate( &mutex );
 
-	// Initially enumerate all and switch to magnetic tracking.
-	enumerate_all();
-
 	// Start two tasks on two separate I2C buses.
 	osThreadCreate( osThread(task_imu_a), NULL );
-	osThreadCreate( osThread(task_imu_b), NULL );
 }
 
 
 void func_task_imu_a( void * p )
 {
+	// Initially enumerate all and switch to magnetic tracking.
+	enumerate_all();
+
+	osThreadCreate( osThread(task_imu_b), NULL );
+
 	uint32_t PreviousWakeTime = osKernelSysTick();
 
 	for (;;)
@@ -101,7 +102,7 @@ void func_task_imu_a( void * p )
 		    	break;
 		    }
 		}
-		osDelayUntil( &PreviousWakeTime, 10 );
+		osDelayUntil( &PreviousWakeTime, 1000 );
 	}
 }
 
@@ -131,6 +132,14 @@ void func_task_imu_b( void * p )
 
 static void enumerate_all()
 {
+	// Give IMUs time to start up.
+	//volatile uint32_t kkk;
+	//for ( kkk=0; kkk<168000000*3; kkk++ )
+	//	;
+	set_led( 1 + 2 + 4 );
+	osDelay( 3000 );
+	set_led( 2 );
+
 	imu_data.imus_detected = 0;
 
 	for ( int i=0; i<8; i++ )

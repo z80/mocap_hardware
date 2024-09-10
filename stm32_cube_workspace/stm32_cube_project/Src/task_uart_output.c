@@ -25,11 +25,16 @@ osThreadDef(task_uart_tx, func_task_uart_tx, osPriorityNormal, 0, 512);
 osMessageQDef(command_queue, 2, uint8_t); // Message queue with 2 slots for uint8_t messages
 osMessageQId command_queue_id;
 
+osMessageQDef(rx_queue, 32, char); // Queue of characters received via UART.
+osMessageQId rx_queue_id;
+
+
 void task_uart_output_init()
 {
 	osThreadCreate( osThread(task_uart_rx), NULL );
 	osThreadCreate( osThread(task_uart_tx), NULL );
 	command_queue_id = osMessageCreate( osMessageQ(command_queue), NULL );
+	rx_queue_id      = osMessageCreate( osMessageQ(rx_queue), NULL );
 }
 
 
@@ -40,8 +45,25 @@ void parse_cmd( char * cmd, int cmd_len );
 
 static void stream_data_func();
 
+// The character buffer for a single character.
+// Reading in interrupt mode.
+static char global_c;
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if (huart->Instance == USART2)
+	{
+	    osMessagePut(rx_queue_id, global_c, 0);
+	    // Wait for the next byte.
+	    HAL_UART_Receive_IT( &huart2, &global_c, 1 );
+	}
+}
+
 void func_task_uart_rx( void * p )
 {
+	// Initiate interrupt-based reception.
+	HAL_UART_Receive_IT( &huart2, &global_c, 1 );
+
 	for (;;)
 	{
 		int cmd_len;
@@ -77,7 +99,7 @@ void func_task_uart_tx( void * p )
 		    }
 		}
 
-		osDelayUntil( &PreviousWakeTime, 5000 );
+		osDelayUntil( &PreviousWakeTime, 33 );
 	}
 }
 
@@ -86,35 +108,29 @@ char * read_cmd( int * cmd_len )
 	static char buffer[256];
 	static const int buffer_size = sizeof(buffer);
 	int char_index = 0;
-	for (int i=0; i<buffer_size; i++)
+	while ( char_index < buffer_size )
 	{
-		char cc[32];
-		HAL_StatusTypeDef ret = HAL_UART_Receive( &huart2, cc, sizeof(cc), 100 );
-		if ( ( ret == HAL_OK ) || ( ret == HAL_TIMEOUT ) )
+		//HAL_StatusTypeDef ret = HAL_UART_Receive( &huart2, cc, sizeof(cc), 100 );
+		const osEvent event = osMessageGet( rx_queue_id, osWaitForever );
+		if (event.status == osEventMessage)
 		{
-			int received_bytes = sizeof(cc) - huart2.RxXferCount;
-			for ( int j=0; j<received_bytes; j++ )
+			char c = event.value.v;
+			if (c == '\r')
+				continue;
+			if (c == '\t')
+				c = ' ';
+			buffer[char_index] = c;
+			char_index += 1;
+			if ( c == '\n' )
 			{
-				char c = cc[j];
-				if (c == "\r")
-					continue;
-				if (c == '\t')
-					c = ' ';
-				buffer[char_index] = c;
-				char_index += 1;
-				if ( c == '\n' )
+				buffer[char_index] = '\0';
+				if (cmd_len != 0)
 				{
-					buffer[char_index] = '\0';
-					if (cmd_len != 0)
-					{
-						*cmd_len = char_index;
-					}
-					char_index = 0;
-					return buffer;
+					*cmd_len = char_index;
 				}
+				char_index = 0;
+				return buffer;
 			}
-			// Debugging line.
-			set_led( char_index+2 );
 		}
 	}
 
@@ -144,6 +160,14 @@ void parse_cmd( char * cmd, int cmd_len )
 	    word = strtok_r( NULL, " ", &saveptr );
 	}
 
+	// Need to replace all spaces and carrage returns with '\0' symbols.
+	for ( int i=0; i<cmd_len; i++ )
+	{
+		const char c = cmd[i];
+		if ( ( c == ' ' ) || ( c == '\r' ) || ( c == '\n' ) )
+			cmd[i] = '\0';
+	}
+
 	process_cmd( words, word_index );
 }
 
@@ -152,31 +176,31 @@ static void process_cmd( char ** words, int words_qty )
 	if (words_qty < 1)
 		return;
 
-	if ( strcmp( words[0], "mode" ) )
+	if ( strcmp( words[0], "mode" ) == 0 )
 	{
 		if (words_qty < 2)
 			return;
 		// Can be either magnetic or inertial.
-		if ( strcmp( words[1], "magnetic" ) )
+		if ( strcmp( words[1], "magnetic" ) == 0 )
 		{
 			imu_set_magnetic_mode();
 		}
-		else if ( strcmp( words[1], "inertial" ) )
+		else if ( strcmp( words[1], "inertial" ) == 0 )
 		{
 			imu_set_inertial_mode();
 		}
 
 	}
-	else if ( strcmp( words[0], "data" ) )
+	else if ( strcmp( words[0], "data" ) == 0 )
 	{
 		if (words_qty < 2)
 			return;
 		// Can be either magnetic or inertial.
-		if ( strcmp( words[1], "stream" ) )
+		if ( strcmp( words[1], "stream" ) == 0 )
 		{
 			osMessagePut( command_queue_id, CMD_STREAM_MODE, 0 );
 		}
-		else if ( strcmp( words[1], "stop" ) )
+		else if ( strcmp( words[1], "stop" ) == 0 )
 		{
 			osMessagePut( command_queue_id, CMD_STOP_MODE, 0 );
 		}
@@ -224,7 +248,8 @@ void stream_data_func()
 	buffer[byte_index] = '\r';
 	byte_index += 1;
 
-	int ret = HAL_UART_Transmit( &huart2, buffer, byte_index, 165000000 );
+	const HAL_StatusTypeDef ret = HAL_UART_Transmit( &huart2, buffer, byte_index, 165000000 );
+	(void)ret;
 }
 
 
@@ -233,9 +258,11 @@ void short_to_hex( int16_t val, char * hex_str )
     const char hexDigits[] = "0123456789ABCDEF";
     uint16_t unsigned_val = (uint16_t)val; // Treat the number as unsigned for two's complement representation
 
-    for (int i = 1; i>=0; i--)
+    for (int i = 3; i>=0; i--)
     {
-        hex_str[i] = hexDigits[unsigned_val % 16];
+    	const int ind = unsigned_val % 16;
+    	const char digit = hexDigits[ind];
+        hex_str[i] = digit;
         unsigned_val /= 16;
     }
 }
@@ -245,9 +272,11 @@ void ulong_to_hex( uint32_t val, char * hex_str )
     const char hexDigits[] = "0123456789ABCDEF";
     uint32_t unsigned_val = val;
 
-    for (int i = 3; i>=0; i--)
+    for (int i = 7; i>=0; i--)
     {
-        hex_str[i] = hexDigits[unsigned_val % 16];
+    	const int ind = unsigned_val % 16;
+    	const char digit = hexDigits[ind];
+        hex_str[i] = digit;
         unsigned_val /= 16;
     }
 }

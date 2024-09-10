@@ -1,0 +1,7 @@
+../Src/task_uart_output.c:256:6:short_to_hex	48	static
+../Src/task_uart_output.c:270:6:ulong_to_hex	48	static
+../Src/task_uart_output.c:75:6:func_task_uart_tx	56	static
+../Src/task_uart_output.c:32:6:task_uart_output_init	8	static
+../Src/task_uart_output.c:52:6:HAL_UART_RxCpltCallback	8	static
+../Src/task_uart_output.c:146:6:parse_cmd	40	static
+../Src/task_uart_output.c:62:6:func_task_uart_rx	32	static

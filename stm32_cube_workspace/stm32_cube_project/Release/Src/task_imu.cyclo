@@ -1,0 +1,6 @@
+../Src/task_imu.c:80:6:func_task_imu_a	19
+../Src/task_imu.c:109:6:func_task_imu_b	11
+../Src/task_imu.c:57:6:task_imu_init	1
+../Src/task_imu.c:275:6:imu_set_magnetic_mode	1
+../Src/task_imu.c:281:6:imu_set_inertial_mode	1
+../Src/task_imu.c:287:6:get_imu_data	1
