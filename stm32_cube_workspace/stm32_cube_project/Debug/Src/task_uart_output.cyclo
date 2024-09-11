@@ -6,5 +6,5 @@
 ../Src/task_uart_output.c:146:6:parse_cmd	7
 ../Src/task_uart_output.c:174:13:process_cmd	10
 ../Src/task_uart_output.c:213:6:stream_data_func	3
-../Src/task_uart_output.c:256:6:short_to_hex	2
-../Src/task_uart_output.c:270:6:ulong_to_hex	2
+../Src/task_uart_output.c:257:6:short_to_hex	2
+../Src/task_uart_output.c:271:6:ulong_to_hex	2

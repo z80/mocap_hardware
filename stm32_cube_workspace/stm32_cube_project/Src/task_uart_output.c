@@ -220,13 +220,14 @@ void stream_data_func()
 	// All data bytes except the last '\n' actually take 2 bytes to encode into text format.
 	// In total:
 	// (4 + 4 + 2*4*32)x2 + 1 = 529.
-	static char buffer[529];
+	// But at most need 8 bytes at a time.
+	static char buffer[8];
 
-	int byte_index = 0;
-	ulong_to_hex( imu_data.imus_detected, &buffer[byte_index] );
-	byte_index += 4;
-	ulong_to_hex( imu_data.imus_updated, &buffer[byte_index] );
-	byte_index += 4;
+	ulong_to_hex( imu_data.imus_detected, buffer );
+	HAL_UART_Transmit( &huart2, buffer, 8, 10 );
+
+	ulong_to_hex( imu_data.imus_updated, buffer );
+	HAL_UART_Transmit( &huart2, buffer, 8, 10 );
 
 	for ( int i=0; i<32; i++ )
 	{
@@ -235,21 +236,21 @@ void stream_data_func()
 		{
 			struct bno055_quaternion_t * q = &(imu_data.quats[i]);
 
-			short_to_hex(q->w, &buffer[byte_index]);
-			byte_index += 2;
-			short_to_hex(q->x, &buffer[byte_index]);
-			byte_index += 2;
-			short_to_hex(q->y, &buffer[byte_index]);
-			byte_index += 2;
-			short_to_hex(q->z, &buffer[byte_index]);
-			byte_index += 2;
+			short_to_hex( q->w, buffer );
+			HAL_UART_Transmit( &huart2, buffer, 4, 10 );
+
+			short_to_hex( q->x, buffer );
+			HAL_UART_Transmit( &huart2, buffer, 4, 10 );
+
+			short_to_hex( q->y, buffer );
+			HAL_UART_Transmit( &huart2, buffer, 4, 10 );
+
+			short_to_hex( q->z, buffer );
+			HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 		}
 	}
-	buffer[byte_index] = '\r';
-	byte_index += 1;
-
-	const HAL_StatusTypeDef ret = HAL_UART_Transmit( &huart2, buffer, byte_index, 165000000 );
-	(void)ret;
+	buffer[0] = '\r';
+	HAL_UART_Transmit( &huart2, buffer, 1, 10 );
 }
 
 
