@@ -16,7 +16,10 @@ async def main():
     )
 
 if __name__ == "__main__":
-    asyncio.run(main())
-
+    try:
+        asyncio.run(main())
+    except asyncio.CancelledError:
+        # task is cancelled on disconnect, so we ignore this error
+        pass
 
 
