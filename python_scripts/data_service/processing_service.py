@@ -14,9 +14,12 @@ async def queue_processor( queue, shared_data ):
         data_all = data_all[(index+1):]
 
         # Convert data to numbers and quaternions.
+        print( "processing: ", data )
+        ret = parse_data( data, shared_data )
+        print( "processed: ", ret )
 
 
-def parse_data( data ):
+def parse_data( data, shared_data ):
     L = len( data )
     # Should be at least 2 uint32 numbers with 2 bytes per digit.
     # In total it is 4x2x2 = 16 bytes.
@@ -38,6 +41,17 @@ def parse_data( data ):
     total_channels = get_channels( total_channels_bit_mask )
 
     channels = get_channels( channels_bit_mask )
+
+    for channel_ind in range(channels_qty):
+        q_data_ind = 16 + 16*channel_ind
+        q_data = data[q_data_ind:(q_data_ind+16)]
+
+        q = string_to_quaternion( q_data )
+        
+        channel_id = channels[channel_ind]
+        shared_data[channel_id] = q
+
+    return True
 
 
 

@@ -71,7 +71,7 @@ async def uart_service( queue ):
     def handle_rx(_: BleakGATTCharacteristic, data: bytearray):
         stri = str( data )
         queue.push( stri )
-        print("received:", data)
+        print("received:", stri)
 
     async with BleakClient(device, disconnected_callback=handle_disconnect) as client:
         print( "aaa" )
