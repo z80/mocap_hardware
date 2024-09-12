@@ -35,7 +35,7 @@ def sliced(data: bytes, n: int) -> Iterator[bytes]:
     return takewhile(len, (data[i : i + n] for i in count(0, n)))
 
 
-async def uart_service( queue ):
+async def uart_service( loop, queue ):
     """This is a simple "terminal" program that uses the Nordic Semiconductor
     (nRF) UART service. It reads from stdin and sends each line of data to the
     remote device. Any data received from the device is printed to stdout.
@@ -69,9 +69,9 @@ async def uart_service( queue ):
             task.cancel()
 
     def handle_rx(_: BleakGATTCharacteristic, data: bytearray):
-        stri = str( data )
-        queue.push( stri )
-        print("received:", stri)
+        stri = data.decode("utf-8")
+        asyncio.run_coroutine_threadsafe( queue.put(stri), loop )
+        #print("received:", stri)
 
     async with BleakClient(device, disconnected_callback=handle_disconnect) as client:
         print( "aaa" )

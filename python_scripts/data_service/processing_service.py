@@ -2,21 +2,31 @@
 import math
 import asyncio
 
-async def queue_processor( queue, shared_data ):
+async def processing_service( queue, shared_data ):
+    print( "#" * 300 )
     data_all = ""
+    #import pdb
+    #pdb.set_trace()
     while True:
+        #print( "Waiting for data" )
         data_batch = await queue.get()
-        data_all.apppend( data_batch )
+        #print( "Received data", data_batch )
+        data_all += data_batch
 
         # Search for "\r".
-        index = data_all.index( "\r" )
+        index = data_all.find( "\r" )
+        if index < 0:
+            continue
+
         data = data_all[:index]
         data_all = data_all[(index+1):]
 
         # Convert data to numbers and quaternions.
-        print( "processing: ", data )
+        #print( "processing: ", data )
         ret = parse_data( data, shared_data )
-        print( "processed: ", ret )
+        #print( "processed: ", ret )
+
+        print( "shared data: ", shared_data )
 
 
 def parse_data( data, shared_data ):
@@ -60,7 +70,7 @@ def parse_data( data, shared_data ):
 def string_to_uint32( stri ):
     stri = stri[:8]
     number = int( stri, 16 )
-    return stri
+    return number
 
 
 
@@ -85,7 +95,7 @@ def number_of_channels( number ):
     return accum
 
 
-def get_channels( numer ):
+def get_channels( number ):
     channels = []
     for i in range(32):
         bit = 1 << i
@@ -102,9 +112,9 @@ def get_channels( numer ):
 def string_to_quaternion( stri ):
     stri = stri[:16]
     w = string_to_int16( stri )
-    x = string_to_int_16( stri[4:] )
-    y = string_to_int_16( stri[8:] )
-    z = string_to_int_16( stri[12:] )
+    x = string_to_int16( stri[4:] )
+    y = string_to_int16( stri[8:] )
+    z = string_to_int16( stri[12:] )
 
     L = math.sqrt( float(w*w + x*x + y*y + z*z) )
 

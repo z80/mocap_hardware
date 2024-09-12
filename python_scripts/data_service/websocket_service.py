@@ -17,7 +17,7 @@ async def websocket_handler( websocket, path, shared_data ):
 
 
 
-async def websocket_service(queue, clients, shared_data):
+async def websocket_service( shared_data ):
     async with websockets.serve( lambda ws, path: websocket_handler(ws, path, shared_data), "localhost", 8765 ):
         await asyncio.Future()  # Run forever
 
