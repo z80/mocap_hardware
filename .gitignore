@@ -37,3 +37,7 @@ Release/
 *.su
 *.idb
 *.pdb
+
+# Python compiled files
+*.pyc
+
