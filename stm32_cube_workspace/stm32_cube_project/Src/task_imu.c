@@ -287,7 +287,10 @@ void imu_set_inertial_mode()
 void get_imu_data( struct ImuData * data )
 {
 	osMutexWait( mutexId, osWaitForever );
+		// Copy the data.
 		*data = imu_data;
+		// Reset the bits of updated IMU data fields.
+		imu_data.imus_updated = 0;
 	osMutexRelease( mutexId );
 }
 

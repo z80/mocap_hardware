@@ -28,6 +28,8 @@ osMessageQId command_queue_id;
 osMessageQDef(rx_queue, 32, char); // Queue of characters received via UART.
 osMessageQId rx_queue_id;
 
+osMessageQDef(adc_queue, 2, uint32_t); // Queue of characters received via UART.
+osMessageQId adc_queue_id;
 
 void task_uart_output_init()
 {
@@ -35,9 +37,10 @@ void task_uart_output_init()
 	osThreadCreate( osThread(task_uart_tx), NULL );
 	command_queue_id = osMessageCreate( osMessageQ(command_queue), NULL );
 	rx_queue_id      = osMessageCreate( osMessageQ(rx_queue), NULL );
+	adc_queue_id     = osMessageCreate( osMessageQ(adc_queue), NULL );
 }
 
-
+extern ADC_HandleTypeDef  hadc1;
 extern UART_HandleTypeDef huart2;
 
 static char * read_cmd();
@@ -59,6 +62,17 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	}
 }
 
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+
+    if (hadc->Instance == ADC1)
+    {
+        // Get the converted value
+        uint32_t adc_value = HAL_ADC_GetValue( hadc );
+        osMessagePut(adc_queue_id, adc_value, 0);
+    }
+}
+
 void func_task_uart_rx( void * p )
 {
 	// Initiate interrupt-based reception.
@@ -76,19 +90,28 @@ void func_task_uart_tx( void * p )
 {
 	uint32_t PreviousWakeTime = osKernelSysTick();
 	uint8_t stream_data = 0;
+	static uint32_t adc_value = 0;
 
 	for ( ;; )
 	{
+		// Request ADC conversion.
+		HAL_ADC_Start_IT( &hadc1 );
+		const osEvent event_adc = osMessageGet( adc_queue_id, 0 );
+		if (event_adc.status == osEventMessage)
+		{
+			adc_value = event_adc.value.v;
+		}
+
 		if ( stream_data )
 		{
-			stream_data_func();
+			stream_data_func( adc_value );
 		}
 
 		// Check incoming commands.
-		const osEvent event = osMessageGet(command_queue_id, 0);
-		if (event.status == osEventMessage)
+		const osEvent event_cmd = osMessageGet(command_queue_id, 0);
+		if (event_cmd.status == osEventMessage)
 		{
-		    switch (event.value.v)
+		    switch (event_cmd.value.v)
 		    {
 		    case CMD_STREAM_MODE:
 		    	stream_data = 1;
@@ -210,7 +233,7 @@ static void process_cmd( char ** words, int words_qty )
 static void short_to_hex( int16_t val, char * hex_str );
 static void ulong_to_hex( uint32_t val, char * hex_str );
 
-void stream_data_func()
+void stream_data_func( uint32_t adc_value )
 {
 	static struct ImuData imu_data;
 	get_imu_data( &imu_data );
@@ -222,6 +245,9 @@ void stream_data_func()
 	// (4 + 4 + 2*4*32)x2 + 1 = 529.
 	// But at most need 8 bytes at a time.
 	static char buffer[8];
+
+	ushort_to_hex( (uint16_t)adc_value, buffer );
+	HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 
 	ulong_to_hex( imu_data.imus_detected, buffer );
 	HAL_UART_Transmit( &huart2, buffer, 8, 10 );
@@ -258,6 +284,20 @@ void short_to_hex( int16_t val, char * hex_str )
 {
     const char hexDigits[] = "0123456789ABCDEF";
     uint16_t unsigned_val = (uint16_t)val; // Treat the number as unsigned for two's complement representation
+
+    for (int i = 3; i>=0; i--)
+    {
+    	const int ind = unsigned_val % 16;
+    	const char digit = hexDigits[ind];
+        hex_str[i] = digit;
+        unsigned_val /= 16;
+    }
+}
+
+void ushort_to_hex( uint16_t val, char * hex_str )
+{
+    const char hexDigits[] = "0123456789ABCDEF";
+    uint16_t unsigned_val = val; // Treat the number as unsigned for two's complement representation
 
     for (int i = 3; i>=0; i--)
     {
