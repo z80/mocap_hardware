@@ -1,8 +1,9 @@
 
 import math
+import json
 import asyncio
 
-async def processing_service( queue, shared_data ):
+async def processing_service( queue, clients_list, shared_data ):
     print( "#" * 300 )
     data_all = ""
     #import pdb
@@ -26,6 +27,12 @@ async def processing_service( queue, shared_data ):
         ret = parse_data( data, shared_data )
         #print( "processed: ", ret )
 
+        if ret:
+            qty = len(clients_list)
+            if qty > 0:
+                stri = json.dumps( shared_data )
+                await asyncio.wait( [ client.send( stri ) for client in clients_list ] )
+
         print( "shared data: ", shared_data )
 
 
@@ -33,27 +40,33 @@ def parse_data( data, shared_data ):
     L = len( data )
     # Should be at least 2 uint32 numbers with 2 bytes per digit.
     # In total it is 4x2x2 = 16 bytes.
-    if L < 16:
+    if L < 20:
         return False
 
-    channels_stri = data[8:16]
+    voltage_adc = string_to_uint16( data[:4] )
+    voltage = float(voltage_adc) * (2.0 * 3.3 / 4095.0)
+    shared_data['v_batt'] = voltage
+
+
+    channels_stri = data[12:20]
     channels_bit_mask = string_to_uint32( channels_stri )
     channels_qty = number_of_channels( channels_bit_mask )
 
     data_size = channels_qty * 16
     # Total size
-    total_expected_size = data_size + 16
+    total_expected_size = data_size + 20
 
     if L != total_expected_size:
         return False
 
-    total_channels_bit_mask = string_to_uint32( data )
+    total_channels_bit_mask = string_to_uint32( data[4:12] )
+
     total_channels = get_channels( total_channels_bit_mask )
 
     channels = get_channels( channels_bit_mask )
 
     for channel_ind in range(channels_qty):
-        q_data_ind = 16 + 16*channel_ind
+        q_data_ind = 20 + 16*channel_ind
         q_data = data[q_data_ind:(q_data_ind+16)]
 
         q = string_to_quaternion( q_data )
@@ -73,6 +86,15 @@ def string_to_uint32( stri ):
     return number
 
 
+
+
+def string_to_uint16( stri ):
+    stri = stri[:4]
+    number = int( stri, 16 )
+
+    return number
+
+    
 
 def string_to_int16( stri ):
     stri = stri[:4]

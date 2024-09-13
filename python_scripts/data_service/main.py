@@ -8,11 +8,12 @@ from websocket_service  import websocket_service
 async def main():
     loop = asyncio.get_running_loop()
     queue = asyncio.Queue()
+    clients_list = []
     shared_data = {}  # Shared dictionary
     await asyncio.gather(
         uart_service(loop, queue),
-        processing_service(queue, shared_data), 
-        websocket_service(shared_data)
+        processing_service(queue, clients_list, shared_data), 
+        websocket_service(clients_list, shared_data)
     )
 
 if __name__ == "__main__":
