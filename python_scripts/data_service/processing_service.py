@@ -3,7 +3,7 @@ import math
 import json
 import asyncio
 
-async def processing_service( queue, clients_list, shared_data ):
+async def processing_service( queue, clients_list, shared_data, semaphore ):
     print( "#" * 300 )
     data_all = ""
     #import pdb
@@ -33,6 +33,7 @@ async def processing_service( queue, clients_list, shared_data ):
                 stri = json.dumps( shared_data )
                 await asyncio.wait( [ client.send( stri ) for client in clients_list ] )
 
+        semaphore.release()
         print( "shared data: ", shared_data )
 
 

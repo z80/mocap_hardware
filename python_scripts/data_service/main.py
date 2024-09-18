@@ -10,10 +10,12 @@ async def main():
     queue = asyncio.Queue()
     clients_list = []
     shared_data = {}  # Shared dictionary
+    semaphore = asyncio.Semaphore(0)
+
     await asyncio.gather(
         uart_service(loop, queue),
-        processing_service(queue, clients_list, shared_data), 
-        websocket_service(clients_list, shared_data)
+        processing_service(queue, clients_list, shared_data, semaphore), 
+        websocket_service(clients_list, shared_data, semaphore)
     )
 
 if __name__ == "__main__":
