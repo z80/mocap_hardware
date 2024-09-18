@@ -69,7 +69,8 @@ def parse_data( data, shared_data ):
     total_channels = get_channels( total_channels_bit_mask )
 
     channels = get_channels( channels_bit_mask )
-
+    
+    quats = {}
     for channel_ind in range(channels_qty):
         q_data_ind = 20 + 16*channel_ind
         q_data = data[q_data_ind:(q_data_ind+16)]
@@ -77,7 +78,8 @@ def parse_data( data, shared_data ):
         q = string_to_quaternion( q_data )
         
         channel_id = channels[channel_ind]
-        shared_data[channel_id] = q
+        quats[channel_id] = q
+    shared_data["quats"] = quats
 
     return True
 
