@@ -31,9 +31,13 @@ async def processing_service( queue, clients_list, shared_data, semaphore ):
             qty = len(clients_list)
             if qty > 0:
                 stri = json.dumps( shared_data )
-                await asyncio.wait( [ client.send( stri ) for client in clients_list ] )
+                tasks = [ client.send( stri ) for client in clients_list ]
+                try:
+                    await asyncio.gather(*tasks)
+                except:
+                    print( "Something went wrong sending data." )
 
-        semaphore.release()
+        #semaphore.release()
         print( "shared data: ", shared_data )
 
 

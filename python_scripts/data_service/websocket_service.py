@@ -22,15 +22,15 @@ async def broadcast_data( clients_list, shared_data, semaphore ):
         await semaphore.acquire()
         if clients_list:
             data_stri = json.dumps( shared_data )
-            await asyncio.wait( [ client.send(data_stri) for client in clients_list ] )
+            #await asyncio.wait( [ client.send(data_stri) for client in clients_list ] )
 
 
 
 async def websocket_service( clients_list, shared_data, semaphore ):
     server = websockets.serve( lambda ws, path: websocket_handler(ws, path, clients_list), "localhost", 8765 )
     await asyncio.gather(
-        server, 
-        broadcast_data( clients_list, shared_data, semaphore )
+        server #, 
+        #broadcast_data( clients_list, shared_data, semaphore )
         )
 
 
