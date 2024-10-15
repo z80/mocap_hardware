@@ -184,9 +184,9 @@ static int8_t init_bmi08( struct T_BMI085 * dev )
     if ( rslt != BMI08_OK )
     	return rslt;
 
-    bmi08->gyro_cfg.odr = BMI08_GYRO_BW_230_ODR_2000_HZ;
+    bmi08->gyro_cfg.odr = BMI08_GYRO_BW_47_ODR_400_HZ;
     bmi08->gyro_cfg.range = BMI08_GYRO_RANGE_250_DPS;
-    bmi08->gyro_cfg.bw = BMI08_GYRO_BW_230_ODR_2000_HZ;
+    bmi08->gyro_cfg.bw = BMI08_GYRO_BW_47_ODR_400_HZ;
     bmi08->gyro_cfg.power = BMI08_GYRO_PM_NORMAL;
 
     rslt = bmi08g_set_power_mode(bmi08);
@@ -194,6 +194,13 @@ static int8_t init_bmi08( struct T_BMI085 * dev )
     	return rslt;
 
     rslt = bmi08g_set_meas_conf(bmi08);
+    if ( rslt != BMI08_OK )
+    	return rslt;
+
+    //struct bmi08_data_sync_cfg sync_cfg;
+    //sync_cfg.mode = BMI08_ACCEL_DATA_SYNC_MODE_400HZ;
+
+    //rslt = bmi08a_configure_data_synchronization( sync_cfg, bmi08 );
 
     return rslt;
 }
@@ -241,6 +248,7 @@ static void func_task_bmi085( void * p )
 	{
 	    rslt = bmi08g_get_data( &gyro, &(bmi085.bmi085) );
 	    rslt = bmi08a_get_data( &accel, &(bmi085.bmi085) );
+		//rslt = bmi08a_get_synchronized_data( &accel, &gyro, &(bmi085.bmi085) );
 	    set_instant_led( (uint8_t)(accel.x & 0xFF) );
 		bmi085_delay( 10000, 0 );
 	    ind = 0;
