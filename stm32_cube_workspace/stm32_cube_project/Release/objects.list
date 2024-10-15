@@ -55,3 +55,8 @@
 "./USB_DEVICE/App/usbd_custom_hid_if.o"
 "./USB_DEVICE/App/usbd_desc.o"
 "./USB_DEVICE/Target/usbd_conf.o"
+"./bmi085/bmi088_anymotiona.o"
+"./bmi085/bmi088_mma.o"
+"./bmi085/bmi08a.o"
+"./bmi085/bmi08g.o"
+"./bmi085/bmi08xa.o"

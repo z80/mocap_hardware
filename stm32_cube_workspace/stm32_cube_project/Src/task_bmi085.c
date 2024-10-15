@@ -246,6 +246,7 @@ static void func_task_bmi085( void * p )
 
 	for (;;)
 	{
+		bmi085_switch_2( 6 );
 	    rslt = bmi08g_get_data( &gyro, &(bmi085.bmi085) );
 	    rslt = bmi08a_get_data( &accel, &(bmi085.bmi085) );
 		//rslt = bmi08a_get_synchronized_data( &accel, &gyro, &(bmi085.bmi085) );

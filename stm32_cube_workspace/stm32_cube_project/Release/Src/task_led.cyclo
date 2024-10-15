@@ -1,3 +1,4 @@
-../Src/task_led.c:31:6:func_task_led	4
+../Src/task_led.c:49:6:func_task_led	1
 ../Src/task_led.c:17:6:task_led_init	1
 ../Src/task_led.c:23:6:set_led	1
+../Src/task_led.c:30:6:set_instant_led	4
