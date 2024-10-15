@@ -7,6 +7,7 @@
 void task_led_init();
 
 void set_led( uint8_t led );
+void set_instant_led( uint8_t led );
 
 
 #endif

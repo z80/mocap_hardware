@@ -27,6 +27,24 @@ void set_led( uint8_t led )
 	osMutexRelease( mutexId );
 }
 
+void set_instant_led( uint8_t led )
+{
+	if (led & 0x01)
+		HAL_GPIO_WritePin( LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_SET );
+	else
+		HAL_GPIO_WritePin( LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_RESET );
+
+	if (led & 0x02)
+		HAL_GPIO_WritePin( LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_SET );
+	else
+		HAL_GPIO_WritePin( LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET );
+
+	if (led & 0x04)
+		HAL_GPIO_WritePin( LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET );
+	else
+		HAL_GPIO_WritePin( LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET );
+}
+
 
 void func_task_led( void * p )
 {
@@ -39,7 +57,7 @@ void func_task_led( void * p )
 		uint8_t v = led_value;
 		osMutexRelease( mutexId );
 
-		if (v & 0x01)
+		/*if (v & 0x01)
 			HAL_GPIO_TogglePin( LED_0_GPIO_Port, LED_0_Pin );
 		else
 			HAL_GPIO_WritePin( LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_RESET );
@@ -52,7 +70,7 @@ void func_task_led( void * p )
 		if (v & 0x04)
 			HAL_GPIO_TogglePin( LED_2_GPIO_Port, LED_2_Pin );
 		else
-			HAL_GPIO_WritePin( LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET );
+			HAL_GPIO_WritePin( LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET );*/
 
 		osDelay(500);
 	}

@@ -3,6 +3,7 @@
 #include "task_led.h"
 
 #include "cmsis_os.h"
+#include "bmi08.h"
 #include "bmi08x.h"
 #include "bmi08_defs.h"
 
@@ -145,7 +146,19 @@ static int8_t init_bmi08( struct T_BMI085 * dev )
 
     int8_t rslt;
 
+    rslt = bmi08a_soft_reset( bmi08 );
+    if ( rslt != BMI08_OK )
+    	return rslt;
+
+    rslt = bmi08g_soft_reset( bmi08 );
+    if ( rslt != BMI08_OK )
+    	return rslt;
+
     rslt = bmi08xa_init(bmi08);
+    if ( rslt != BMI08_OK )
+    	return rslt;
+
+    rslt = bmi08a_init(bmi08);
     if ( rslt != BMI08_OK )
     	return rslt;
 
@@ -157,8 +170,8 @@ static int8_t init_bmi08( struct T_BMI085 * dev )
     if ( rslt != BMI08_OK )
     	return rslt;
 
- 	bmi08->accel_cfg.odr = BMI08_ACCEL_ODR_1600_HZ;
-   	bmi08->accel_cfg.range = BMI085_ACCEL_RANGE_16G;
+ 	bmi08->accel_cfg.odr = BMI08_ACCEL_ODR_100_HZ;
+   	bmi08->accel_cfg.range = BMI085_ACCEL_RANGE_8G;
 
     bmi08->accel_cfg.power = BMI08_ACCEL_PM_ACTIVE;
     bmi08->accel_cfg.bw = BMI08_ACCEL_BW_NORMAL;
@@ -204,23 +217,33 @@ void task_bmi085_init()
 
 static void func_task_bmi085( void * p )
 {
-	bmi08_interface_init( &bmi085 );
 	int ind;
 	uint8_t rslt;
+    static struct bmi08_sensor_data accel, gyro;
+	bmi08_interface_init( &bmi085 );
 
+	//for (;;)
+	{
+		//bmi085_delay( 10000, 0 );
+	}
 	//for ( ind=0; ind<8; ind++ )
 	{
 		bmi085_switch_2( 6 );
 		rslt = init_bmi08( &bmi085 );
+		bmi085_delay( 500000, 0 );
 		//if ( rslt == BMI08_OK )
 		//	break;
 	}
 
-	set_led( ind );
+	//set_led( ind );
 
 	for (;;)
 	{
+	    rslt = bmi08g_get_data( &gyro, &(bmi085.bmi085) );
+	    rslt = bmi08a_get_data( &accel, &(bmi085.bmi085) );
+	    set_instant_led( (uint8_t)(accel.x & 0xFF) );
 		bmi085_delay( 10000, 0 );
+	    ind = 0;
 	}
 }
 
