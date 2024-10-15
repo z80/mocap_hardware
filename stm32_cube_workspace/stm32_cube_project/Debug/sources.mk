@@ -34,4 +34,5 @@ Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang \
 Src \
 USB_DEVICE/App \
 USB_DEVICE/Target \
+bmi085 \
 

@@ -1979,6 +1979,35 @@ Discarded input sections
  .text          0x00000000        0x0 ./Src/bno055_io.o
  .data          0x00000000        0x0 ./Src/bno055_io.o
  .bss           0x00000000        0x0 ./Src/bno055_io.o
+ .text          0x00000000        0x0 ./Src/task_bmi085.o
+ .data          0x00000000        0x0 ./Src/task_bmi085.o
+ .bss           0x00000000        0x0 ./Src/task_bmi085.o
+ .text.bmi085_bus_write_i2c_1
+                0x00000000       0x2c ./Src/task_bmi085.o
+ .text.bmi085_bus_read_i2c_1
+                0x00000000       0x2c ./Src/task_bmi085.o
+ .text.bmi085_delay
+                0x00000000       0x14 ./Src/task_bmi085.o
+ .text.func_task_bmi085
+                0x00000000       0xd4 ./Src/task_bmi085.o
+ .text.task_bmi085_init
+                0x00000000        0xc ./Src/task_bmi085.o
+ .rodata.str1.1
+                0x00000000        0xc ./Src/task_bmi085.o
+ .rodata.os_thread_def_task_bmi085
+                0x00000000       0x1c ./Src/task_bmi085.o
+ .bss.bmi085    0x00000000       0x3c ./Src/task_bmi085.o
+ .bss.gyro_dev_add_b
+                0x00000000        0x1 ./Src/task_bmi085.o
+ .bss.gyro_dev_add_a
+                0x00000000        0x1 ./Src/task_bmi085.o
+ .bss.acc_dev_add_b
+                0x00000000        0x1 ./Src/task_bmi085.o
+ .bss.acc_dev_add_a
+                0x00000000        0x1 ./Src/task_bmi085.o
+ .comment       0x00000000       0x44 ./Src/task_bmi085.o
+ .ARM.attributes
+                0x00000000       0x34 ./Src/task_bmi085.o
  .text          0x00000000        0x0 ./Src/task_imu.o
  .data          0x00000000        0x0 ./Src/task_imu.o
  .bss           0x00000000        0x0 ./Src/task_imu.o
@@ -2308,6 +2337,7 @@ LOAD ./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o
 LOAD ./Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o
 LOAD ./Src/bno055.o
 LOAD ./Src/bno055_io.o
+LOAD ./Src/task_bmi085.o
 LOAD ./Src/task_imu.o
 LOAD ./Src/task_led.o
 LOAD ./Src/task_uart_output.o
