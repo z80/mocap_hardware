@@ -8,6 +8,11 @@ void magdwick_init_params( struct TMagdwickParams * params, float beta, float de
 {
     params->beta    = beta;
     params->delta_t = delta_t;
+
+    params->lp_alpha         = 0.001f;
+    params->acc_threshold    = 0.01f;
+    params->gyro_threshold   = 0.02f;
+    params->zero_samples_qty = 300;
 }
 
 void magdwick_init_quat( struct TMagdwickQuat * quat )
@@ -106,6 +111,20 @@ void magdwick_update_imu( struct TMagdwickQuat * quat, struct TMagdwickParams * 
     quat->q[2] = q2;
     quat->q[3] = q3;
 }
+
+void magdwick_init_bias( struct TMagdwickBiasEstimation * params )
+{
+	params->lowpass_a[0] = params->lowpass_a[1] = params->lowpass_a[2] = 0.0f;
+	params->lowpass_w[0] = params->lowpass_w[1] = params->lowpass_w[2] = 0.0f;
+	params->bias_w[0]    = params->bias_w[1]    = params->bias_w[2] = 0.0f;
+	params->zero_samples_qty = 0;
+}
+
+void magdwick_update_bias( struct TMagdwickBiasEstimation * params )
+{
+
+}
+
 
 
 
