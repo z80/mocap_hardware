@@ -9,6 +9,8 @@
 
 #include "main.h"
 
+#include "magdwick_imu.h"
+
 #define BMI08_READ_WRITE_LEN  UINT8_C(46)
 
 #define MUL_ADDR_1      (0x70<<1)
@@ -22,6 +24,19 @@ uint8_t acc_dev_add_a,
 		acc_dev_add_b;
 uint8_t gyro_dev_add_a,
 		gyro_dev_add_b;
+
+static float acc_to_1(int16_t val)
+{
+	// For 8g scale coefficient is 8 / 32768 = 0.000244140625
+    return (float)val * 0.000244140625;
+}
+
+static float gyro_to_rps(int16_t val)
+{
+	// For 250DPS coeff is 250/180*pi / 32768 = 1.33158054500156e-4
+    return (float)val * 1.33158054500156e-4;
+}
+
 
 static void bmi085_delay( uint32_t usec, void *intf_ptr );
 
@@ -227,6 +242,14 @@ static void func_task_bmi085( void * p )
 	int ind;
 	uint8_t rslt;
     static struct bmi08_sensor_data accel, gyro;
+
+    static struct TMagdwickParams magdwick_params;
+    static struct TMagdwickQuat   magdwick_quat;
+    static struct TMagdwickImuData magdwick_imu;
+
+    magdwick_init_params( &magdwick_params, 0.1, 0.01 );
+    magdwick_init_quat( &magdwick_quat );
+
 	bmi08_interface_init( &bmi085 );
 
 	//for (;;)
@@ -250,9 +273,33 @@ static void func_task_bmi085( void * p )
 	    rslt = bmi08g_get_data( &gyro, &(bmi085.bmi085) );
 	    rslt = bmi08a_get_data( &accel, &(bmi085.bmi085) );
 		//rslt = bmi08a_get_synchronized_data( &accel, &gyro, &(bmi085.bmi085) );
-	    set_instant_led( (uint8_t)(accel.x & 0xFF) );
+	    set_instant_led( (uint8_t)(accel.x & 0x07) );
+
+	    magdwick_imu.a[0] = acc_to_1( accel.x );
+	    magdwick_imu.a[1] = acc_to_1( accel.y );
+	    magdwick_imu.a[2] = acc_to_1( accel.z );
+
+	    magdwick_imu.w[0] = gyro_to_rps( gyro.x );
+	    magdwick_imu.w[1] = gyro_to_rps( gyro.y );
+	    magdwick_imu.w[2] = gyro_to_rps( gyro.z );
+
+	    magdwick_update_imu( &magdwick_quat, &magdwick_params, &magdwick_imu );
+
+	    set_instant_led( (uint8_t)(accel.x & 0x03) );
+
 		bmi085_delay( 10000, 0 );
 	    ind = 0;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
 

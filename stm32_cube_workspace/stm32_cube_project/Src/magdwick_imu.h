@@ -2,6 +2,8 @@
 #ifndef __MAGDWICK_H_
 #define __MAGDWICK_H_
 
+#include "main.h"
+
 struct TMagdwickParams
 {
     float beta;
@@ -33,7 +35,7 @@ struct TMagdwickBiasEstimation
 	float bias_w[3];
 };
 
-void magdwick_init_params( struct TMagdwickParams * params, float beta, float freq );
+void magdwick_init_params( struct TMagdwickParams * params, float beta, float delta_t );
 void magdwick_init_quat( struct TMagdwickQuat * quat );
 void magdwick_update_imu( struct TMagdwickQuat * quat, struct TMagdwickParams * params, struct TMagdwickImuData * imu );
 
