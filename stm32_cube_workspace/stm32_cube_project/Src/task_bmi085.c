@@ -244,10 +244,12 @@ static void func_task_bmi085( void * p )
     static struct bmi08_sensor_data accel, gyro;
 
     static struct TMagdwickParams magdwick_params;
+    static struct TMagdwickBiasEstimation magdwick_estimation;
     static struct TMagdwickQuat   magdwick_quat;
     static struct TMagdwickImuData magdwick_imu;
 
     magdwick_init_params( &magdwick_params, 0.1, 0.01 );
+    magdwick_init_bias( &magdwick_estimation );
     magdwick_init_quat( &magdwick_quat );
 
 	bmi08_interface_init( &bmi085 );
@@ -283,6 +285,7 @@ static void func_task_bmi085( void * p )
 	    magdwick_imu.w[1] = gyro_to_rps( gyro.y );
 	    magdwick_imu.w[2] = gyro_to_rps( gyro.z );
 
+	    magdwick_update_bias( &magdwick_params, &magdwick_estimation, &magdwick_imu );
 	    magdwick_update_imu( &magdwick_quat, &magdwick_params, &magdwick_imu );
 
 	    set_instant_led( (uint8_t)(accel.x & 0x03) );

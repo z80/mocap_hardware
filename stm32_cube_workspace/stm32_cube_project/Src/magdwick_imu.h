@@ -40,7 +40,7 @@ void magdwick_init_quat( struct TMagdwickQuat * quat );
 void magdwick_update_imu( struct TMagdwickQuat * quat, struct TMagdwickParams * params, struct TMagdwickImuData * imu );
 
 void magdwick_init_bias( struct TMagdwickBiasEstimation * params );
-void magdwick_update_bias( struct TMagdwickBiasEstimation * params );
+void magdwick_update_bias( struct TMagdwickParams * params, struct TMagdwickBiasEstimation * estimation, struct TMagdwickImuData * imu );
 
 
 

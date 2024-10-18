@@ -9,10 +9,10 @@ void magdwick_init_params( struct TMagdwickParams * params, float beta, float de
     params->beta    = beta;
     params->delta_t = delta_t;
 
-    params->lp_alpha         = 0.001f;
-    params->acc_threshold    = 0.01f;
-    params->gyro_threshold   = 0.02f;
-    params->zero_samples_qty = 300;
+    params->lp_alpha         = 0.01f;
+    params->acc_threshold    = 0.04f;
+    params->gyro_threshold   = 0.04f;
+    params->zero_samples_qty = 100;
 }
 
 void magdwick_init_quat( struct TMagdwickQuat * quat )
@@ -120,9 +120,90 @@ void magdwick_init_bias( struct TMagdwickBiasEstimation * params )
 	params->zero_samples_qty = 0;
 }
 
-void magdwick_update_bias( struct TMagdwickBiasEstimation * params )
+void magdwick_update_bias( struct TMagdwickParams * params, struct TMagdwickBiasEstimation * estimation, struct TMagdwickImuData * imu )
 {
+	// Compare readings with their low-pass counterparts.
+	const float alpha = params->lp_alpha;
+	const float _1_alpha = 1.0f - alpha;
 
+	float da = imu->a[0] - estimation->lowpass_a[0];
+	da = (da >= 0.0) ? da : -da;
+	if ( da < params->acc_threshold )
+	{
+		da = imu->a[1] - estimation->lowpass_a[1];
+		da = (da >= 0.0) ? da : -da;
+		if ( da < params->acc_threshold )
+		{
+			da = imu->a[2] - estimation->lowpass_a[2];
+			da = (da >= 0.0) ? da : -da;
+			if ( da < params->acc_threshold )
+			{
+				da = imu->w[0] - estimation->lowpass_w[0];
+				da = (da >= 0.0) ? da : -da;
+				if ( da < params->gyro_threshold )
+				{
+					da = imu->w[1] - estimation->lowpass_w[1];
+					da = (da >= 0.0) ? da : -da;
+					if ( da < params->gyro_threshold )
+					{
+						da = imu->w[2] - estimation->lowpass_w[2];
+						da = (da >= 0.0) ? da : -da;
+						if ( da < params->gyro_threshold )
+						{
+							if ( estimation->zero_samples_qty < params->zero_samples_qty )
+							{
+								estimation->zero_samples_qty += 1;
+							}
+							else
+							{
+								estimation->bias_w[0] = _1_alpha*estimation->bias_w[0] + alpha*imu->w[0];
+								estimation->bias_w[1] = _1_alpha*estimation->bias_w[1] + alpha*imu->w[1];
+								estimation->bias_w[2] = _1_alpha*estimation->bias_w[2] + alpha*imu->w[2];
+							}
+						}
+						else
+						{
+							estimation->zero_samples_qty = 0;
+						}
+					}
+					else
+					{
+						estimation->zero_samples_qty = 0;
+					}
+				}
+				else
+				{
+					estimation->zero_samples_qty = 0;
+				}
+			}
+			else
+			{
+				estimation->zero_samples_qty = 0;
+			}
+		}
+		else
+		{
+			estimation->zero_samples_qty = 0;
+		}
+	}
+	else
+	{
+		estimation->zero_samples_qty = 0;
+	}
+
+	// Update the low-pass values for accelerometer and gyroscope readings.
+	estimation->lowpass_a[0] = _1_alpha*estimation->lowpass_a[0] + alpha*imu->a[0];
+	estimation->lowpass_a[1] = _1_alpha*estimation->lowpass_a[1] + alpha*imu->a[1];
+	estimation->lowpass_a[2] = _1_alpha*estimation->lowpass_a[2] + alpha*imu->a[2];
+
+	estimation->lowpass_w[0] = _1_alpha*estimation->lowpass_w[0] + alpha*imu->w[0];
+	estimation->lowpass_w[1] = _1_alpha*estimation->lowpass_w[1] + alpha*imu->w[1];
+	estimation->lowpass_w[2] = _1_alpha*estimation->lowpass_w[2] + alpha*imu->w[2];
+
+	// Subtract bias;
+	imu->w[0] -= estimation->bias_w[0];
+	imu->w[1] -= estimation->bias_w[1];
+	imu->w[2] -= estimation->bias_w[2];
 }
 
 
