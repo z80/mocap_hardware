@@ -9,219 +9,46 @@
 
 #include "main.h"
 
+#include "bmi085_io.h"
 #include "magdwick_imu.h"
-
-#define BMI08_READ_WRITE_LEN  UINT8_C(46)
-
-#define MUL_ADDR_1      (0x70<<1)
-#define MUL_ADDR_2      (0x71<<1)
-#define I2C_TIMEOUT     168000000
 
 extern I2C_HandleTypeDef hi2c1;
 extern I2C_HandleTypeDef hi2c2;
 
-uint8_t acc_dev_add_a,
-		acc_dev_add_b;
-uint8_t gyro_dev_add_a,
-		gyro_dev_add_b;
-
-static float acc_to_1(int16_t val)
+struct TImu
 {
-	// For 8g scale coefficient is 8 / 32768 = 0.000244140625
-    return (float)val * 0.000244140625;
-}
+	uint8_t index;
 
-static float gyro_to_rps(int16_t val)
-{
-	// For 250DPS coeff is 250/180*pi / 32768 = 1.33158054500156e-4
-    return (float)val * 1.33158054500156e-4;
-}
-
-
-static void bmi085_delay( uint32_t usec, void *intf_ptr );
-
-static uint8_t bmi085_switch_1( uint8_t channel );
-static uint8_t bmi085_switch_2( uint8_t channel );
-static BMI08_INTF_RET_TYPE bmi085_bus_read_i2c_1( uint8_t reg_addr, uint8_t *reg_data, uint8_t qty, void *intf_ptr );
-static BMI08_INTF_RET_TYPE bmi085_bus_write_i2c_1( uint8_t reg_addr, uint8_t *reg_data, uint8_t qty, void *intf_ptr );
-static BMI08_INTF_RET_TYPE bmi085_bus_read_i2c_2( uint8_t reg_addr, uint8_t * reg_data, uint8_t qty, void *intf_ptr );
-static BMI08_INTF_RET_TYPE bmi085_bus_write_i2c_2( uint8_t reg_addr, uint8_t * reg_data, uint8_t qty, void *intf_ptr );
-
-
-struct T_BMI085
-{
-	uint8_t acc_addr;
-	uint8_t gyro_addr;
-	struct bmi08_dev bmi085;
+	struct TMagdwickQuat           quat;
+	struct TMagdwickBiasEstimation bias;
 };
 
-//struct T_BMI085 imus_a[8],
-//                imus_b[8];
-struct T_BMI085 bmi085;
+#define STATE_SET_CHANNEL 1
+#define STATE_READ_ACC    2
+#define STATE_READ_GYRO   3
 
-static uint8_t bmi08_interface_init(struct T_BMI085 *bma);
-
-
-static void bmi085_delay( uint32_t usec, void *intf_ptr )
+struct TAllImus
 {
-	(void)intf_ptr;
+	int imus_qty_a,
+	    imus_qty_b;
+	int imu_index_a,
+	    imu_index_b;
 
-	uint32_t msec = usec / 1000;
-	if (msec < 1)
-		msec = 1;
-	osDelay( msec );
-}
+	uint8_t state_a,
+	        state_b;
 
-static uint8_t bmi085_switch_1( uint8_t channel )
-{
-    unsigned char data = (1 << channel);
-	HAL_StatusTypeDef res = HAL_I2C_Master_Transmit( &hi2c1, MUL_ADDR_1, &data, 1, I2C_TIMEOUT );
-	int8_t result = ( res == HAL_OK ) ? 0 : 1;
+	uint8_t raw_data_a[6],
+	        raw_data_b[6];
+	struct TImu imus_a[16];
+	struct TImu imus_b[16];
+	struct TMagdwickParams params;
+};
 
-    return result;
-}
-
-static uint8_t bmi085_switch_2( uint8_t channel )
-{
-    unsigned char data = (1 << channel);
-	HAL_StatusTypeDef res = HAL_I2C_Master_Transmit( &hi2c2, MUL_ADDR_2, &data, 1, I2C_TIMEOUT );
-	int8_t result = ( res == HAL_OK ) ? 0 : 1;
-
-    return result;
-}
-
-static BMI08_INTF_RET_TYPE bmi085_bus_read_i2c_1( uint8_t reg_addr, uint8_t *reg_data, uint8_t qty, void *intf_ptr )
-{
-	uint8_t dev_addr = *(uint8_t*)intf_ptr;
-	dev_addr *= 2;
-	HAL_StatusTypeDef res = HAL_I2C_Mem_Read( &hi2c1, dev_addr, reg_addr, I2C_MEMADD_SIZE_8BIT, reg_data, qty, I2C_TIMEOUT );
-	int8_t result = ( res == HAL_OK ) ? BMI08_INTF_RET_SUCCESS : (BMI08_INTF_RET_SUCCESS+1);
-	return result;
-}
-
-static BMI08_INTF_RET_TYPE bmi085_bus_write_i2c_1( uint8_t reg_addr, uint8_t *reg_data, uint8_t qty, void *intf_ptr )
-{
-	uint8_t dev_addr = *(uint8_t*)intf_ptr;
-	dev_addr *= 2;
-	HAL_StatusTypeDef res = HAL_I2C_Mem_Write( &hi2c1, dev_addr, reg_addr, I2C_MEMADD_SIZE_8BIT, reg_data, qty, I2C_TIMEOUT );
-	int8_t result = ( res == HAL_OK ) ? BMI08_INTF_RET_SUCCESS : (BMI08_INTF_RET_SUCCESS+1);
-	return result;
-}
-
-static BMI08_INTF_RET_TYPE bmi085_bus_read_i2c_2( uint8_t reg_addr, uint8_t * reg_data, uint8_t qty, void *intf_ptr )
-{
-	uint8_t dev_addr = *(uint8_t*)intf_ptr;
-	dev_addr *= 2;
-	HAL_StatusTypeDef res = HAL_I2C_Mem_Read( &hi2c2, dev_addr, reg_addr, I2C_MEMADD_SIZE_8BIT, reg_data, qty, I2C_TIMEOUT );
-	int8_t result = ( res == HAL_OK ) ? BMI08_INTF_RET_SUCCESS : (BMI08_INTF_RET_SUCCESS+1);
-	return result;
-}
-
-static BMI08_INTF_RET_TYPE bmi085_bus_write_i2c_2( uint8_t reg_addr, uint8_t * reg_data, uint8_t qty, void *intf_ptr )
-{
-	uint8_t dev_addr = *(uint8_t*)intf_ptr;
-	dev_addr *= 2;
-	HAL_StatusTypeDef res = HAL_I2C_Mem_Write( &hi2c2, dev_addr, reg_addr, I2C_MEMADD_SIZE_8BIT, reg_data, qty, I2C_TIMEOUT );
-	int8_t result = ( res == HAL_OK ) ? BMI08_INTF_RET_SUCCESS : (BMI08_INTF_RET_SUCCESS+1);
-	return result;
-}
-
-static uint8_t bmi08_interface_init(struct T_BMI085 *bma )
-{
-	bma->acc_addr  = BMI08_ACCEL_I2C_ADDR_PRIMARY;
-	bma->gyro_addr = BMI08_GYRO_I2C_ADDR_PRIMARY;
-
-	struct bmi08_dev * bmi08 = &(bma->bmi085);
-
-    bmi08->intf = BMI08_I2C_INTF;
-    bmi08->read = bmi085_bus_read_i2c_2;
-    bmi08->write = bmi085_bus_write_i2c_2;
-
-    /* Selection of bmi085 or bmi088 sensor variant */
-    bmi08->variant = BMI085_VARIANT;
-
-    /* Assign accel device address to accel interface pointer */
-    bmi08->intf_ptr_accel = &(bma->acc_addr);
-
-    /* Assign gyro device address to gyro interface pointer */
-    bmi08->intf_ptr_gyro = &(bma->gyro_addr);
-
-    /* Configure delay in microseconds */
-    bmi08->delay_us = bmi085_delay;
-
-    /* Configure max read/write length (in bytes) ( Supported length depends on target machine) */
-    bmi08->read_write_len = BMI08_READ_WRITE_LEN;
-
-    bmi085_delay( 20000, 0 );
-}
-
-static int8_t init_bmi08( struct T_BMI085 * dev )
-{
-	struct bmi08_dev * bmi08 = &(dev->bmi085);
-
-    int8_t rslt;
-
-    rslt = bmi08a_soft_reset( bmi08 );
-    if ( rslt != BMI08_OK )
-    	return rslt;
-
-    rslt = bmi08g_soft_reset( bmi08 );
-    if ( rslt != BMI08_OK )
-    	return rslt;
-
-    rslt = bmi08xa_init(bmi08);
-    if ( rslt != BMI08_OK )
-    	return rslt;
-
-    rslt = bmi08a_init(bmi08);
-    if ( rslt != BMI08_OK )
-    	return rslt;
-
-    rslt = bmi08g_init(bmi08);
-    if ( rslt != BMI08_OK )
-    	return rslt;
-
-    rslt = bmi08a_load_config_file(bmi08);
-    if ( rslt != BMI08_OK )
-    	return rslt;
-
- 	bmi08->accel_cfg.odr = BMI08_ACCEL_ODR_100_HZ;
-   	bmi08->accel_cfg.range = BMI085_ACCEL_RANGE_8G;
-
-    bmi08->accel_cfg.power = BMI08_ACCEL_PM_ACTIVE;
-    bmi08->accel_cfg.bw = BMI08_ACCEL_BW_NORMAL;
-
-    rslt = bmi08a_set_power_mode( bmi08 );
-    if ( rslt != BMI08_OK )
-    	return rslt;
-
-    rslt = bmi08xa_set_meas_conf( bmi08 );
-    if ( rslt != BMI08_OK )
-    	return rslt;
-
-    bmi08->gyro_cfg.odr = BMI08_GYRO_BW_47_ODR_400_HZ;
-    bmi08->gyro_cfg.range = BMI08_GYRO_RANGE_250_DPS;
-    bmi08->gyro_cfg.bw = BMI08_GYRO_BW_47_ODR_400_HZ;
-    bmi08->gyro_cfg.power = BMI08_GYRO_PM_NORMAL;
-
-    rslt = bmi08g_set_power_mode(bmi08);
-    if ( rslt != BMI08_OK )
-    	return rslt;
-
-    rslt = bmi08g_set_meas_conf(bmi08);
-    if ( rslt != BMI08_OK )
-    	return rslt;
-
-    //struct bmi08_data_sync_cfg sync_cfg;
-    //sync_cfg.mode = BMI08_ACCEL_DATA_SYNC_MODE_400HZ;
-
-    //rslt = bmi08a_configure_data_synchronization( sync_cfg, bmi08 );
-
-    return rslt;
-}
+static struct TAllImus all_imus;
 
 
-
+static void enumerate_imus();
+static void initiate_data_io();
 
 
 // Declare a task.
@@ -239,66 +66,111 @@ void task_bmi085_init()
 
 static void func_task_bmi085( void * p )
 {
-	int ind;
-	uint8_t rslt;
-    static struct bmi08_sensor_data accel, gyro;
 
-    static struct TMagdwickParams magdwick_params;
-    static struct TMagdwickBiasEstimation magdwick_estimation;
-    static struct TMagdwickQuat   magdwick_quat;
-    static struct TMagdwickImuData magdwick_imu;
+}
 
-    magdwick_init_params( &magdwick_params, 0.1, 0.01 );
-    magdwick_init_bias( &magdwick_estimation );
-    magdwick_init_quat( &magdwick_quat );
+static void enumerate_imus()
+{
+	int16_t index;
+	uint8_t ret;
 
-	bmi08_interface_init( &bmi085 );
+	all_imus.imus_qty_a = 0;
+	all_imus.imus_qty_b = 0;
+	all_imus.imus_index_a = 0;
+	all_imus.imus_index_b = 0;
 
-	//for (;;)
+	all_imus.state_a = STATE_SET_CHANNEL;
+	all_imus.state_b = STATE_SET_CHANNEL;
+
+	magdwick_init_params( &(all_imus.params), 0.1f, 0.01f );
+
+	for ( index=0; index<16; index++ )
 	{
-		//bmi085_delay( 10000, 0 );
+		ret = bmi085_init( index );
+		if ( ret == 0 )
+		{
+			struct TImu * imu = &(all_imus.imus_a[all_imus.imus_qty_a]);
+			imu->index = index;
+			magdwick_init_quat( &(imu->quat) );
+			magdwick_init_bias( &(imu->bias) );
+
+			all_imus.imus_qty_a += 1;
+		}
 	}
-	//for ( ind=0; ind<8; ind++ )
+
+	for ( index=16; index<32; index++ )
 	{
-		bmi085_switch_2( 6 );
-		rslt = init_bmi08( &bmi085 );
-		bmi085_delay( 500000, 0 );
-		//if ( rslt == BMI08_OK )
-		//	break;
+		ret = bmi085_init( index );
+		if ( ret == 0 )
+		{
+			struct TImu * imu = &(all_imus.imus_a[all_imus.imus_qty_b]);
+			imu->index = index;
+			magdwick_init_quat( &(imu->quat) );
+			magdwick_init_bias( &(imu->bias) );
+
+			all_imus.imus_qty_b += 1;
+		}
+	}
+}
+
+static void initiate_data_io()
+{
+	if ( all_imus.imus_qty_a > 0 )
+	{
+		all_imus.imu_index_a = 0;
+		struct TImu * imu = all_imus.imus_a[0];
+		bmi085_switch_irq( imu->index );
 	}
 
-	//set_led( ind );
-
-	for (;;)
+	if ( all_imus.imus_qty_b > 0 )
 	{
-		bmi085_switch_2( 6 );
-	    rslt = bmi08g_get_data( &gyro, &(bmi085.bmi085) );
-	    rslt = bmi08a_get_data( &accel, &(bmi085.bmi085) );
-		//rslt = bmi08a_get_synchronized_data( &accel, &gyro, &(bmi085.bmi085) );
-	    set_instant_led( (uint8_t)(accel.x & 0x07) );
-
-	    magdwick_imu.a[0] = acc_to_1( accel.x );
-	    magdwick_imu.a[1] = acc_to_1( accel.y );
-	    magdwick_imu.a[2] = acc_to_1( accel.z );
-
-	    magdwick_imu.w[0] = gyro_to_rps( gyro.x );
-	    magdwick_imu.w[1] = gyro_to_rps( gyro.y );
-	    magdwick_imu.w[2] = gyro_to_rps( gyro.z );
-
-	    magdwick_update_bias( &magdwick_params, &magdwick_estimation, &magdwick_imu );
-	    magdwick_update_imu( &magdwick_quat, &magdwick_params, &magdwick_imu );
-
-	    set_instant_led( (uint8_t)(accel.x & 0x03) );
-
-		bmi085_delay( 10000, 0 );
-	    ind = 0;
+		all_imus.imu_index_b = 0;
+		struct TImu * imu = all_imus.imus_b[0];
+		bmi085_switch_irq( imu->index );
 	}
 }
 
 
+void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c)
+{
+	if ( hi2c == &hi2c1 )
+	{
+		all_imus.state_a = STATE_READ_ACC;
+		uint8_t array_index_a = all_imus.imu_index_a;
+		struct TImu * imu = all_imus.imus_a[array_index_a];
+		uibt8_t imu_index = imu->index;
 
+		bmi085_read_acc_irq( imu_index, all_imus.raw_data_a );
+	}
+	else
+	{
+		all_imus.state_b = STATE_READ_ACC;
+		uint8_t array_index_b = all_imus.imu_index_b;
+		struct TImu * imu = all_imus.imus_a[array_index_b];
+		uibt8_t imu_index = imu->index;
 
+		bmi085_read_acc_irq( imu_index, all_imus.raw_data_b );
+	}
+}
 
+// Callback function for memory read complete
+void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
+{
+	if ( hi2c == &hi2c1 )
+	{
+
+	}
+	else
+	{
+
+	}
+}
+
+// Error callback function
+void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c)
+{
+    // Error handling
+}
 
 
 
