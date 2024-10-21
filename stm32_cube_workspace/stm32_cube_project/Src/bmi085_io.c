@@ -1,6 +1,12 @@
 
 #include "bmi085_io.h"
 
+#include "cmsis_os.h"
+#include "bmi08.h"
+#include "bmi08x.h"
+#include "bmi08_defs.h"
+
+
 #define BMI08_READ_WRITE_LEN  UINT8_C(46)
 
 #define MUL_ADDR_1      (0x70<<1)
@@ -17,7 +23,7 @@ struct T_BMI085
 	struct bmi08_dev bmi085;
 };
 
-static void bmi08_interface_init( uint8_t is_primary, uint_t i2c_bus_index, struct T_BMI085 *bma );
+static void bmi08_interface_init( uint8_t is_primary, uint8_t i2c_bus_index, struct T_BMI085 *bma );
 static uint8_t bmi08_hardware_init( struct T_BMI085 * dev );
 
 static void bmi085_delay( uint32_t usec, void *intf_ptr );
@@ -30,62 +36,114 @@ static BMI08_INTF_RET_TYPE bmi085_bus_read_i2c_2( uint8_t reg_addr, uint8_t * re
 static BMI08_INTF_RET_TYPE bmi085_bus_write_i2c_2( uint8_t reg_addr, uint8_t * reg_data, uint8_t qty, void *intf_ptr );
 
 
-uint8_t bmi085_init_a( uint8_t index )
+uint8_t bmi085_init( uint8_t index )
 {
-	T_BMI085 bmi;
+	struct T_BMI085 bmi;
 	// 0, 2, 4, ..., 8 are on primary address.
 	// 1, 3, ..., 15 are on secondary address.
 	uint8_t use_primary_addr = ( (index & 1) == 0 ) ? 1 : 0;
 	uint8_t channel_ind      = (index >> 1);
+	uint8_t use_interface_1  = (channel_ind < 8) ? 1 : 0;
 
 	bmi08_interface_init( use_primary_addr, 0, &bmi );
-	uint8_t ret = bmi085_switch_1( channel_ind );
-	if ( res != 0 )
-		return 1;
+	if ( use_interface_1 )
+	{
+		uint8_t ret = bmi085_switch_1( channel_ind );
+		if ( ret != 0 )
+			return 1;
+	}
+	else
+	{
+		channel_ind -= 8;
+
+		uint8_t ret = bmi085_switch_2( channel_ind );
+		if ( ret != 0 )
+			return 1;
+	}
 	int8_t rslt = bmi08_hardware_init( &bmi );
-	if ( relt != BMI08_OK )
+	if ( rslt != BMI08_OK )
 		return 1;
 
 	return 0;
 }
 
-uint8_t bmi085_init_b( uint8_t index )
+
+// Indices 0-15.
+// Indices 16-31.
+uint8_t bmi085_switch_irq( uint8_t index )
 {
-	T_BMI085 bmi;
-	// 0, 2, 4, ..., 8 are on primary address.
-	// 1, 3, ..., 15 are on secondary address.
+	//uint8_t use_primary_addr = ( (index & 1) == 0 ) ? 1 : 0;
+	uint8_t channel_ind      = (index >> 1);
+	uint8_t use_interface_1  = (channel_ind < 8) ? 1 : 0;
+
+	uint8_t result = 0;
+	if ( use_interface_1 )
+	{
+		// Declared static so it preserves.
+	    static unsigned char data_1;
+	    data_1 = (1 << channel_ind);
+
+		HAL_StatusTypeDef res = HAL_I2C_Master_Transmit_IT(&hi2c1, MUL_ADDR_1, &data_1, 1 );
+		result = ( res == HAL_OK ) ? 0 : 1;
+	}
+	else
+	{
+		// Declared static so it preserves.
+	    static unsigned char data_2;
+	    channel_ind -= 8;
+	    data_2 = (1 << channel_ind);
+
+		HAL_StatusTypeDef res = HAL_I2C_Master_Transmit_IT(&hi2c2, MUL_ADDR_2, &data_2, 1 );
+		result = ( res == HAL_OK ) ? 0 : 1;
+	}
+
+	return result;
+}
+
+uint8_t bmi085_read_acc_irq( uint8_t index, uint8_t * data )
+{
 	uint8_t use_primary_addr = ( (index & 1) == 0 ) ? 1 : 0;
 	uint8_t channel_ind      = (index >> 1);
+	uint8_t use_interface_1  = (channel_ind < 8) ? 1 : 0;
 
-	bmi08_interface_init( use_primary_addr, 1, &bmi );
-	uint8_t ret = bmi085_switch_2( channel_ind );
-	if ( res != 0 )
-		return 1;
-	int8_t rslt = bmi08_hardware_init( &bmi );
-	if ( relt != BMI08_OK )
-		return 1;
+	uint8_t dev_addr = (use_primary_addr) ? (BMI08_ACCEL_I2C_ADDR_PRIMARY << 1) : (BMI08_ACCEL_I2C_ADDR_SECONDARY << 1);
 
-	return 0;
+	uint8_t result = 0;
+	if ( use_interface_1 )
+	{
+		HAL_StatusTypeDef res = HAL_I2C_Mem_Read_IT( &hi2c1, dev_addr, BMI08_REG_ACCEL_X_LSB, I2C_MEMADD_SIZE_8BIT, data, 6 );
+		result = ( res == HAL_OK ) ? BMI08_INTF_RET_SUCCESS : (BMI08_INTF_RET_SUCCESS+1);
+	}
+	else
+	{
+		HAL_StatusTypeDef res = HAL_I2C_Mem_Read_IT( &hi2c2, dev_addr, BMI08_REG_ACCEL_X_LSB, I2C_MEMADD_SIZE_8BIT, data, 6 );
+		result = ( res == HAL_OK ) ? BMI08_INTF_RET_SUCCESS : (BMI08_INTF_RET_SUCCESS+1);
+	}
+
+	return result;
 }
 
-uint8_t bmi085_switch_a_irq( uint8_t index )
+uint8_t bmi085_read_gyro_irq( uint8_t index, uint8_t * data )
 {
+	uint8_t use_primary_addr = ( (index & 1) == 0 ) ? 1 : 0;
+	uint8_t channel_ind      = (index >> 1);
+	uint8_t use_interface_1  = (channel_ind < 8) ? 1 : 0;
 
-}
+	uint8_t dev_addr = (use_primary_addr) ? (BMI08_GYRO_I2C_ADDR_PRIMARY << 1) : (BMI08_GYRO_I2C_ADDR_SECONDARY << 1);
 
-uint8_t bmi085_switch_b_irq( uint8_t index )
-{
+	uint8_t result = 0;
+	if ( use_interface_1 )
+	{
+		HAL_StatusTypeDef res = HAL_I2C_Mem_Read_IT( &hi2c1, dev_addr, BMI08_REG_GYRO_X_LSB, I2C_MEMADD_SIZE_8BIT, data, 6 );
+		result = ( res == HAL_OK ) ? BMI08_INTF_RET_SUCCESS : (BMI08_INTF_RET_SUCCESS+1);
+	}
+	else
+	{
+		HAL_StatusTypeDef res = HAL_I2C_Mem_Read_IT( &hi2c2, dev_addr, BMI08_REG_GYRO_X_LSB, I2C_MEMADD_SIZE_8BIT, data, 6 );
+		result = ( res == HAL_OK ) ? BMI08_INTF_RET_SUCCESS : (BMI08_INTF_RET_SUCCESS+1);
+	}
 
-}
-
-uint8_t bmi085_read_acc_a_irq( uint8_t index, uint8_t * data )
-{
-
-}
-
-uint8_t bmi085_read_gyro_b_irq( uint8_t index, uint8_t * data )
-{
-
+	return result;
 }
 
 
@@ -163,7 +221,7 @@ static BMI08_INTF_RET_TYPE bmi085_bus_write_i2c_2( uint8_t reg_addr, uint8_t * r
 
 
 
-static void bmi08_interface_init( uint8_t use_primary_addr, uint_t i2c_bus_index, struct T_BMI085 *bma )
+static void bmi08_interface_init( uint8_t use_primary_addr, uint8_t i2c_bus_index, struct T_BMI085 *bma )
 {
 	if ( use_primary_addr )
 	{
@@ -206,7 +264,7 @@ static void bmi08_interface_init( uint8_t use_primary_addr, uint_t i2c_bus_index
     bmi08->read_write_len = BMI08_READ_WRITE_LEN;
 }
 
-static int8_t bmi08_hardware_init( struct T_BMI085 * dev )
+static uint8_t bmi08_hardware_init( struct T_BMI085 * dev )
 {
 	struct bmi08_dev * bmi08 = &(dev->bmi085);
 
@@ -214,27 +272,27 @@ static int8_t bmi08_hardware_init( struct T_BMI085 * dev )
 
     rslt = bmi08a_soft_reset( bmi08 );
     if ( rslt != BMI08_OK )
-    	return rslt;
+    	return 1;
 
     rslt = bmi08g_soft_reset( bmi08 );
     if ( rslt != BMI08_OK )
-    	return rslt;
+    	return 1;
 
     rslt = bmi08xa_init(bmi08);
     if ( rslt != BMI08_OK )
-    	return rslt;
+    	return 1;
 
     rslt = bmi08a_init(bmi08);
     if ( rslt != BMI08_OK )
-    	return rslt;
+    	return 1;
 
     rslt = bmi08g_init(bmi08);
     if ( rslt != BMI08_OK )
-    	return rslt;
+    	return 1;
 
     rslt = bmi08a_load_config_file(bmi08);
     if ( rslt != BMI08_OK )
-    	return rslt;
+    	return 1;
 
  	bmi08->accel_cfg.odr = BMI08_ACCEL_ODR_100_HZ;
    	bmi08->accel_cfg.range = BMI085_ACCEL_RANGE_8G;
@@ -244,11 +302,11 @@ static int8_t bmi08_hardware_init( struct T_BMI085 * dev )
 
     rslt = bmi08a_set_power_mode( bmi08 );
     if ( rslt != BMI08_OK )
-    	return rslt;
+    	return 1;
 
     rslt = bmi08xa_set_meas_conf( bmi08 );
     if ( rslt != BMI08_OK )
-    	return rslt;
+    	return 1;
 
     bmi08->gyro_cfg.odr = BMI08_GYRO_BW_47_ODR_400_HZ;
     bmi08->gyro_cfg.range = BMI08_GYRO_RANGE_250_DPS;
@@ -257,18 +315,18 @@ static int8_t bmi08_hardware_init( struct T_BMI085 * dev )
 
     rslt = bmi08g_set_power_mode(bmi08);
     if ( rslt != BMI08_OK )
-    	return rslt;
+    	return 1;
 
     rslt = bmi08g_set_meas_conf(bmi08);
     if ( rslt != BMI08_OK )
-    	return rslt;
+    	return 1;
 
     //struct bmi08_data_sync_cfg sync_cfg;
     //sync_cfg.mode = BMI08_ACCEL_DATA_SYNC_MODE_400HZ;
 
     //rslt = bmi08a_configure_data_synchronization( sync_cfg, bmi08 );
 
-    return rslt;
+    return 0;
 }
 
 
