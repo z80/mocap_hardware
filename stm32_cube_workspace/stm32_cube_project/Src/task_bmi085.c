@@ -15,8 +15,18 @@
 extern I2C_HandleTypeDef hi2c1;
 extern I2C_HandleTypeDef hi2c2;
 
+struct TRawImu
+{
+	// Raw data.
+	uint8_t acc[6];
+	uint8_t gyro[6];
+};
+
+typedef struct TRawImu RawImu;
+
 struct TImu
 {
+	// 0..31 absolute IMU index defining where it is located.
 	uint8_t index;
 
 	struct TMagdwickQuat           quat;
@@ -31,16 +41,17 @@ struct TAllImus
 {
 	int imus_qty_a,
 	    imus_qty_b;
-	int imu_index_a,
-	    imu_index_b;
+
+	int array_index_a,
+	    array_index_b;
 
 	uint8_t state_a,
 	        state_b;
 
-	uint8_t raw_data_a[6],
-	        raw_data_b[6];
-	struct TImu imus_a[16];
-	struct TImu imus_b[16];
+	// Queue doesn't send structures by value, only by pointer.
+	// Due to that keeping all the data in-place here.
+	struct TRawImu raw_imu_a[16],
+	               raw_imu_b[16];
 	struct TMagdwickParams params;
 };
 
@@ -51,6 +62,10 @@ static void enumerate_imus();
 static void initiate_data_io();
 
 
+// Data queue from IRQ to the task.
+osMessageQDef(data_queue, 32, uint16_t); // Message queue with 32 slots for uint16_t messages
+osMessageQId data_queue_id;
+
 // Declare a task.
 static void func_task_bmi085( void * p );
 osThreadDef( task_bmi085, func_task_bmi085, osPriorityNormal, 0, 1024 );
@@ -60,13 +75,47 @@ osThreadDef( task_bmi085, func_task_bmi085, osPriorityNormal, 0, 1024 );
 // It doesn't do anything else.
 void task_bmi085_init()
 {
+	enumerate_imus();
+
+	data_queue_id = osMessageCreate(osMessageQ(data_queue), NULL);
 	osThreadCreate( osThread(task_bmi085), NULL );
 }
 
 
 static void func_task_bmi085( void * p )
 {
+	static uint8_t total_qty;
+	static uint8_t index;
 
+	total_qty = all_imus.imus_qty_a + all_imus.imus_qty_b;
+
+	uint32_t PreviousWakeTime = osKernelSysTick();
+
+	for (;;)
+	{
+		// Trigger the chain reaction to read data across all detected IMUs.
+		initiate_data_io();
+
+		// Read all the data.
+		for ( index=0; index<total_qty; index++ )
+		{
+			osEvent evt = osMessageGet(myQueueId, osWaitForever);
+			if (evt.status == osEventMessage)
+			{
+				uint16_t data = evt.value.p;
+				uint16_t bus_ind = (data >> 8);
+				uint16_t array_ind = data & 0xFF;
+
+				struct TRawImu * raw_imu = (bus_ind == 0) ? all_imus.raw_imu_a[array_ind] : all_imus.raw_imu_b[array_ind];
+				// Convert to signed numbers;
+
+				// Run AHRS.
+			}
+		}
+
+		// Wait so that queries happen on exactly regular basis.
+		osDelayUntil( &PreviousWakeTime, 10 );
+	}
 }
 
 static void enumerate_imus()
@@ -76,8 +125,6 @@ static void enumerate_imus()
 
 	all_imus.imus_qty_a = 0;
 	all_imus.imus_qty_b = 0;
-	all_imus.imus_index_a = 0;
-	all_imus.imus_index_b = 0;
 
 	all_imus.state_a = STATE_SET_CHANNEL;
 	all_imus.state_b = STATE_SET_CHANNEL;
@@ -117,14 +164,14 @@ static void initiate_data_io()
 {
 	if ( all_imus.imus_qty_a > 0 )
 	{
-		all_imus.imu_index_a = 0;
+		all_imus.array_index_a = 0;
 		struct TImu * imu = all_imus.imus_a[0];
 		bmi085_switch_irq( imu->index );
 	}
 
 	if ( all_imus.imus_qty_b > 0 )
 	{
-		all_imus.imu_index_b = 0;
+		all_imus.array_index_b = 0;
 		struct TImu * imu = all_imus.imus_b[0];
 		bmi085_switch_irq( imu->index );
 	}
@@ -136,20 +183,20 @@ void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c)
 	if ( hi2c == &hi2c1 )
 	{
 		all_imus.state_a = STATE_READ_ACC;
-		uint8_t array_index_a = all_imus.imu_index_a;
+		uint8_t array_index_a = all_imus.array_index_a;
 		struct TImu * imu = all_imus.imus_a[array_index_a];
-		uibt8_t imu_index = imu->index;
+		uint8_t imu_index = imu->index;
 
-		bmi085_read_acc_irq( imu_index, all_imus.raw_data_a );
+		bmi085_read_acc_irq( imu_index, all_imus.raw_imu_a[array_index_a].acc );
 	}
 	else
 	{
 		all_imus.state_b = STATE_READ_ACC;
-		uint8_t array_index_b = all_imus.imu_index_b;
+		uint8_t array_index_b = all_imus.array_index_b;
 		struct TImu * imu = all_imus.imus_a[array_index_b];
-		uibt8_t imu_index = imu->index;
+		uint8_t imu_index = imu->index;
 
-		bmi085_read_acc_irq( imu_index, all_imus.raw_data_b );
+		bmi085_read_acc_irq( imu_index, all_imus.raw_imu_b[array_index_b].acc );
 	}
 }
 
@@ -158,10 +205,71 @@ void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
 {
 	if ( hi2c == &hi2c1 )
 	{
+		if ( all_imus.state_a == STATE_READ_ACC )
+		{
+			// Now read gyro.
+			all_imus.state_a = STATE_READ_GYRO;
+			uint8_t array_index_a = all_imus.array_index_a;
+			struct TImu * imu = all_imus.imus_a[array_index_a];
+			uint8_t imu_index = imu->index;
 
+			bmi085_read_gyro_irq( imu_index, all_imus.raw_imu_a[array_index_a].gyro );
+		}
+		else
+		{
+			// Send the data to the queue.
+			uint8_t array_index_a = all_imus.array_index_a;
+			struct TRawImu * raw_imu = &(all_imus.raw_imu_a[array_index_a]);
+			uint16_t array_ind = array_index_a;
+			uint16_t bus_ind   = 0;
+			uint16_t data = (bus_ind << 8) | array_ind;
+			osMessagePut(data_queue_id, data, 0);
+
+			// Proceed to the next one or stop.
+			all_imus.array_index_a += 1;
+			if ( all_imus.array_index_a >= all_imus.imus_qty_a )
+				return;
+
+			struct TImu * imu = all_imus.imus_a[all_imus.array_index_a];
+			uint8_t imu_index = imu->index;
+			all_imus.state_a = STATE_SET_CHANNEL;
+
+			bmi085_switch_irq( imu_index );
+		}
 	}
 	else
 	{
+		if ( all_imus.state_b == STATE_READ_ACC )
+		{
+			// Now read gyro.
+			all_imus.state_b = STATE_READ_GYRO;
+			uint8_t array_index_b = all_imus.array_index_b;
+			struct TImu * imu = all_imus.imus_b[array_index_b];
+			uint8_t imu_index = imu->index;
+
+			bmi085_read_gyro_irq( imu_index, all_imus.raw_imu_b[array_index_b].gyro );
+		}
+		else
+		{
+			// Send the data to the queue.
+			uint8_t array_index_b = all_imus.array_index_b;
+			struct TRawImu * raw_imu = &(all_imus.raw_imu_b[array_index_b]);
+			uint16_t array_ind = array_index_b;
+			uint16_t bus_ind   = 1;
+			uint16_t data = (bus_ind << 8) | array_ind;
+			osMessagePut(data_queue_id, data, 0);
+
+			// Proceed to the next one or stop.
+			all_imus.array_index_b += 1;
+			if ( all_imus.imu_index_b >= all_imus.imus_qty_b )
+				return;
+
+			struct TImu * imu = all_imus.imus_b[all_imus.array_index_b];
+			uint8_t imu_index = imu->index;
+			all_imus.state_b = STATE_SET_CHANNEL;
+
+			bmi085_switch_irq( imu_index );
+		}
 
 	}
 }

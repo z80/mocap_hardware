@@ -102,7 +102,7 @@ void func_task_imu_a( void * p )
 		    	break;
 		    }
 		}
-		osDelayUntil( &PreviousWakeTime, 1000 );
+		osDelayUntil( &PreviousWakeTime, 10 );
 	}
 }
 
