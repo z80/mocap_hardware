@@ -96,6 +96,7 @@ static void func_task_bmi085( void * p )
 
 	for (;;)
 	{
+		/*
 		// Trigger the chain reaction to read data across all detected IMUs.
 		initiate_data_io();
 
@@ -122,7 +123,7 @@ static void func_task_bmi085( void * p )
 				magdwick_update_bias( &(all_imus.params), bias, &scaled_data );
 				magdwick_update_imu( &quat, &(all_imus.params), &scaled_data );
 			}
-		}
+		}*/
 
 		// Wait so that queries happen on exactly regular basis.
 		osDelayUntil( &PreviousWakeTime, 10 );
@@ -144,28 +145,28 @@ static void enumerate_imus()
 
 	for ( index=0; index<16; index++ )
 	{
+		struct TImu * imu = &(all_imus.imus_a[all_imus.imus_qty_a]);
+		imu->index = index;
+		magdwick_init_quat( &(imu->quat) );
+		magdwick_init_bias( &(imu->bias) );
+
 		ret = bmi085_init( index );
 		if ( ret == 0 )
 		{
-			struct TImu * imu = &(all_imus.imus_a[all_imus.imus_qty_a]);
-			imu->index = index;
-			magdwick_init_quat( &(imu->quat) );
-			magdwick_init_bias( &(imu->bias) );
-
 			all_imus.imus_qty_a += 1;
 		}
 	}
 
 	for ( index=16; index<32; index++ )
 	{
+		struct TImu * imu = &(all_imus.imus_b[all_imus.imus_qty_b]);
+		imu->index = index;
+		magdwick_init_quat( &(imu->quat) );
+		magdwick_init_bias( &(imu->bias) );
+
 		ret = bmi085_init( index );
 		if ( ret == 0 )
 		{
-			struct TImu * imu = &(all_imus.imus_a[all_imus.imus_qty_b]);
-			imu->index = index;
-			magdwick_init_quat( &(imu->quat) );
-			magdwick_init_bias( &(imu->bias) );
-
 			all_imus.imus_qty_b += 1;
 		}
 	}

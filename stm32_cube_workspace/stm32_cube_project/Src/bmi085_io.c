@@ -39,11 +39,15 @@ static BMI08_INTF_RET_TYPE bmi085_bus_write_i2c_2( uint8_t reg_addr, uint8_t * r
 uint8_t bmi085_init( uint8_t index )
 {
 	struct T_BMI085 bmi;
+	// 0..15 are on I2C1, 16..31 are on I2C2.
+	uint8_t use_interface_1  = (index < 16) ? 1 : 0;
 	// 0, 2, 4, ..., 8 are on primary address.
 	// 1, 3, ..., 15 are on secondary address.
 	uint8_t use_primary_addr = ( (index & 1) == 0 ) ? 1 : 0;
-	uint8_t channel_ind      = (index >> 1);
-	uint8_t use_interface_1  = (channel_ind < 8) ? 1 : 0;
+	if (index >= 16)
+		index -= 16;
+	// I2C multiplexer index 0..7.
+	uint8_t channel_ind      = index / 2;
 
 	bmi08_interface_init( use_primary_addr, 0, &bmi );
 	if ( use_interface_1 )
@@ -54,8 +58,6 @@ uint8_t bmi085_init( uint8_t index )
 	}
 	else
 	{
-		channel_ind -= 8;
-
 		uint8_t ret = bmi085_switch_2( channel_ind );
 		if ( ret != 0 )
 			return 1;
