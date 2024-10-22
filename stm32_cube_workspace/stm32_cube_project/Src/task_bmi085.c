@@ -53,6 +53,8 @@ struct TAllImus
 	struct TRawImu raw_imu_a[16],
 	               raw_imu_b[16];
 	struct TMagdwickParams params;
+	struct TImu    imus_a[16],
+	               imus_b[16];
 };
 
 static struct TAllImus all_imus;
@@ -60,7 +62,8 @@ static struct TAllImus all_imus;
 
 static void enumerate_imus();
 static void initiate_data_io();
-
+static void raw_data_to_acc( uint8_t * data, struct TMagdwickImuData * imu );
+static void raw_data_to_gyro( uint8_t * data, struct TMagdwickImuData * imu );
 
 // Data queue from IRQ to the task.
 osMessageQDef(data_queue, 32, uint16_t); // Message queue with 32 slots for uint16_t messages
@@ -108,8 +111,16 @@ static void func_task_bmi085( void * p )
 
 				struct TRawImu * raw_imu = (bus_ind == 0) ? all_imus.raw_imu_a[array_ind] : all_imus.raw_imu_b[array_ind];
 				// Convert to signed numbers;
+				struct TMagdwickImuData scaled_data;
+				raw_data_to_acc( raw_imu->acc, &scaled_data );
+				raw_data_to_gyro( raw_imu->gyro, &scaled_data );
 
 				// Run AHRS.
+				struct TImu * imu = (bus_ind == 0) ? &(all_imus.imus_a[array_ind]) : &(all_imus.imus_b[array_ind]);
+				struct TMagdwickBiasEstimation * bias = &(imu->bias);
+				struct TMagdwickQuat * quat = &(imu->quat);
+				magdwick_update_bias( &(all_imus.params), bias, &scaled_data );
+				magdwick_update_imu( &quat, &(all_imus.params), &scaled_data );
 			}
 		}
 
@@ -175,6 +186,57 @@ static void initiate_data_io()
 		struct TImu * imu = all_imus.imus_b[0];
 		bmi085_switch_irq( imu->index );
 	}
+}
+
+static void raw_data_to_acc( uint8_t * data, struct TMagdwickImuData * imu )
+{
+	// Scale is 8g
+	// Conversion coefficient is value * 8.0 / 32768.0
+
+	const float scale = 8.0 / 32768.0;
+
+    lsb = data[0];
+    msb = data[1];
+    uint16_t msblsb = (msb << 8) | lsb;
+    int16_t val = ((int16_t) msblsb); /* Data in X axis */
+    imu->a[0] = (float)val * scale;
+
+    lsb = data[2];
+    msb = data[3];
+    msblsb = (msb << 8) | lsb;
+    val = ((int16_t) msblsb); /* Data in Y axis */
+    imu->a[1] = (float)val * scale;
+
+    lsb = data[4];
+    msb = data[5];
+    msblsb = (msb << 8) | lsb;
+    val = ((int16_t) msblsb); /* Data in Z axis */
+    imu->a[2] = (float)val * scale;
+}
+
+static void raw_data_to_gyro( uint8_t * data, struct TMagdwickImuData * imu )
+{
+	// Scale is 250deg/s
+	// Conversion coefficient is value * (250.0 * 3.1415926535) / (180.0 * 32768.0)
+	const float scale = (250.0 * 3.1415926535) / (180.0 * 32768.0);
+
+    lsb = data[0];
+    msb = data[1];
+    uint16_t msblsb = (msb << 8) | lsb;
+    int16_t val = ((int16_t) msblsb); /* Data in X axis */
+    imu->w[0] = (float)val * scale;
+
+    lsb = data[2];
+    msb = data[3];
+    msblsb = (msb << 8) | lsb;
+    val = ((int16_t) msblsb); /* Data in Y axis */
+    imu->w[1] = (float)val * scale;
+
+    lsb = data[4];
+    msb = data[5];
+    msblsb = (msb << 8) | lsb;
+    val = ((int16_t) msblsb); /* Data in Z axis */
+    imu->w[2] = (float)val * scale;
 }
 
 
