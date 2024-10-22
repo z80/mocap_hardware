@@ -102,14 +102,14 @@ static void func_task_bmi085( void * p )
 		// Read all the data.
 		for ( index=0; index<total_qty; index++ )
 		{
-			osEvent evt = osMessageGet(myQueueId, osWaitForever);
+			osEvent evt = osMessageGet( data_queue_id, osWaitForever );
 			if (evt.status == osEventMessage)
 			{
 				uint16_t data = evt.value.p;
 				uint16_t bus_ind = (data >> 8);
 				uint16_t array_ind = data & 0xFF;
 
-				struct TRawImu * raw_imu = (bus_ind == 0) ? all_imus.raw_imu_a[array_ind] : all_imus.raw_imu_b[array_ind];
+				struct TRawImu * raw_imu = (bus_ind == 0) ? &(all_imus.raw_imu_a[array_ind]) : &(all_imus.raw_imu_b[array_ind]);
 				// Convert to signed numbers;
 				struct TMagdwickImuData scaled_data;
 				raw_data_to_acc( raw_imu->acc, &scaled_data );
@@ -176,14 +176,14 @@ static void initiate_data_io()
 	if ( all_imus.imus_qty_a > 0 )
 	{
 		all_imus.array_index_a = 0;
-		struct TImu * imu = all_imus.imus_a[0];
+		struct TImu * imu = &(all_imus.imus_a[0]);
 		bmi085_switch_irq( imu->index );
 	}
 
 	if ( all_imus.imus_qty_b > 0 )
 	{
 		all_imus.array_index_b = 0;
-		struct TImu * imu = all_imus.imus_b[0];
+		struct TImu * imu = &(all_imus.imus_b[0]);
 		bmi085_switch_irq( imu->index );
 	}
 }
@@ -195,8 +195,8 @@ static void raw_data_to_acc( uint8_t * data, struct TMagdwickImuData * imu )
 
 	const float scale = 8.0 / 32768.0;
 
-    lsb = data[0];
-    msb = data[1];
+    uint8_t lsb = data[0];
+    uint8_t msb = data[1];
     uint16_t msblsb = (msb << 8) | lsb;
     int16_t val = ((int16_t) msblsb); /* Data in X axis */
     imu->a[0] = (float)val * scale;
@@ -220,8 +220,8 @@ static void raw_data_to_gyro( uint8_t * data, struct TMagdwickImuData * imu )
 	// Conversion coefficient is value * (250.0 * 3.1415926535) / (180.0 * 32768.0)
 	const float scale = (250.0 * 3.1415926535) / (180.0 * 32768.0);
 
-    lsb = data[0];
-    msb = data[1];
+    uint8_t lsb = data[0];
+    uint8_t msb = data[1];
     uint16_t msblsb = (msb << 8) | lsb;
     int16_t val = ((int16_t) msblsb); /* Data in X axis */
     imu->w[0] = (float)val * scale;
@@ -246,7 +246,7 @@ void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c)
 	{
 		all_imus.state_a = STATE_READ_ACC;
 		uint8_t array_index_a = all_imus.array_index_a;
-		struct TImu * imu = all_imus.imus_a[array_index_a];
+		struct TImu * imu = &(all_imus.imus_a[array_index_a]);
 		uint8_t imu_index = imu->index;
 
 		bmi085_read_acc_irq( imu_index, all_imus.raw_imu_a[array_index_a].acc );
@@ -255,7 +255,7 @@ void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c)
 	{
 		all_imus.state_b = STATE_READ_ACC;
 		uint8_t array_index_b = all_imus.array_index_b;
-		struct TImu * imu = all_imus.imus_a[array_index_b];
+		struct TImu * imu = &(all_imus.imus_a[array_index_b]);
 		uint8_t imu_index = imu->index;
 
 		bmi085_read_acc_irq( imu_index, all_imus.raw_imu_b[array_index_b].acc );
@@ -272,7 +272,7 @@ void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
 			// Now read gyro.
 			all_imus.state_a = STATE_READ_GYRO;
 			uint8_t array_index_a = all_imus.array_index_a;
-			struct TImu * imu = all_imus.imus_a[array_index_a];
+			struct TImu * imu = &(all_imus.imus_a[array_index_a]);
 			uint8_t imu_index = imu->index;
 
 			bmi085_read_gyro_irq( imu_index, all_imus.raw_imu_a[array_index_a].gyro );
@@ -292,7 +292,7 @@ void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
 			if ( all_imus.array_index_a >= all_imus.imus_qty_a )
 				return;
 
-			struct TImu * imu = all_imus.imus_a[all_imus.array_index_a];
+			struct TImu * imu = &(all_imus.imus_a[all_imus.array_index_a]);
 			uint8_t imu_index = imu->index;
 			all_imus.state_a = STATE_SET_CHANNEL;
 
@@ -306,7 +306,7 @@ void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
 			// Now read gyro.
 			all_imus.state_b = STATE_READ_GYRO;
 			uint8_t array_index_b = all_imus.array_index_b;
-			struct TImu * imu = all_imus.imus_b[array_index_b];
+			struct TImu * imu = &(all_imus.imus_b[array_index_b]);
 			uint8_t imu_index = imu->index;
 
 			bmi085_read_gyro_irq( imu_index, all_imus.raw_imu_b[array_index_b].gyro );
@@ -323,10 +323,10 @@ void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
 
 			// Proceed to the next one or stop.
 			all_imus.array_index_b += 1;
-			if ( all_imus.imu_index_b >= all_imus.imus_qty_b )
+			if ( all_imus.array_index_b >= all_imus.imus_qty_b )
 				return;
 
-			struct TImu * imu = all_imus.imus_b[all_imus.array_index_b];
+			struct TImu * imu = &(all_imus.imus_b[all_imus.array_index_b]);
 			uint8_t imu_index = imu->index;
 			all_imus.state_b = STATE_SET_CHANNEL;
 
