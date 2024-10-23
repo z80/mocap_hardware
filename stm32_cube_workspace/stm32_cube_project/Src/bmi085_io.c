@@ -272,62 +272,26 @@ static uint8_t bmi08_hardware_init( struct T_BMI085 * dev )
 
     int8_t rslt;
 
-    bmi085_delay( 100000, 0 );
     rslt = bmi08a_soft_reset( bmi08 );
     if ( rslt != BMI08_OK )
     	return 1;
 
-    bmi085_delay( 100000, 0 );
     rslt = bmi08g_soft_reset( bmi08 );
     if ( rslt != BMI08_OK )
     	return 2;
 
-    bmi085_delay( 1000000, 0 );
     rslt = bmi08xa_init(bmi08);
     if ( rslt != BMI08_OK )
     	return 3;
 
-    bmi085_delay( 100000, 0 );
     rslt = bmi08a_init(bmi08);
     if ( rslt != BMI08_OK )
     	return 4;
 
-    bmi085_delay( 100000, 0 );
     rslt = bmi08g_init(bmi08);
     if ( rslt != BMI08_OK )
     	return 5;
 
-
-/* 	bmi08->accel_cfg.odr = BMI08_ACCEL_ODR_100_HZ;
-   	bmi08->accel_cfg.range = BMI085_ACCEL_RANGE_8G;
-
-    bmi08->accel_cfg.power = BMI08_ACCEL_PM_ACTIVE;
-    bmi08->accel_cfg.bw = BMI08_ACCEL_BW_NORMAL;
-
-    rslt = bmi08a_set_power_mode( bmi08 );
-    if ( rslt != BMI08_OK )
-    	return 1;
-
-    rslt = bmi08xa_set_meas_conf( bmi08 );
-    if ( rslt != BMI08_OK )
-    	return 1;
-
-    bmi08->gyro_cfg.odr = BMI08_GYRO_BW_47_ODR_400_HZ;
-    bmi08->gyro_cfg.range = BMI08_GYRO_RANGE_250_DPS;
-    bmi08->gyro_cfg.bw = BMI08_GYRO_BW_47_ODR_400_HZ;
-    bmi08->gyro_cfg.power = BMI08_GYRO_PM_NORMAL;
-
-    rslt = bmi08g_set_power_mode(bmi08);
-    if ( rslt != BMI08_OK )
-    	return 1;
-
-    rslt = bmi08g_set_meas_conf(bmi08);
-    if ( rslt != BMI08_OK )
-    	return 1;*/
-
-
-
-    bmi085_delay( 100000, 0 );
     rslt = bmi08a_load_config_file(bmi08);
     if ( rslt != BMI08_OK )
     	return 6;
@@ -338,12 +302,10 @@ static uint8_t bmi08_hardware_init( struct T_BMI085 * dev )
     bmi08->accel_cfg.power = BMI08_ACCEL_PM_ACTIVE;
     bmi08->accel_cfg.bw = BMI08_ACCEL_BW_NORMAL;
 
-    bmi085_delay( 100000, 0 );
     rslt = bmi08a_set_power_mode( bmi08 );
     if ( rslt != BMI08_OK )
     	return 7;
 
-    bmi085_delay( 100000, 0 );
     rslt = bmi08xa_set_meas_conf( bmi08 );
     if ( rslt != BMI08_OK )
     	return 8;
@@ -353,12 +315,10 @@ static uint8_t bmi08_hardware_init( struct T_BMI085 * dev )
     bmi08->gyro_cfg.bw = BMI08_GYRO_BW_47_ODR_400_HZ;
     bmi08->gyro_cfg.power = BMI08_GYRO_PM_NORMAL;
 
-    bmi085_delay( 100000, 0 );
     rslt = bmi08g_set_power_mode(bmi08);
     if ( rslt != BMI08_OK )
     	return 9;
 
-    bmi085_delay( 100000, 0 );
     rslt = bmi08g_set_meas_conf(bmi08);
     if ( rslt != BMI08_OK )
     	return 10;
