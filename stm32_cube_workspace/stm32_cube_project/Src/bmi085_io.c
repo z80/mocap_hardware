@@ -40,7 +40,7 @@ uint8_t bmi085_init( uint8_t index )
 {
 	struct T_BMI085 bmi;
 	// 0..15 are on I2C1, 16..31 are on I2C2.
-	uint8_t use_interface_1  = (index < 16) ? 1 : 0;
+	uint8_t i2c_bus_index  = (index < 16) ? 0 : 1;
 	// 0, 2, 4, ..., 8 are on primary address.
 	// 1, 3, ..., 15 are on secondary address.
 	uint8_t use_primary_addr = ( (index & 1) == 0 ) ? 1 : 0;
@@ -49,22 +49,22 @@ uint8_t bmi085_init( uint8_t index )
 	// I2C multiplexer index 0..7.
 	uint8_t channel_ind      = index / 2;
 
-	bmi08_interface_init( use_primary_addr, 0, &bmi );
-	if ( use_interface_1 )
+	bmi08_interface_init( use_primary_addr, i2c_bus_index, &bmi );
+	if ( i2c_bus_index == 0 )
 	{
 		uint8_t ret = bmi085_switch_1( channel_ind );
 		if ( ret != 0 )
-			return 1;
+			return 100;
 	}
 	else
 	{
 		uint8_t ret = bmi085_switch_2( channel_ind );
 		if ( ret != 0 )
-			return 1;
+			return 101;
 	}
 	int8_t rslt = bmi08_hardware_init( &bmi );
 	if ( rslt != BMI08_OK )
-		return 1;
+		return (uint8_t)rslt;
 
 	return 0;
 }
@@ -272,31 +272,33 @@ static uint8_t bmi08_hardware_init( struct T_BMI085 * dev )
 
     int8_t rslt;
 
+    bmi085_delay( 100000, 0 );
     rslt = bmi08a_soft_reset( bmi08 );
     if ( rslt != BMI08_OK )
     	return 1;
 
+    bmi085_delay( 100000, 0 );
     rslt = bmi08g_soft_reset( bmi08 );
     if ( rslt != BMI08_OK )
-    	return 1;
+    	return 2;
 
+    bmi085_delay( 1000000, 0 );
     rslt = bmi08xa_init(bmi08);
     if ( rslt != BMI08_OK )
-    	return 1;
+    	return 3;
 
+    bmi085_delay( 100000, 0 );
     rslt = bmi08a_init(bmi08);
     if ( rslt != BMI08_OK )
-    	return 1;
+    	return 4;
 
+    bmi085_delay( 100000, 0 );
     rslt = bmi08g_init(bmi08);
     if ( rslt != BMI08_OK )
-    	return 1;
+    	return 5;
 
-    rslt = bmi08a_load_config_file(bmi08);
-    if ( rslt != BMI08_OK )
-    	return 1;
 
- 	bmi08->accel_cfg.odr = BMI08_ACCEL_ODR_100_HZ;
+/* 	bmi08->accel_cfg.odr = BMI08_ACCEL_ODR_100_HZ;
    	bmi08->accel_cfg.range = BMI085_ACCEL_RANGE_8G;
 
     bmi08->accel_cfg.power = BMI08_ACCEL_PM_ACTIVE;
@@ -321,7 +323,45 @@ static uint8_t bmi08_hardware_init( struct T_BMI085 * dev )
 
     rslt = bmi08g_set_meas_conf(bmi08);
     if ( rslt != BMI08_OK )
-    	return 1;
+    	return 1;*/
+
+
+
+    bmi085_delay( 100000, 0 );
+    rslt = bmi08a_load_config_file(bmi08);
+    if ( rslt != BMI08_OK )
+    	return 6;
+
+ 	bmi08->accel_cfg.odr = BMI08_ACCEL_ODR_100_HZ;
+   	bmi08->accel_cfg.range = BMI085_ACCEL_RANGE_8G;
+
+    bmi08->accel_cfg.power = BMI08_ACCEL_PM_ACTIVE;
+    bmi08->accel_cfg.bw = BMI08_ACCEL_BW_NORMAL;
+
+    bmi085_delay( 100000, 0 );
+    rslt = bmi08a_set_power_mode( bmi08 );
+    if ( rslt != BMI08_OK )
+    	return 7;
+
+    bmi085_delay( 100000, 0 );
+    rslt = bmi08xa_set_meas_conf( bmi08 );
+    if ( rslt != BMI08_OK )
+    	return 8;
+
+    bmi08->gyro_cfg.odr = BMI08_GYRO_BW_47_ODR_400_HZ;
+    bmi08->gyro_cfg.range = BMI08_GYRO_RANGE_250_DPS;
+    bmi08->gyro_cfg.bw = BMI08_GYRO_BW_47_ODR_400_HZ;
+    bmi08->gyro_cfg.power = BMI08_GYRO_PM_NORMAL;
+
+    bmi085_delay( 100000, 0 );
+    rslt = bmi08g_set_power_mode(bmi08);
+    if ( rslt != BMI08_OK )
+    	return 9;
+
+    bmi085_delay( 100000, 0 );
+    rslt = bmi08g_set_meas_conf(bmi08);
+    if ( rslt != BMI08_OK )
+    	return 10;
 
     //struct bmi08_data_sync_cfg sync_cfg;
     //sync_cfg.mode = BMI08_ACCEL_DATA_SYNC_MODE_400HZ;

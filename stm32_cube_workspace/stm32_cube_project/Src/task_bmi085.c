@@ -78,7 +78,6 @@ osThreadDef( task_bmi085, func_task_bmi085, osPriorityNormal, 0, 1024 );
 // It doesn't do anything else.
 void task_bmi085_init()
 {
-	enumerate_imus();
 
 	data_queue_id = osMessageCreate(osMessageQ(data_queue), NULL);
 	osThreadCreate( osThread(task_bmi085), NULL );
@@ -89,6 +88,11 @@ static void func_task_bmi085( void * p )
 {
 	static uint8_t total_qty;
 	static uint8_t index;
+
+	osDelay( 1000 );
+
+	enumerate_imus();
+
 
 	total_qty = all_imus.imus_qty_a + all_imus.imus_qty_b;
 
@@ -132,6 +136,8 @@ static void func_task_bmi085( void * p )
 
 static void enumerate_imus()
 {
+	//return;
+
 	int16_t index;
 	uint8_t ret;
 
@@ -169,7 +175,19 @@ static void enumerate_imus()
 		{
 			all_imus.imus_qty_b += 1;
 		}
+		else
+		{
+			if ( index == 28 )
+				ret = ret;
+		}
 	}
+
+
+	/*ret = bmi085_init( 28 );
+	if ( ret == 0 )
+	{
+		all_imus.imus_qty_b += 1;
+	}*/
 }
 
 static void initiate_data_io()
