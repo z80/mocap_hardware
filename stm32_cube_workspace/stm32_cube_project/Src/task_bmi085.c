@@ -114,7 +114,7 @@ static void init_all()
 		if ( rslt == 0 )
 		{
 			struct TImu * imu = &(all_imus.imus_a[all_imus.imus_qty_a]);
-			imu->index = all_imus.imus_qty_a;
+			imu->index = index;
 			all_imus.imus_qty_a += 1;
 		}
 	}
@@ -127,7 +127,7 @@ static void init_all()
 		if ( rslt == 0 )
 		{
 			struct TImu * imu = &(all_imus.imus_b[all_imus.imus_qty_b]);
-			imu->index = all_imus.imus_qty_b;
+			imu->index = index;
 			all_imus.imus_qty_b += 1;
 		}
 	}
@@ -224,7 +224,7 @@ void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c)
 	{
 		all_imus.state_b = STATE_READ_ACC;
 		uint8_t array_index_b = all_imus.array_index_b;
-		struct TImu * imu = &(all_imus.imus_a[array_index_b]);
+		struct TImu * imu = &(all_imus.imus_b[array_index_b]);
 		uint8_t imu_index = imu->index;
 
 		bmi085_read_acc_irq( imu_index, all_imus.raw_imu_b[array_index_b].acc );
@@ -359,7 +359,7 @@ static void func_task_bmi085( void * p )
 				struct TMagdwickBiasEstimation * bias = &(imu->bias);
 				struct TMagdwickQuat * quat = &(imu->quat);
 				magdwick_update_bias( &(all_imus.params), bias, &scaled_data );
-				magdwick_update_imu( &quat, &(all_imus.params), &scaled_data );
+				magdwick_update_imu( quat, &(all_imus.params), &scaled_data );
 			}
 		}
 

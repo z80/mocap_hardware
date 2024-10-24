@@ -75,11 +75,15 @@ uint8_t bmi085_init( uint8_t index )
 uint8_t bmi085_switch_irq( uint8_t index )
 {
 	//uint8_t use_primary_addr = ( (index & 1) == 0 ) ? 1 : 0;
-	uint8_t channel_ind      = (index >> 1);
-	uint8_t use_interface_1  = (channel_ind < 8) ? 1 : 0;
+	uint8_t i2c_bus_index  = (index < 16) ? 0 : 1;
+	if ( index > 16 )
+		index -= 16;
+	// I2C multiplexer index 0..7.
+	uint8_t channel_ind      = index / 2;
+
 
 	uint8_t result = 0;
-	if ( use_interface_1 )
+	if ( i2c_bus_index == 0 )
 	{
 		// Declared static so it preserves.
 	    static unsigned char data_1;
@@ -92,7 +96,6 @@ uint8_t bmi085_switch_irq( uint8_t index )
 	{
 		// Declared static so it preserves.
 	    static unsigned char data_2;
-	    channel_ind -= 8;
 	    data_2 = (1 << channel_ind);
 
 		HAL_StatusTypeDef res = HAL_I2C_Master_Transmit_IT(&hi2c2, MUL_ADDR_2, &data_2, 1 );
@@ -104,14 +107,20 @@ uint8_t bmi085_switch_irq( uint8_t index )
 
 uint8_t bmi085_read_acc_irq( uint8_t index, uint8_t * data )
 {
+	// 0..15 are on I2C1, 16..31 are on I2C2.
+	uint8_t i2c_bus_index  = (index < 16) ? 0 : 1;
+	// 0, 2, 4, ..., 8 are on primary address.
+	// 1, 3, ..., 15 are on secondary address.
 	uint8_t use_primary_addr = ( (index & 1) == 0 ) ? 1 : 0;
-	uint8_t channel_ind      = (index >> 1);
-	uint8_t use_interface_1  = (channel_ind < 8) ? 1 : 0;
+	if (index >= 16)
+		index -= 16;
+	// I2C multiplexer index 0..7.
+	uint8_t channel_ind      = index / 2;
 
 	uint8_t dev_addr = (use_primary_addr) ? (BMI08_ACCEL_I2C_ADDR_PRIMARY << 1) : (BMI08_ACCEL_I2C_ADDR_SECONDARY << 1);
 
 	uint8_t result = 0;
-	if ( use_interface_1 )
+	if ( i2c_bus_index == 0 )
 	{
 		HAL_StatusTypeDef res = HAL_I2C_Mem_Read_IT( &hi2c1, dev_addr, BMI08_REG_ACCEL_X_LSB, I2C_MEMADD_SIZE_8BIT, data, 6 );
 		result = ( res == HAL_OK ) ? BMI08_INTF_RET_SUCCESS : (BMI08_INTF_RET_SUCCESS+1);
@@ -127,14 +136,20 @@ uint8_t bmi085_read_acc_irq( uint8_t index, uint8_t * data )
 
 uint8_t bmi085_read_gyro_irq( uint8_t index, uint8_t * data )
 {
+	// 0..15 are on I2C1, 16..31 are on I2C2.
+	uint8_t i2c_bus_index  = (index < 16) ? 0 : 1;
+	// 0, 2, 4, ..., 8 are on primary address.
+	// 1, 3, ..., 15 are on secondary address.
 	uint8_t use_primary_addr = ( (index & 1) == 0 ) ? 1 : 0;
-	uint8_t channel_ind      = (index >> 1);
-	uint8_t use_interface_1  = (channel_ind < 8) ? 1 : 0;
+	if (index >= 16)
+		index -= 16;
+	// I2C multiplexer index 0..7.
+	uint8_t channel_ind      = index / 2;
 
 	uint8_t dev_addr = (use_primary_addr) ? (BMI08_GYRO_I2C_ADDR_PRIMARY << 1) : (BMI08_GYRO_I2C_ADDR_SECONDARY << 1);
 
 	uint8_t result = 0;
-	if ( use_interface_1 )
+	if ( i2c_bus_index == 0 )
 	{
 		HAL_StatusTypeDef res = HAL_I2C_Mem_Read_IT( &hi2c1, dev_addr, BMI08_REG_GYRO_X_LSB, I2C_MEMADD_SIZE_8BIT, data, 6 );
 		result = ( res == HAL_OK ) ? BMI08_INTF_RET_SUCCESS : (BMI08_INTF_RET_SUCCESS+1);
