@@ -35,7 +35,7 @@ async def processing_service( queue, clients_list, shared_data, semaphore ):
                 try:
                     await asyncio.gather(*tasks)
                 except:
-                    print( "Something went wrong sending data." )
+                    print( "Something went wrong while sending data." )
 
         #semaphore.release()
         print( "shared data: ", shared_data )
@@ -43,42 +43,32 @@ async def processing_service( queue, clients_list, shared_data, semaphore ):
 
 def parse_data( data, shared_data ):
     L = len( data )
-    # Should be at least 2 uint32 numbers with 2 bytes per digit.
-    # In total it is 4x2x2 = 16 bytes.
-    if L < 20:
+    # First, batt voltage as uint16_t -> 4 bytes
+    # Second, number of IMUs detected -> 2 bytes.
+    # 32 IMU Quaternions, each number in the quaternion is 4 bytes.
+    # In total data size = 4 + 2 + 32*4*4 = 518
+    #shared_data["L"]   = L
+    if L < 518:
         return False
 
     voltage_adc = string_to_uint16( data[:4] )
     voltage = float(voltage_adc) * (2.0 * 3.3 / 4095.0)
     shared_data['v_batt'] = voltage
 
+    channels_qty = 32
+    data_size    = channels_qty * 16
 
-    channels_stri = data[12:20]
-    channels_bit_mask = string_to_uint32( channels_stri )
-    channels_qty = number_of_channels( channels_bit_mask )
+    total_imus_detected = string_to_uint8( data[4:6] )
+    shared_data["qty"] = total_imus_detected
 
-    data_size = channels_qty * 16
-    # Total size
-    total_expected_size = data_size + 20
-
-    if L != total_expected_size:
-        return False
-
-    total_channels_bit_mask = string_to_uint32( data[4:12] )
-
-    total_channels = get_channels( total_channels_bit_mask )
-
-    channels = get_channels( channels_bit_mask )
-    
     quats = {}
     for channel_ind in range(channels_qty):
-        q_data_ind = 20 + 16*channel_ind
+        q_data_ind = 6 + 16*channel_ind
         q_data = data[q_data_ind:(q_data_ind+16)]
 
         q = string_to_quaternion( q_data )
         
-        channel_id = channels[channel_ind]
-        quats[channel_id] = q
+        quats[channel_ind] = q
     shared_data["quats"] = quats
 
     return True
@@ -112,29 +102,10 @@ def string_to_int16( stri ):
     return number
 
 
-def number_of_channels( number ):
-    accum = 0
-
-    for i in range(32):
-        bit = 1 << i
-        exists = (number & bit) != 0
-        if exists:
-            accum += 1
-
-    return accum
-
-
-def get_channels( number ):
-    channels = []
-    for i in range(32):
-        bit = 1 << i
-        exists = (number & bit) != 0
-        if exists:
-            channels.append( i )
-
-    return channels
-
-    return accum
+def string_to_uint8( stri ):
+    stri = stri[:2]
+    number = int( stri, 16 )
+    return number
 
 
 
@@ -152,7 +123,7 @@ def string_to_quaternion( stri ):
     y = float(y) / L
     z = float(z) / L
 
-    return {"w":w, "x": x, "y": y, "z": z}
+    return {"w": w, "x": x, "y": y, "z": z}
 
 
 

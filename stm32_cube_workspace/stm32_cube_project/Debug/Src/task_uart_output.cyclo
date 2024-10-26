@@ -6,7 +6,8 @@
 ../Src/task_uart_output.c:129:8:read_cmd	8
 ../Src/task_uart_output.c:169:6:parse_cmd	7
 ../Src/task_uart_output.c:197:13:process_cmd	6
-../Src/task_uart_output.c:221:6:stream_data_func	2
-../Src/task_uart_output.c:262:6:short_to_hex	2
-../Src/task_uart_output.c:276:6:ushort_to_hex	2
-../Src/task_uart_output.c:290:6:ulong_to_hex	2
+../Src/task_uart_output.c:223:6:stream_data_func	2
+../Src/task_uart_output.c:264:13:ubyte_to_hex	2
+../Src/task_uart_output.c:278:13:short_to_hex	2
+../Src/task_uart_output.c:292:13:ushort_to_hex	2
+../Src/task_uart_output.c:306:13:ulong_to_hex	2

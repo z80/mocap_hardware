@@ -215,7 +215,9 @@ static void process_cmd( char ** words, int words_qty )
 	}
 }
 
+static void ubyte_to_hex( uint8_t val, char * hex_str );
 static void short_to_hex( int16_t val, char * hex_str );
+static void ushort_to_hex( uint16_t val, char * hex_str );
 static void ulong_to_hex( uint32_t val, char * hex_str );
 
 void stream_data_func( uint32_t adc_value )
@@ -231,11 +233,13 @@ void stream_data_func( uint32_t adc_value )
 	// But at most need 8 bytes at a time.
 	static char buffer[8];
 
+	set_instant_led( 2, 1 );
+
 	ushort_to_hex( (uint16_t)adc_value, buffer );
 	HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 
-	ulong_to_hex( imu_data.imus_detected, buffer );
-	HAL_UART_Transmit( &huart2, buffer, 8, 10 );
+	ubyte_to_hex( imu_data.imus_detected, buffer );
+	HAL_UART_Transmit( &huart2, buffer, 2, 10 );
 
 
 	for ( int i=0; i<32; i++ )
@@ -256,10 +260,26 @@ void stream_data_func( uint32_t adc_value )
 	}
 	buffer[0] = '\r';
 	HAL_UART_Transmit( &huart2, buffer, 1, 10 );
+
+	set_instant_led( 2, 0 );
 }
 
 
-void short_to_hex( int16_t val, char * hex_str )
+static void ubyte_to_hex( uint8_t val, char * hex_str )
+{
+    const char hexDigits[] = "0123456789ABCDEF";
+    uint16_t unsigned_val = (uint16_t)val; // Treat the number as unsigned for two's complement representation
+
+    for (int i = 1; i>=0; i--)
+    {
+    	const int ind = unsigned_val % 16;
+    	const char digit = hexDigits[ind];
+        hex_str[i] = digit;
+        unsigned_val /= 16;
+    }
+}
+
+static void short_to_hex( int16_t val, char * hex_str )
 {
     const char hexDigits[] = "0123456789ABCDEF";
     uint16_t unsigned_val = (uint16_t)val; // Treat the number as unsigned for two's complement representation
@@ -273,7 +293,7 @@ void short_to_hex( int16_t val, char * hex_str )
     }
 }
 
-void ushort_to_hex( uint16_t val, char * hex_str )
+static void ushort_to_hex( uint16_t val, char * hex_str )
 {
     const char hexDigits[] = "0123456789ABCDEF";
     uint16_t unsigned_val = val; // Treat the number as unsigned for two's complement representation
@@ -287,7 +307,7 @@ void ushort_to_hex( uint16_t val, char * hex_str )
     }
 }
 
-void ulong_to_hex( uint32_t val, char * hex_str )
+static void ulong_to_hex( uint32_t val, char * hex_str )
 {
     const char hexDigits[] = "0123456789ABCDEF";
     uint32_t unsigned_val = val;
