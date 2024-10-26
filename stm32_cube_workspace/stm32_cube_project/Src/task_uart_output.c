@@ -3,7 +3,7 @@
 #include "main.h"
 
 #include "task_led.h"
-#include "task_imu.h"
+#include "task_bmi085.h"
 
 #include "cmsis_os.h"
 
@@ -199,22 +199,7 @@ static void process_cmd( char ** words, int words_qty )
 	if (words_qty < 1)
 		return;
 
-	if ( strcmp( words[0], "mode" ) == 0 )
-	{
-		if (words_qty < 2)
-			return;
-		// Can be either magnetic or inertial.
-		if ( strcmp( words[1], "magnetic" ) == 0 )
-		{
-			imu_set_magnetic_mode();
-		}
-		else if ( strcmp( words[1], "inertial" ) == 0 )
-		{
-			imu_set_inertial_mode();
-		}
-
-	}
-	else if ( strcmp( words[0], "data" ) == 0 )
+	if ( strcmp( words[0], "data" ) == 0 )
 	{
 		if (words_qty < 2)
 			return;
@@ -235,8 +220,8 @@ static void ulong_to_hex( uint32_t val, char * hex_str );
 
 void stream_data_func( uint32_t adc_value )
 {
-	static struct ImuData imu_data;
-	get_imu_data( &imu_data );
+	static struct TImuData16 imu_data;
+	get_bmi085_data( &imu_data );
 
 	// Max buffer size.
 	// 4 - detected IMUs, 4 - read IMUs, 2x4 per IMU, 1 end of string '\n'.
@@ -252,28 +237,22 @@ void stream_data_func( uint32_t adc_value )
 	ulong_to_hex( imu_data.imus_detected, buffer );
 	HAL_UART_Transmit( &huart2, buffer, 8, 10 );
 
-	ulong_to_hex( imu_data.imus_updated, buffer );
-	HAL_UART_Transmit( &huart2, buffer, 8, 10 );
 
 	for ( int i=0; i<32; i++ )
 	{
-		uint32_t imu_bit = 1 << i;
-		if ( imu_data.imus_updated & imu_bit )
-		{
-			struct bno055_quaternion_t * q = &(imu_data.quats[i]);
+		struct TQuat16 * q = &(imu_data.quats[i]);
 
-			short_to_hex( q->w, buffer );
-			HAL_UART_Transmit( &huart2, buffer, 4, 10 );
+		short_to_hex( q->w, buffer );
+		HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 
-			short_to_hex( q->x, buffer );
-			HAL_UART_Transmit( &huart2, buffer, 4, 10 );
+		short_to_hex( q->x, buffer );
+		HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 
-			short_to_hex( q->y, buffer );
-			HAL_UART_Transmit( &huart2, buffer, 4, 10 );
+		short_to_hex( q->y, buffer );
+		HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 
-			short_to_hex( q->z, buffer );
-			HAL_UART_Transmit( &huart2, buffer, 4, 10 );
-		}
+		short_to_hex( q->z, buffer );
+		HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 	}
 	buffer[0] = '\r';
 	HAL_UART_Transmit( &huart2, buffer, 1, 10 );

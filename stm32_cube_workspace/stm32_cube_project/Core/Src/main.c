@@ -141,7 +141,7 @@ int main(void)
   //task_imu_init();
   task_led_init();
   task_bmi085_init();
-  //task_uart_output_init();
+  task_uart_output_init();
   /* USER CODE END RTOS_THREADS */
 
   /* Start scheduler */

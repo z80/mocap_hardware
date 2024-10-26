@@ -58,11 +58,18 @@ struct TAllImus
 };
 
 static struct TAllImus all_imus;
+static struct TImuData16 imu_data_16;
 
 static void init_all();
 static void initiate_data_io();
 static void raw_data_to_acc( uint8_t * data, struct TMagdwickImuData * imu );
 static void raw_data_to_gyro( uint8_t * data, struct TMagdwickImuData * imu );
+static void init_discrete_imu_data();
+static void discretize_imu_data();
+
+// Mutex for accessing IMU data.
+static osMutexDef_t mutex;
+static osMutexId    mutexId;
 
 // Data queue from IRQ to the task.
 osMessageQDef(data_queue, 32, uint16_t); // Message queue with 32 slots for uint16_t messages
@@ -77,6 +84,9 @@ osThreadDef( task_bmi085, func_task_bmi085, osPriorityNormal, 0, 1024 );
 // It doesn't do anything else.
 void task_bmi085_init()
 {
+	init_discrete_imu_data();
+
+	mutexId = osMutexCreate( &mutex );
 	data_queue_id = osMessageCreate(osMessageQ(data_queue), NULL);
 	osThreadCreate( osThread(task_bmi085), NULL );
 }
@@ -205,6 +215,73 @@ static void raw_data_to_gyro( uint8_t * data, struct TMagdwickImuData * imu )
 }
 
 
+static void init_discrete_imu_data()
+{
+	uint8_t index;
+	for ( index=0; index<32; index++ )
+	{
+		struct TQuat16 * quat16 = &(imu_data_16.quats[index]);
+		quat16->w = 32767;
+		quat16->x = 0;
+		quat16->y = 0;
+		quat16->z = 0;
+	}
+}
+
+static void discretize_imu_data()
+{
+	osMutexWait( mutexId, osWaitForever );
+
+		// How many IMUs are detected in total.
+		imu_data_16.imus_detected = all_imus.imus_qty_a + all_imus.imus_qty_b;
+
+		// Discretize IMU data.
+		uint8_t index;
+		for ( index=0; index<all_imus.imus_qty_a; index++ )
+		{
+			struct TImu * imu = &(all_imus.imus_a[index]);
+			uint8_t imu_index = imu->index;
+
+			struct TQuat16 * quat16 = &(imu_data_16.quats[imu_index]);
+
+			struct TMagdwickQuat * quat = &(imu->quat);
+			float v = quat->q[0] * 32767.0f;
+			if (v > 32767.0f)
+				quat16->w = 32767;
+			else if ( v < -32768.0f )
+				quat16->w = -32768.0f;
+			else
+				quat16->w = (int16_t)v;
+
+			v = quat->q[1] * 32767.0f;
+			if (v > 32767.0f)
+				quat16->x = 32767;
+			else if ( v < -32768.0f )
+				quat16->x = -32768.0f;
+			else
+				quat16->x = (int16_t)v;
+
+			v = quat->q[2] * 32767.0f;
+			if (v > 32767.0f)
+				quat16->y = 32767;
+			else if ( v < -32768.0f )
+				quat16->y = -32768.0f;
+			else
+				quat16->y = (int16_t)v;
+
+			v = quat->q[3] * 32767.0f;
+			if (v > 32767.0f)
+				quat16->z = 32767;
+			else if ( v < -32768.0f )
+				quat16->z = -32768.0f;
+			else
+				quat16->z = (int16_t)v;
+		}
+
+	osMutexRelease( mutexId );
+}
+
+
 
 
 void HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c)
@@ -320,7 +397,6 @@ void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c)
 
 
 
-
 static void func_task_bmi085( void * p )
 {
 	static uint8_t index;
@@ -335,6 +411,8 @@ static void func_task_bmi085( void * p )
 
 	for (;;)
 	{
+		set_instant_led( 0, 1 );
+
 		// Trigger the chain reaction to read data across all detected IMUs.
 		initiate_data_io();
 
@@ -344,6 +422,8 @@ static void func_task_bmi085( void * p )
 			osEvent evt = osMessageGet( data_queue_id, osWaitForever );
 			if (evt.status == osEventMessage)
 			{
+				set_instant_led( 1, 1 );
+
 				uint16_t data = evt.value.v;
 				uint16_t bus_ind = (data >> 8);
 				uint16_t array_ind = data & 0xFF;
@@ -360,12 +440,34 @@ static void func_task_bmi085( void * p )
 				struct TMagdwickQuat * quat = &(imu->quat);
 				magdwick_update_bias( &(all_imus.params), bias, &scaled_data );
 				magdwick_update_imu( quat, &(all_imus.params), &scaled_data );
+
+				set_instant_led( 1, 0 );
 			}
 		}
+
+		discretize_imu_data();
+
+		set_instant_led( 0, 0 );
 
 		// Wait so that queries happen on exactly regular basis.
 		osDelayUntil( &PreviousWakeTime, 10 );
 	}
 }
+
+
+
+
+void get_bmi085_data( struct TImuData16 * data )
+{
+	osMutexWait( mutexId, osWaitForever );
+		*data = imu_data_16;
+	osMutexRelease( mutexId );
+}
+
+
+
+
+
+
 
 

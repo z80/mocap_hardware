@@ -16,18 +16,27 @@ osThreadDef(task_led, func_task_led, osPriorityNormal, 0, 128);
 
 void task_led_init()
 {
-	mutexId = osMutexCreate( &mutex );
-	osThreadCreate( osThread(task_led), NULL );
+	//mutexId = osMutexCreate( &mutex );
+	//osThreadCreate( osThread(task_led), NULL );
 }
 
-void set_led( uint8_t led )
+void set_leds( uint8_t led )
 {
-	osMutexWait( mutexId, osWaitForever );
+	//osMutexWait( mutexId, osWaitForever );
 	led_value = led;
-	osMutexRelease( mutexId );
+	//osMutexRelease( mutexId );
 }
 
-void set_instant_led( uint8_t led )
+void set_led( uint8_t index, uint8_t en )
+{
+	uint8_t bit = (1<<index);
+	if ( en != 0 )
+		led_value = led_value | bit;
+	else
+		led_value = led_value & (~bit);
+}
+
+void set_instant_leds( uint8_t led )
 {
 	if (led & 0x01)
 		HAL_GPIO_WritePin( LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_SET );
@@ -43,6 +52,31 @@ void set_instant_led( uint8_t led )
 		HAL_GPIO_WritePin( LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET );
 	else
 		HAL_GPIO_WritePin( LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET );
+}
+
+void set_instant_led( uint8_t index, uint8_t en )
+{
+	if ( index == 0 )
+	{
+		if ( en != 0 )
+			HAL_GPIO_WritePin( LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_SET );
+		else
+			HAL_GPIO_WritePin( LED_0_GPIO_Port, LED_0_Pin, GPIO_PIN_RESET );
+	}
+	else if ( index == 1 )
+	{
+		if ( en != 0 )
+			HAL_GPIO_WritePin( LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_SET );
+		else
+			HAL_GPIO_WritePin( LED_1_GPIO_Port, LED_1_Pin, GPIO_PIN_RESET );
+	}
+	else
+	{
+		if ( en != 0 )
+			HAL_GPIO_WritePin( LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_SET );
+		else
+			HAL_GPIO_WritePin( LED_2_GPIO_Port, LED_2_Pin, GPIO_PIN_RESET );
+	}
 }
 
 
