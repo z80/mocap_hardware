@@ -41757,7 +41757,7 @@ static void func_task_bmi085( void * p )
  800f730:	2b10      	cmp	r3, #16
  800f732:	d165      	bne.n	800f800 <func_task_bmi085+0x118>
 			{
-				uint16_t data = evt.value.p;
+				uint16_t data = evt.value.v;
  800f734:	6a7b      	ldr	r3, [r7, #36]	@ 0x24
  800f736:	f8a7 3046 	strh.w	r3, [r7, #70]	@ 0x46
 				uint16_t bus_ind = (data >> 8);

@@ -344,7 +344,7 @@ static void func_task_bmi085( void * p )
 			osEvent evt = osMessageGet( data_queue_id, osWaitForever );
 			if (evt.status == osEventMessage)
 			{
-				uint16_t data = evt.value.p;
+				uint16_t data = evt.value.v;
 				uint16_t bus_ind = (data >> 8);
 				uint16_t array_ind = data & 0xFF;
 
