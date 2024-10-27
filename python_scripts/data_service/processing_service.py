@@ -44,12 +44,12 @@ async def processing_service( queue, clients_list, shared_data, semaphore ):
 def parse_data( data, shared_data ):
     L = len( data )
     # First, batt voltage as uint16_t -> 4 bytes
-    # Second, number of IMUs detected -> 2 bytes.
-    # 32 IMU Quaternions, each number in the quaternion is 4 bytes.
+    # Second, number of IMUs detected -> 8 bytes.
+    # 0..32 IMU Quaternions, each number in the quaternion is 4 bytes.
     # Last, there is a CRC8 expressed as 2 bytes.
-    # In total data size = 4 + 2 + 32*4*4 + 2 = 520
+    # In total data size = 4 + 8 + N*4*4 + 2
     #shared_data["L"]   = L
-    if L < 520:
+    if L < 14:
         return False
 
     ok = check_crc8( data )
@@ -57,29 +57,36 @@ def parse_data( data, shared_data ):
         print( "crc ok: ", ok )
         return False
 
+
+    #import pdb
+    #pdb.set_trace()
+
     voltage_adc = string_to_uint16( data[:4] )
     voltage = float(voltage_adc) * (2.0 * 3.3 / 4095.0)
     shared_data['v_batt'] = voltage
 
-    channels_qty = 32
-    data_size    = channels_qty * 16
+    imu_bits = string_to_uint32( data[4:12] )
+    indices = bits_to_numbers( imu_bits )
+    readings_qty = len( indices )
 
-    total_imus_detected = string_to_uint8( data[4:6] )
-    shared_data["qty"] = total_imus_detected
+    shared_data["qty"] = readings_qty
 
     quats = {}
-    for channel_ind in range(channels_qty):
-        q_data_ind = 6 + 16*channel_ind
+    for channel_ind in range(readings_qty):
+        q_data_ind = 12 + 16*channel_ind
         q_data = data[q_data_ind:(q_data_ind+16)]
 
         q = string_to_quaternion( q_data, data )
+
+        quat_ind = indices[channel_ind]
         
-        quats[channel_ind] = q
+        quats[quat_ind] = q
     shared_data["quats"] = quats
 
     #print( "q[28]: ", quats[28], "q[14]: ", quats[14] )
     #ind28 = 6 + 16*28
     #print( "q[28]: ", quats[28], "stri: ", data[ind28:(ind28+16)] )
+    #print( shared_data )
 
     return True
 
@@ -154,6 +161,18 @@ def string_to_uint8( stri ):
 def byte_to_uint8( stri ):
     number = ord( stri )
     return number
+
+
+def bits_to_numbers( bit_mask ):
+    indices = []
+    for i in range(32):
+        bit = 1 << i
+        exists = (bit_mask & bit) != 0
+        if exists:
+            indices.append(i)
+
+    return indices
+
 
 
 

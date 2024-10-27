@@ -233,7 +233,7 @@ static void discretize_imu_data()
 	osMutexWait( mutexId, osWaitForever );
 
 		// How many IMUs are detected in total.
-		imu_data_16.imus_detected = all_imus.imus_qty_a + all_imus.imus_qty_b;
+		imu_data_16.imus_detected = 0;
 
 		// Discretize IMU data.
 		uint8_t index;
@@ -241,6 +241,8 @@ static void discretize_imu_data()
 		{
 			struct TImu * imu = &(all_imus.imus_a[index]);
 			uint8_t imu_index = imu->index;
+
+			imu_data_16.imus_detected = imu_data_16.imus_detected | (1 << imu_index);
 
 			struct TQuat16 * quat16 = &(imu_data_16.quats[imu_index]);
 
@@ -281,6 +283,8 @@ static void discretize_imu_data()
 		{
 			struct TImu * imu = &(all_imus.imus_b[index]);
 			uint8_t imu_index = imu->index;
+
+			imu_data_16.imus_detected = imu_data_16.imus_detected | (1 << imu_index);
 
 			struct TQuat16 * quat16 = &(imu_data_16.quats[imu_index]);
 

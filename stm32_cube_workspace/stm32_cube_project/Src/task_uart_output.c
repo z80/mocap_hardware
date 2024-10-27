@@ -243,13 +243,18 @@ void stream_data_func( uint32_t adc_value )
 	update_crc8( buffer, 4, &crc8 );
 	HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 
-	ubyte_to_hex( imu_data.imus_detected, buffer );
-	update_crc8( buffer, 2, &crc8 );
-	HAL_UART_Transmit( &huart2, buffer, 2, 10 );
+	ulong_to_hex( imu_data.imus_detected, buffer );
+	update_crc8( buffer, 8, &crc8 );
+	HAL_UART_Transmit( &huart2, buffer, 8, 10 );
 
 
 	for ( int i=0; i<32; i++ )
 	{
+		uint32_t is_detected = imu_data.imus_detected & (1 << i);
+
+		if ( is_detected == 0 )
+			continue;
+
 		struct TQuat16 * q = &(imu_data.quats[i]);
 
 		short_to_hex( q->w, buffer );
