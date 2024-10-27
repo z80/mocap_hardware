@@ -38,7 +38,7 @@ async def processing_service( queue, clients_list, shared_data, semaphore ):
                     print( "Something went wrong while sending data." )
 
         #semaphore.release()
-        print( "shared data: ", shared_data )
+        #print( "shared data: ", shared_data )
 
 
 def parse_data( data, shared_data ):
@@ -46,9 +46,15 @@ def parse_data( data, shared_data ):
     # First, batt voltage as uint16_t -> 4 bytes
     # Second, number of IMUs detected -> 2 bytes.
     # 32 IMU Quaternions, each number in the quaternion is 4 bytes.
-    # In total data size = 4 + 2 + 32*4*4 = 518
+    # Last, there is a CRC8 expressed as 2 bytes.
+    # In total data size = 4 + 2 + 32*4*4 + 2 = 520
     #shared_data["L"]   = L
-    if L < 518:
+    if L < 520:
+        return False
+
+    ok = check_crc8( data )
+    if ( not ok ):
+        print( "crc ok: ", ok )
         return False
 
     voltage_adc = string_to_uint16( data[:4] )
@@ -66,15 +72,52 @@ def parse_data( data, shared_data ):
         q_data_ind = 6 + 16*channel_ind
         q_data = data[q_data_ind:(q_data_ind+16)]
 
-        q = string_to_quaternion( q_data )
+        q = string_to_quaternion( q_data, data )
         
         quats[channel_ind] = q
     shared_data["quats"] = quats
+
+    #print( "q[28]: ", quats[28], "q[14]: ", quats[14] )
+    #ind28 = 6 + 16*28
+    #print( "q[28]: ", quats[28], "stri: ", data[ind28:(ind28+16)] )
 
     return True
 
 
 
+def check_crc8( data ):
+    #import pdb
+    #pdb.set_trace()
+    qty = len( data )
+    qty = qty - 2
+
+    crc8 = 0
+    for i in range(qty):
+        byte_stri = data[i]
+        byte = byte_to_uint8( byte_stri )
+
+        crc8 = update_crc8( byte, crc8 )
+
+    # Read the transmitted CRC8
+    transmitted_crc8 = string_to_uint8( data[-2:] )
+
+    result_ok = (crc8 == transmitted_crc8)
+    return result_ok
+
+
+
+def update_crc8( byte, crc8 ):
+    crc8 ^= byte
+    for j in range(8):
+        if (crc8 & 0x80) != 0:
+            crc8 = crc8 << 1
+            crc8 = crc8 ^ 0x07
+        else:
+            crc8 = crc8 << 1
+
+        crc8 = crc8 & 0xFF
+
+    return crc8
 
 
 def string_to_uint32( stri ):
@@ -108,8 +151,13 @@ def string_to_uint8( stri ):
     return number
 
 
+def byte_to_uint8( stri ):
+    number = ord( stri )
+    return number
 
-def string_to_quaternion( stri ):
+
+
+def string_to_quaternion( stri, all_data ):
     stri = stri[:16]
     w = string_to_int16( stri )
     x = string_to_int16( stri[4:] )
@@ -117,6 +165,10 @@ def string_to_quaternion( stri ):
     z = string_to_int16( stri[12:] )
 
     L = math.sqrt( float(w*w + x*x + y*y + z*z) )
+
+    if ( L < 0.1 ):
+        import pdb
+        pdb.set_trace()
 
     w = float(w) / L
     x = float(x) / L

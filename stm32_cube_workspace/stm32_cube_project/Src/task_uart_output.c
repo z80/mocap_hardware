@@ -44,9 +44,11 @@ extern ADC_HandleTypeDef  hadc1;
 extern UART_HandleTypeDef huart2;
 
 static char * read_cmd();
-void parse_cmd( char * cmd, int cmd_len );
+static void parse_cmd( char * cmd, int cmd_len );
 
 static void stream_data_func();
+
+static void update_crc8( uint8_t * data, uint16_t qty, uint8_t * p_crc8 );
 
 // The character buffer for a single character.
 // Reading in interrupt mode.
@@ -233,12 +235,16 @@ void stream_data_func( uint32_t adc_value )
 	// But at most need 8 bytes at a time.
 	static char buffer[8];
 
+	uint8_t crc8 = 0;
+
 	set_instant_led( 2, 1 );
 
 	ushort_to_hex( (uint16_t)adc_value, buffer );
+	update_crc8( buffer, 4, &crc8 );
 	HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 
 	ubyte_to_hex( imu_data.imus_detected, buffer );
+	update_crc8( buffer, 2, &crc8 );
 	HAL_UART_Transmit( &huart2, buffer, 2, 10 );
 
 
@@ -247,17 +253,26 @@ void stream_data_func( uint32_t adc_value )
 		struct TQuat16 * q = &(imu_data.quats[i]);
 
 		short_to_hex( q->w, buffer );
+		update_crc8( buffer, 4, &crc8 );
 		HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 
 		short_to_hex( q->x, buffer );
+		update_crc8( buffer, 4, &crc8 );
 		HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 
 		short_to_hex( q->y, buffer );
+		update_crc8( buffer, 4, &crc8 );
 		HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 
 		short_to_hex( q->z, buffer );
+		update_crc8( buffer, 4, &crc8 );
 		HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 	}
+
+	// Send control sum.
+	ubyte_to_hex( crc8, buffer );
+	HAL_UART_Transmit( &huart2, buffer, 2, 10 );
+
 	buffer[0] = '\r';
 	HAL_UART_Transmit( &huart2, buffer, 1, 10 );
 
@@ -319,5 +334,30 @@ static void ulong_to_hex( uint32_t val, char * hex_str )
         hex_str[i] = digit;
         unsigned_val /= 16;
     }
+}
+
+static void update_crc8( uint8_t * data, uint16_t qty, uint8_t * p_crc8 )
+{
+	uint8_t crc8 = *p_crc8;
+
+	for (uint16_t i = 0; i < qty; i++)
+	{
+	    uint8_t byte = data[i];
+		crc8 ^= byte;
+		for (uint8_t j = 0; j < 8; j++)
+		{
+			if (crc8 & 0x80)
+			{
+				// Polynomial 0x07
+				crc8 = (crc8 << 1) ^ 0x07;
+			}
+			else
+			{
+				crc8 <<= 1;
+			}
+		}
+	}
+
+	*p_crc8 = crc8;
 }
 

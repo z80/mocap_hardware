@@ -248,32 +248,32 @@ static void discretize_imu_data()
 			float v = quat->q[0] * 32767.0f;
 			if (v > 32767.0f)
 				quat16->w = 32767;
-			else if ( v < -32768.0f )
-				quat16->w = -32768.0f;
+			else if ( v < -32767.0f )
+				quat16->w = -32767;
 			else
 				quat16->w = (int16_t)v;
 
 			v = quat->q[1] * 32767.0f;
 			if (v > 32767.0f)
 				quat16->x = 32767;
-			else if ( v < -32768.0f )
-				quat16->x = -32768.0f;
+			else if ( v < -32767.0f )
+				quat16->x = -32767;
 			else
 				quat16->x = (int16_t)v;
 
 			v = quat->q[2] * 32767.0f;
 			if (v > 32767.0f)
 				quat16->y = 32767;
-			else if ( v < -32768.0f )
-				quat16->y = -32768.0f;
+			else if ( v < -32767.0f )
+				quat16->y = -32767;
 			else
 				quat16->y = (int16_t)v;
 
 			v = quat->q[3] * 32767.0f;
 			if (v > 32767.0f)
 				quat16->z = 32767;
-			else if ( v < -32768.0f )
-				quat16->z = -32768.0f;
+			else if ( v < -32767.0f )
+				quat16->z = -32767;
 			else
 				quat16->z = (int16_t)v;
 		}
@@ -288,32 +288,32 @@ static void discretize_imu_data()
 			float v = quat->q[0] * 32767.0f;
 			if (v > 32767.0f)
 				quat16->w = 32767;
-			else if ( v < -32768.0f )
-				quat16->w = -32768.0f;
+			else if ( v < -32767.0f )
+				quat16->w = -32767;
 			else
 				quat16->w = (int16_t)v;
 
 			v = quat->q[1] * 32767.0f;
 			if (v > 32767.0f)
 				quat16->x = 32767;
-			else if ( v < -32768.0f )
-				quat16->x = -32768.0f;
+			else if ( v < -32767.0f )
+				quat16->x = -32767;
 			else
 				quat16->x = (int16_t)v;
 
 			v = quat->q[2] * 32767.0f;
 			if (v > 32767.0f)
 				quat16->y = 32767;
-			else if ( v < -32768.0f )
-				quat16->y = -32768.0f;
+			else if ( v < -32767.0f )
+				quat16->y = -32767;
 			else
 				quat16->y = (int16_t)v;
 
 			v = quat->q[3] * 32767.0f;
 			if (v > 32767.0f)
 				quat16->z = 32767;
-			else if ( v < -32768.0f )
-				quat16->z = -32768.0f;
+			else if ( v < -32767.0f )
+				quat16->z = -32767;
 			else
 				quat16->z = (int16_t)v;
 		}
