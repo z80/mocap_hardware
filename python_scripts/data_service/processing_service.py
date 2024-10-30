@@ -102,7 +102,7 @@ def parse_data( data, shared_data ):
     #print( "q[28]: ", quats[28], "q[14]: ", quats[14] )
     #ind28 = 6 + 16*28
     #print( "q[28]: ", quats[28], "stri: ", data[ind28:(ind28+16)] )
-    print( shared_data )
+    #print( shared_data )
 
     return expected_total_bytes
 
