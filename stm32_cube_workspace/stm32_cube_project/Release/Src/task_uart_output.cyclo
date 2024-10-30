@@ -1,7 +1,7 @@
 ../Src/task_uart_output.c:78:6:func_task_uart_rx	15
-../Src/task_uart_output.c:302:13:short_to_hex.constprop	3
-../Src/task_uart_output.c:344:13:update_crc8.constprop	4
-../Src/task_uart_output.c:91:6:func_task_uart_tx	12
+../Src/task_uart_output.c:297:13:short_to_hex.constprop	1
+../Src/task_uart_output.c:333:13:update_crc8.constprop	4
+../Src/task_uart_output.c:91:6:func_task_uart_tx	8
 ../Src/task_uart_output.c:34:6:task_uart_output_init	1
 ../Src/task_uart_output.c:57:6:HAL_UART_RxCpltCallback	2
 ../Src/task_uart_output.c:67:6:HAL_ADC_ConvCpltCallback	2

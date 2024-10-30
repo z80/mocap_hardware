@@ -233,19 +233,23 @@ void stream_data_func( uint32_t adc_value )
 	// In total:
 	// (4 + 4 + 2*4*32)x2 + 1 = 529.
 	// But at most need 8 bytes at a time.
-	static char buffer[8];
+	static char buffer[4];
 
 	uint8_t crc8 = 0;
 
 	set_instant_led( 2, 1 );
 
+	// Magic byte indicating the start of the packet.
+	buffer[0] = 0xAA;
+	HAL_UART_Transmit( &huart2, buffer, 1, 10 );
+
 	ushort_to_hex( (uint16_t)adc_value, buffer );
-	update_crc8( buffer, 4, &crc8 );
-	HAL_UART_Transmit( &huart2, buffer, 4, 10 );
+	update_crc8( buffer, 2, &crc8 );
+	HAL_UART_Transmit( &huart2, buffer, 2, 10 );
 
 	ulong_to_hex( imu_data.imus_detected, buffer );
-	update_crc8( buffer, 8, &crc8 );
-	HAL_UART_Transmit( &huart2, buffer, 8, 10 );
+	update_crc8( buffer, 4, &crc8 );
+	HAL_UART_Transmit( &huart2, buffer, 4, 10 );
 
 
 	for ( int i=0; i<32; i++ )
@@ -258,28 +262,28 @@ void stream_data_func( uint32_t adc_value )
 		struct TQuat16 * q = &(imu_data.quats[i]);
 
 		short_to_hex( q->w, buffer );
-		update_crc8( buffer, 4, &crc8 );
-		HAL_UART_Transmit( &huart2, buffer, 4, 10 );
+		update_crc8( buffer, 2, &crc8 );
+		HAL_UART_Transmit( &huart2, buffer, 2, 10 );
 
 		short_to_hex( q->x, buffer );
-		update_crc8( buffer, 4, &crc8 );
-		HAL_UART_Transmit( &huart2, buffer, 4, 10 );
+		update_crc8( buffer, 2, &crc8 );
+		HAL_UART_Transmit( &huart2, buffer, 2, 10 );
 
 		short_to_hex( q->y, buffer );
-		update_crc8( buffer, 4, &crc8 );
-		HAL_UART_Transmit( &huart2, buffer, 4, 10 );
+		update_crc8( buffer, 2, &crc8 );
+		HAL_UART_Transmit( &huart2, buffer, 2, 10 );
 
 		short_to_hex( q->z, buffer );
-		update_crc8( buffer, 4, &crc8 );
-		HAL_UART_Transmit( &huart2, buffer, 4, 10 );
+		update_crc8( buffer, 2, &crc8 );
+		HAL_UART_Transmit( &huart2, buffer, 2, 10 );
 	}
 
 	// Send control sum.
 	ubyte_to_hex( crc8, buffer );
-	HAL_UART_Transmit( &huart2, buffer, 2, 10 );
-
-	buffer[0] = '\r';
 	HAL_UART_Transmit( &huart2, buffer, 1, 10 );
+
+	//buffer[0] = '\r';
+	//HAL_UART_Transmit( &huart2, buffer, 1, 10 );
 
 	set_instant_led( 2, 0 );
 }
@@ -287,57 +291,42 @@ void stream_data_func( uint32_t adc_value )
 
 static void ubyte_to_hex( uint8_t val, char * hex_str )
 {
-    const char hexDigits[] = "0123456789ABCDEF";
-    uint16_t unsigned_val = (uint16_t)val; // Treat the number as unsigned for two's complement representation
-
-    for (int i = 1; i>=0; i--)
-    {
-    	const int ind = unsigned_val % 16;
-    	const char digit = hexDigits[ind];
-        hex_str[i] = digit;
-        unsigned_val /= 16;
-    }
+    ((uint8_t *)hex_str)[0] = val;
 }
 
 static void short_to_hex( int16_t val, char * hex_str )
 {
-    const char hexDigits[] = "0123456789ABCDEF";
     uint16_t unsigned_val = (uint16_t)val; // Treat the number as unsigned for two's complement representation
 
-    for (int i = 3; i>=0; i--)
+    for (int i = 0; i<2; i++)
     {
-    	const int ind = unsigned_val % 16;
-    	const char digit = hexDigits[ind];
-        hex_str[i] = digit;
-        unsigned_val /= 16;
+    	uint8_t v = (uint8_t)( unsigned_val & 0xFF );
+        ((uint8_t *)hex_str)[i] = v;
+        unsigned_val = unsigned_val >> 8;
     }
 }
 
 static void ushort_to_hex( uint16_t val, char * hex_str )
 {
-    const char hexDigits[] = "0123456789ABCDEF";
     uint16_t unsigned_val = val; // Treat the number as unsigned for two's complement representation
 
-    for (int i = 3; i>=0; i--)
+    for (int i = 0; i<2; i++)
     {
-    	const int ind = unsigned_val % 16;
-    	const char digit = hexDigits[ind];
-        hex_str[i] = digit;
-        unsigned_val /= 16;
+    	uint8_t v = (uint8_t)( unsigned_val & 0xFF );
+        ((uint8_t *)hex_str)[i] = v;
+        unsigned_val = unsigned_val >> 8;
     }
 }
 
 static void ulong_to_hex( uint32_t val, char * hex_str )
 {
-    const char hexDigits[] = "0123456789ABCDEF";
-    uint32_t unsigned_val = val;
+    uint32_t unsigned_val = (uint32_t)val; // Treat the number as unsigned for two's complement representation
 
-    for (int i = 7; i>=0; i--)
+    for (int i = 0; i<4; i++)
     {
-    	const int ind = unsigned_val % 16;
-    	const char digit = hexDigits[ind];
-        hex_str[i] = digit;
-        unsigned_val /= 16;
+    	uint8_t v = (uint8_t)( unsigned_val & 0xFF );
+        ((uint8_t *)hex_str)[i] = v;
+        unsigned_val = unsigned_val >> 8;
     }
 }
 

@@ -69,8 +69,9 @@ async def uart_service( loop, queue ):
             task.cancel()
 
     def handle_rx(_: BleakGATTCharacteristic, data: bytearray):
-        stri = data.decode("utf-8")
-        asyncio.run_coroutine_threadsafe( queue.put(stri), loop )
+        #stri = data.decode("utf-8")
+        #asyncio.run_coroutine_threadsafe( queue.put(stri), loop )
+        asyncio.run_coroutine_threadsafe( queue.put(data), loop )
         #print("received:", stri)
 
     async with BleakClient(device, disconnected_callback=handle_disconnect) as client:
