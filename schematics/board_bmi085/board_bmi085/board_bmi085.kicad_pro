@@ -52,7 +52,10 @@
         }
       },
       "diff_pair_dimensions": [],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "solder_mask_bridge|129525000|83037500|d4599c92-8e4e-455f-af1b-7c49f2749837|19d7db65-9f47-45d3-af34-ecfd341ffd41",
+        "solder_mask_bridge|129525000|83537500|d4599c92-8e4e-455f-af1b-7c49f2749837|19d7db65-9f47-45d3-af34-ecfd341ffd41"
+      ],
       "meta": {
         "version": 2
       },
