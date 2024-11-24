@@ -52,7 +52,7 @@ async def processing_service( queue, clients_list, shared_data, semaphore ):
             
 
         #semaphore.release()
-        #print( "shared data: ", shared_data )
+        print( "shared data: ", shared_data )
 
 
 def parse_data( data, shared_data ):

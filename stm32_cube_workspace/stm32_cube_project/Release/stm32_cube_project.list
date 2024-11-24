@@ -524,7 +524,7 @@ Disassembly of section .text:
  80006a2:	4d2f      	ldr	r5, [pc, #188]	@ (8000760 <main+0x1d4>)
  80006a4:	6203      	str	r3, [r0, #32]
  80006a6:	f44f 4480 	mov.w	r4, #16384	@ 0x4000
- 80006aa:	e9c0 3302 	strd	r3, r3, [r0, #8]
+ 80006aa:	e9c0 4302 	strd	r4, r3, [r0, #8]
  80006ae:	e9c0 4304 	strd	r4, r3, [r0, #16]
  80006b2:	e9c0 3306 	strd	r3, r3, [r0, #24]
  80006b6:	e9c0 2500 	strd	r2, r5, [r0]
@@ -536,7 +536,7 @@ Disassembly of section .text:
  80006c6:	4827      	ldr	r0, [pc, #156]	@ (8000764 <main+0x1d8>)
  80006c8:	4a27      	ldr	r2, [pc, #156]	@ (8000768 <main+0x1dc>)
  80006ca:	6203      	str	r3, [r0, #32]
- 80006cc:	e9c0 3302 	strd	r3, r3, [r0, #8]
+ 80006cc:	e9c0 4302 	strd	r4, r3, [r0, #8]
  80006d0:	e9c0 4304 	strd	r4, r3, [r0, #16]
  80006d4:	e9c0 3306 	strd	r3, r3, [r0, #24]
  80006d8:	e9c0 2500 	strd	r2, r5, [r0]
