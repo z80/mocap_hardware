@@ -132,8 +132,6 @@ static void init_all()
 	for (index=16; index<32; index++)
 	{
 		rslt = bmi085_init( index );
-		if ( index == 28 )
-			osDelay( 1000 );
 		if ( rslt == 0 )
 		{
 			struct TImu * imu = &(all_imus.imus_b[all_imus.imus_qty_b]);
