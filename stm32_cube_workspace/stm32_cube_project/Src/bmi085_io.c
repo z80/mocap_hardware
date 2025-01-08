@@ -76,7 +76,7 @@ uint8_t bmi085_switch_irq( uint8_t index )
 {
 	//uint8_t use_primary_addr = ( (index & 1) == 0 ) ? 1 : 0;
 	uint8_t i2c_bus_index  = (index < 16) ? 0 : 1;
-	if ( index > 16 )
+	if ( index >= 16 )
 		index -= 16;
 	// I2C multiplexer index 0..7.
 	uint8_t channel_ind      = index / 2;
