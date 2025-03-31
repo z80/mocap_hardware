@@ -44,5 +44,10 @@ Release/
 
 unreal_projects
 
-
+*.blend1
+*.3mf
+*.o
+*.list
+*.map
+*.wrl
 

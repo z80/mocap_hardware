@@ -474,7 +474,7 @@
       "specctra_dsn": "",
       "step": "",
       "svg": "",
-      "vrml": ""
+      "vrml": "../../../cad_drawings/imu_case/pcb/board_bmi085.wrl"
     },
     "page_layout_descr_file": ""
   },
