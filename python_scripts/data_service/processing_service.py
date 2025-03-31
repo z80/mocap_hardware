@@ -14,49 +14,56 @@ async def processing_service( queue, clients_list, shared_data, semaphore ):
         data_batch = await queue.get()
         #print( "Received data", data_batch )
         data_all += data_batch
+        
+        while True:
+            # Search for a magic byte "0xAA".
+            index = data_all.find( 0xAA )
+            if index < 0:
+                break
 
-        # Search for a magic byte "0xAA".
-        index = data_all.find( 0xAA )
-        if index < 0:
-            continue
+            data = data_all[(index+1):]
+            # It is followed by 2 bytes voltage and 4 bytes bit mask and a checksum.
+            # So, the data tail length should be at least 7 bytes.
+            length = len(data)
+            if length < 7:
+                data_all = data_all[index:]
+                break
 
-        data = data_all[(index+1):]
-        # It is followed by 2 bytes voltage and 4 bytes bit mask and a checksum.
-        # So, the data tail length should be at least 7 bytes.
-        length = len(data)
-        if length < 7:
-            data_all = data_all[index:]
-            continue
+            # Convert data to numbers and quaternions.
+            #print( "processing: ", data )
+            used_bytes_qty = parse_data( data, shared_data )
+            #print( "processed: ", ret )
 
-        # Convert data to numbers and quaternions.
-        #print( "processing: ", data )
-        used_bytes_qty = parse_data( data, shared_data )
-        #print( "processed: ", ret )
+            if used_bytes_qty > 0:
+                next_index = index + used_bytes_qty
+                data_all = data_all[next_index:]
+                qty = len(clients_list)
+                if qty > 0:
+                    stri = json.dumps( shared_data )
+                    tasks = [ client.send( stri ) for client in clients_list ]
+                    try:
+                        await asyncio.gather(*tasks)
+                    except:
+                        print( "Something went wrong while sending data." )
 
-        if used_bytes_qty > 0:
-            next_index = index + used_bytes_qty
-            data_all = data_all[next_index:]
-            qty = len(clients_list)
-            if qty > 0:
-                stri = json.dumps( shared_data )
-                tasks = [ client.send( stri ) for client in clients_list ]
-                try:
-                    await asyncio.gather(*tasks)
-                except:
-                    print( "Something went wrong while sending data." )
+            elif used_bytes_qty == -1:
+                data_all = data_all[index:]
+                break
 
-        elif used_bytes_qty == -1:
-            data_all = data_all[index:]
+            elif used_bytes_qty == -2:
+                data_all = data_all[(index+1):]
+                continue
+                
 
-        elif used_bytes_qty == -2:
-            data_all = data_all[(index+1):]
-            
+            #semaphore.release()
+            print_counter -= 1
+            if print_counter <= 0:
+                total_l = len(data_all)
+                print( "shared data: ", shared_data )
+                print( "total length: ", total_l )
+                print_counter += 40
 
-        #semaphore.release()
-        print_counter -= 1
-        if print_counter <= 0:
-            print( "shared data: ", shared_data )
-            print_counter += 40
+            break
 
 
 def parse_data( data, shared_data ):
