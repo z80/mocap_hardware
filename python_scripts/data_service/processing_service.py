@@ -8,6 +8,7 @@ async def processing_service( queue, clients_list, shared_data, semaphore ):
     data_all = bytearray()
     #import pdb
     #pdb.set_trace()
+    print_counter = 40
     while True:
         #print( "Waiting for data" )
         data_batch = await queue.get()
@@ -52,7 +53,10 @@ async def processing_service( queue, clients_list, shared_data, semaphore ):
             
 
         #semaphore.release()
-        print( "shared data: ", shared_data )
+        print_counter -= 1
+        if print_counter <= 0:
+            print( "shared data: ", shared_data )
+            print_counter += 40
 
 
 def parse_data( data, shared_data ):
