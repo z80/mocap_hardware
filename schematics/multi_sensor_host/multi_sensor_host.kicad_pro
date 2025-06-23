@@ -539,6 +539,7 @@
   },
   "schematic": {
     "annotate_start_num": 0,
+    "bom_export_filename": "",
     "bom_fmt_presets": [],
     "bom_fmt_settings": {
       "field_delimiter": ",",
@@ -673,20 +674,8 @@
       "tca9548a_sheet1"
     ],
     [
-      "bf81fd1f-4b2a-4a3c-85bd-9206eff6e9a6",
-      "parallel_input_sheet"
-    ],
-    [
-      "0e079bad-0c85-4b8c-b562-d7bf47da4f85",
-      "parallel_input_sheet1"
-    ],
-    [
-      "4737d8a6-4110-43cc-a656-ed958202c174",
-      "parallel_input_sheet2"
-    ],
-    [
-      "f2ffce9f-423f-4d38-95c2-64aae552225a",
-      "parallel_input_sheet3"
+      "9e1e7fd2-4492-4d4c-9b2e-cc16e85c9a24",
+      "tca9548a_sheet2"
     ]
   ],
   "text_variables": {}
