@@ -12313,6 +12313,84 @@
 	)
 	(symbol
 		(lib_id "Device:C")
+		(at 584.2 33.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0cb02f61-98eb-45f8-a7fb-19c4b87e9a60")
+		(property "Reference" "C19"
+			(at 584.835 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "4u7"
+			(at 584.835 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 585.1652 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 584.2 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 584.2 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "URL" "https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173"
+			(at 584.2 33.02 0)
+			(effects
+				(font
+					(size 1.524 1.524)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "66b3fa56-5839-4b61-a07c-f4d6868de9ea")
+		)
+		(pin "2"
+			(uuid "507b93de-58dc-4987-9740-eb387467798f")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "C19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
 		(at 424.18 140.97 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -21942,6 +22020,75 @@
 			(project "multi_sensor_host"
 				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
 					(reference "C22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 593.09 33.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b083d156-f332-4042-8dc4-3dd38a7f5796")
+		(property "Reference" "C20"
+			(at 593.725 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 593.725 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 594.0552 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 593.09 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Unpolarized capacitor"
+			(at 593.09 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "50931b05-523b-48f6-b255-e7bdc5e350a1")
+		)
+		(pin "1"
+			(uuid "672354ae-73ad-499c-a774-73550b65b09d")
+		)
+		(instances
+			(project "multi_sensor_host"
+				(path "/895fe915-d6d4-4da2-a6ec-6414a345dc15"
+					(reference "C20")
 					(unit 1)
 				)
 			)
