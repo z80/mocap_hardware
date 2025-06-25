@@ -12717,7 +12717,7 @@
 		)
 		(uuid "4f78f0c9-74a7-4e9d-a62d-1750c960a509")
 	)
-	(label "sca_8"
+	(label "sda_8"
 		(at 753.11 21.59 0)
 		(fields_autoplaced yes)
 		(effects
