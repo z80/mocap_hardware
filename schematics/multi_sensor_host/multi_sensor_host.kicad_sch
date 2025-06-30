@@ -17597,7 +17597,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "right leg 1"
+		(property "Value" "44, 45, 46, 47"
 			(at 655.32 332.7399 0)
 			(effects
 				(font
@@ -18172,7 +18172,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "right hand 1"
+		(property "Value" "20, 21, 22, 23"
 			(at 783.59 71.1199 0)
 			(effects
 				(font
@@ -18841,7 +18841,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "left hand 0"
+		(property "Value" "0, 1, 2, 3"
 			(at 572.77 30.4799 0)
 			(effects
 				(font
@@ -20047,7 +20047,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "right hand 2"
+		(property "Value" "24, 25, 26, 27"
 			(at 783.59 110.4899 0)
 			(effects
 				(font
@@ -20733,7 +20733,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "right hand 3"
+		(property "Value" "28, 29, 30, 31"
 			(at 783.59 148.5899 0)
 			(effects
 				(font
@@ -20963,7 +20963,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "left hand 2"
+		(property "Value" "8, 9, 10, 11"
 			(at 572.77 105.4099 0)
 			(effects
 				(font
@@ -21544,7 +21544,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "right lef 0"
+		(property "Value" "40, 41, 42, 43"
 			(at 655.32 293.3699 0)
 			(effects
 				(font
@@ -23977,7 +23977,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "left hand 3"
+		(property "Value" "12, 13, 14, 15"
 			(at 572.77 143.5099 0)
 			(effects
 				(font
@@ -25507,7 +25507,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "left hand 1"
+		(property "Value" "4, 5, 6, 7"
 			(at 572.77 67.3099 0)
 			(effects
 				(font
@@ -26038,7 +26038,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "left leg 0"
+		(property "Value" "32, 33, 34, 35"
 			(at 655.32 209.5499 0)
 			(effects
 				(font
@@ -26517,7 +26517,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "right hand 0"
+		(property "Value" "16, 17, 18, 19"
 			(at 783.59 31.7499 0)
 			(effects
 				(font
@@ -28770,7 +28770,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "left leg 1"
+		(property "Value" "36, 37, 38, 39"
 			(at 655.32 251.4599 0)
 			(effects
 				(font
