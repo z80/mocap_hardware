@@ -6273,7 +6273,7 @@
 		(uuid "06e5e1c1-2196-46c1-8f2b-e75c4e2b25f0")
 	)
 	(no_connect
-		(at 287.02 516.89)
+		(at 287.02 384.81)
 		(uuid "0c6d5d9c-eb50-41f0-804e-07b85dea8eb5")
 	)
 	(no_connect
@@ -8884,7 +8884,7 @@
 	)
 	(wire
 		(pts
-			(xy 259.08 384.81) (xy 287.02 384.81)
+			(xy 259.08 516.89) (xy 287.02 516.89)
 		)
 		(stroke
 			(width 0)
@@ -12113,7 +12113,7 @@
 		(uuid "0311079f-90e7-4e8b-80e0-728ef1e90e13")
 	)
 	(label "batt_charge_en"
-		(at 260.35 384.81 0)
+		(at 260.35 516.89 0)
 		(effects
 			(font
 				(size 1.27 1.27)
